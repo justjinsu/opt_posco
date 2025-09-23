@@ -1,0 +1,4 @@
+route,unit_capacity_Mtpy,capex_USD_per_tpy,fixed_opex_USD_per_tpy,iron_ore_t_per_t,ng_GJ_per_t,electricity_MWh_per_t,h2_kg_per_t,ef_scope1_pre_tCO2_per_t,notes
+NG-DRI-dom,2.5,1800,180,1.6,12.0,0.8,0.0,1.2,Domestic NG-based DRI
+H2-DRI-dom,2.0,2500,200,1.6,0.0,1.2,50.0,0.15,Domestic H2-based DRI
+HBI-import,0.0,0,0,0.0,0.0,0.0,0.0,0.0,Imported HBI - no domestic CAPEX/OPEX/Scope1

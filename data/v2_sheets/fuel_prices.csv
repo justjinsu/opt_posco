@@ -1,0 +1,9 @@
+commodity,units,notes,2025,2026,2027,2028,2029,2030,2035,2040,2045,2050
+iron_ore,USD/t,DR-grade iron ore,120,122,124,126,128,130,140,150,160,170
+coking_coal,USD/t,Metallurgical coal,180,185,190,195,200,205,220,235,250,265
+scrap,USD/t,Steel scrap,350,355,360,365,370,375,390,405,420,435
+ng,USD/GJ,Natural gas,8.0,8.2,8.4,8.6,8.8,9.0,9.5,10.0,10.5,11.0
+electricity,USD/MWh,Grid electricity,80,82,84,86,88,90,95,100,105,110
+hydrogen_baseline,USD/kg,Green hydrogen baseline,4.0,3.8,3.6,3.4,3.2,3.0,2.5,2.0,1.8,1.6
+hydrogen_optimistic,USD/kg,Green hydrogen optimistic,3.5,3.2,2.9,2.6,2.3,2.0,1.5,1.2,1.0,0.9
+fluxes,USD/t,Limestone and other fluxes,40,41,42,43,44,45,48,51,54,57

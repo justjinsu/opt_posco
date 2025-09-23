@@ -1,0 +1,4 @@
+route,unit_capacity_Mtpy,capex_USD_per_tpy,fixed_opex_USD_per_tpy,iron_ore_t_per_t,coking_coal_t_per_t,electricity_MWh_per_t,ef_scope1_pre_tCO2_per_t,ccus_capture_max,notes
+BF-BOF,5.0,1000,100,1.6,0.55,0.15,2.10,,Traditional blast furnace route
+FINEX-BOF,3.0,1200,120,1.7,0.50,0.20,1.95,,FINEX smelting reduction
+BF-BOF+CCUS,5.0,1400,150,1.6,0.55,0.18,2.10,0.8,BF-BOF with carbon capture

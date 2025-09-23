@@ -1,0 +1,28 @@
+{
+  "model_info": {
+    "scenario": "NGFS_Below2C",
+    "h2_case": "baseline",
+    "discount_rate": 0.05,
+    "utilization": 0.9,
+    "solver_status": "optimal"
+  },
+  "objective": {
+    "npv_total_USD": 185070188664.0766,
+    "npv_total_billion_USD": 185.0701886640766
+  },
+  "production_summary": {
+    "hotmetal_production_2025_Mt": 23.8,
+    "hotmetal_production_2050_Mt": 18.8,
+    "eaf_production_2025_Mt": 16.2,
+    "eaf_production_2050_Mt": 16.2,
+    "total_production_2025_Mt": 40.0,
+    "total_production_2050_Mt": 35.0
+  },
+  "emissions_summary": {
+    "scope1_emissions_2025_MtCO2": 49.980000000000004,
+    "scope1_emissions_2050_MtCO2": 39.480000000000004,
+    "emissions_reduction_percent": 21.008403361344534,
+    "cumulative_emissions_MtCO2": 651.4200000000001,
+    "cumulative_ets_cost_USD": 9123600000.0
+  }
+}
