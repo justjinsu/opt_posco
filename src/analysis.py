@@ -9,6 +9,12 @@ from typing import Dict, Any, List
 import os
 from pathlib import Path
 
+from carbon_budget import (
+    calculate_korea_steel_carbon_budget,
+    compare_scenarios_to_budget,
+    create_budget_vs_emissions_data
+)
+
 logger = logging.getLogger(__name__)
 
 # Set plotting style
@@ -39,7 +45,10 @@ def create_enhanced_exports(
     
     # 4. Carbon pricing impact analysis
     create_carbon_pricing_analysis(all_solutions, all_params, analysis_dir)
-    
+
+    # 5. Carbon budget compliance analysis
+    create_carbon_budget_analysis(all_solutions, all_params, analysis_dir)
+
     logger.info(f"Enhanced analysis exports completed in {analysis_dir}")
 
 def create_emission_analysis(all_solutions: Dict, all_params: Dict, outdir: Path) -> None:
@@ -499,3 +508,130 @@ def create_summary_dashboard(all_solutions: Dict, all_params: Dict, outdir: Path
     plt.close()
     
     logger.info("Summary dashboard completed")
+
+def create_carbon_budget_analysis(all_solutions: Dict, all_params: Dict, outdir: Path) -> None:
+    """Create carbon budget compliance analysis and visualization."""
+
+    logger.info("Creating carbon budget compliance analysis")
+
+    # Calculate Korea steel sector carbon budget
+    carbon_budget = calculate_korea_steel_carbon_budget()
+
+    # Compare scenarios to budget
+    budget_comparison = compare_scenarios_to_budget(all_solutions, carbon_budget)
+
+    # Export budget comparison data
+    comparison_df = pd.DataFrame([
+        {
+            'scenario': scenario,
+            **metrics
+        }
+        for scenario, metrics in budget_comparison.items()
+    ])
+    comparison_df.to_csv(outdir / "carbon_budget_compliance.csv", index=False)
+
+    # Create budget vs emissions visualization
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(15, 6))
+    fig.suptitle('Carbon Budget Compliance Analysis', fontsize=16, fontweight='bold')
+
+    # Plot 1: Bar chart - Cumulative emissions vs budget
+    scenarios = comparison_df['scenario'].str.replace('NGFS_', '').str.replace('2050', ' 2050')
+    cumulative_emissions = comparison_df['cumulative_emissions_MtCO2']
+    budget_value = comparison_df['carbon_budget_MtCO2'].iloc[0]
+
+    colors = ['#2E8B57' if comp else '#DC143C' for comp in comparison_df['budget_compliant']]
+
+    bars = ax1.bar(scenarios, cumulative_emissions, color=colors, alpha=0.8, edgecolor='black', linewidth=1)
+    ax1.axhline(y=budget_value, color='red', linestyle='--', linewidth=3, label='Carbon Budget Limit')
+
+    # Add percentage labels on bars
+    for i, (bar, overshoot) in enumerate(zip(bars, comparison_df['overshoot_percent'])):
+        height = bar.get_height()
+        if overshoot <= 0:
+            label = f"{abs(overshoot):.0f}% under"
+            color = 'darkgreen'
+        else:
+            label = f"{overshoot:.0f}% over"
+            color = 'darkred'
+        ax1.text(bar.get_x() + bar.get_width()/2., height + 20,
+                label, ha='center', va='bottom', fontweight='bold', color=color)
+
+    ax1.set_title('Cumulative Emissions vs Carbon Budget (2025-2050)', fontweight='bold')
+    ax1.set_ylabel('Cumulative Emissions (MtCO₂)')
+    ax1.legend()
+    ax1.grid(True, alpha=0.3)
+    ax1.set_ylim(0, max(cumulative_emissions) * 1.15)
+
+    # Plot 2: Budget utilization percentage
+    budget_utilization = comparison_df['budget_utilization_percent']
+    bars2 = ax2.bar(scenarios, budget_utilization, color=colors, alpha=0.8, edgecolor='black', linewidth=1)
+    ax2.axhline(y=100, color='red', linestyle='--', linewidth=3, label='Budget Limit (100%)')
+
+    # Add percentage labels
+    for bar, util in zip(bars2, budget_utilization):
+        height = bar.get_height()
+        ax2.text(bar.get_x() + bar.get_width()/2., height + 2,
+                f"{util:.0f}%", ha='center', va='bottom', fontweight='bold')
+
+    ax2.set_title('Carbon Budget Utilization', fontweight='bold')
+    ax2.set_ylabel('Budget Utilization (%)')
+    ax2.legend()
+    ax2.grid(True, alpha=0.3)
+    ax2.set_ylim(0, max(budget_utilization) * 1.15)
+
+    plt.tight_layout()
+    plt.savefig(outdir / "carbon_budget_compliance.png", dpi=300, bbox_inches='tight')
+
+    # Also save to figures directory for LaTeX
+    figures_dir = Path("figures")
+    figures_dir.mkdir(exist_ok=True)
+    plt.savefig(figures_dir / "carbon_budget_compliance.png", dpi=300, bbox_inches='tight')
+
+    plt.close()
+
+    # Create annual emissions trajectory with budget pathway
+    fig, ax = plt.subplots(figsize=(12, 8))
+
+    budget_trajectory = carbon_budget['annual_trajectory_posco']
+    years = sorted(budget_trajectory.keys())
+    budget_pathway = [budget_trajectory[year] for year in years]
+
+    # Plot budget pathway
+    ax.plot(years, budget_pathway, 'r--', linewidth=3, label='Carbon Budget Pathway', alpha=0.8)
+
+    # Plot scenario trajectories
+    colors_dict = {
+        'NGFS_NetZero2050': '#2E8B57',
+        'NGFS_Below2C': '#FF8C00',
+        'NGFS_NDCs': '#DC143C'
+    }
+
+    for scenario, solution in all_solutions.items():
+        params = all_params[scenario]
+        annual_emissions = [solution['emissions'][year] for year in params['years']]
+        scenario_label = scenario.replace('NGFS_', '').replace('2050', ' 2050')
+
+        ax.plot(params['years'], annual_emissions,
+               color=colors_dict.get(scenario, '#808080'),
+               linewidth=2.5, marker='o', markersize=4,
+               label=scenario_label, alpha=0.9)
+
+    ax.set_title('Annual Emissions Trajectories vs Carbon Budget Pathway',
+                fontsize=14, fontweight='bold')
+    ax.set_xlabel('Year')
+    ax.set_ylabel('Annual Emissions (MtCO₂/year)')
+    ax.legend()
+    ax.grid(True, alpha=0.3)
+
+    plt.tight_layout()
+    plt.savefig(outdir / "emissions_vs_budget_trajectory.png", dpi=300, bbox_inches='tight')
+    plt.savefig(figures_dir / "scope1_scenarios.png", dpi=300, bbox_inches='tight')
+    plt.close()
+
+    # Log summary results
+    logger.info("Carbon budget analysis summary:")
+    for scenario, metrics in budget_comparison.items():
+        status = "COMPLIANT" if metrics['budget_compliant'] else "OVERSHOOT"
+        logger.info(f"  {scenario}: {status} - {metrics['overshoot_percent']:.1f}% {'under' if metrics['overshoot_percent'] <= 0 else 'over'} budget")
+
+    logger.info("Carbon budget analysis completed")
