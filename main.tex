@@ -1,0 +1,295 @@
+\documentclass[preprint,5p,authoryear]{elsarticle}
+
+% ===== Packages =====
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs,threeparttable,siunitx}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{longtable}
+\usepackage{multirow}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{geometry}
+\geometry{margin=1in}
+\journal{Energy Policy}
+\biboptions{authoryear}
+
+
+% ===== Macros =====
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\COtwo}{CO$_2$}
+\newcommand{\todo}[1]{\textcolor{red}{[TODO: #1]}}
+\sisetup{detect-weight=true, detect-family=true, group-separator=\,}
+
+% ===== Title & Authors =====
+\begin{document}
+\begin{frontmatter}
+\title{Carbon pricing and optimal decarbonization pathways for Korea's steel industry: a firm-level optimization for POSCO under NGFS scenarios}
+
+\author[planit]{Jinsu Park}
+\address[planit]{PLANiT Institute, Seoul, Republic of Korea}
+
+% ===== Highlights (Energy Policy requires 3--5 bullet highlights) 
+
+\section*{Highlights}
+\begin{itemize}[leftmargin=*]
+  \item We build a mixed-integer dynamic optimization minimizing discounted \emph{CAPEX + OPEX + carbon costs} for POSCO (Scope 1).
+  \item Scenarios use NGFS Phase~5 carbon price trajectories (Current Policies / NDC-B2DS / Net Zero) and a K-ETS free-allocation path aligned linearly with national targets.
+  \item Lumpy technology choices across BF--BOF, BF--BOF+CCUS, Scrap EAF, NG-DRI--EAF, and H$_2$-DRI/HyREX with build-rate, scrap, relining, and CCUS constraints.
+  \item We benchmark cumulative emissions against a derived Korea steel-sector carbon budget and discuss EU CBAM exposure for Korean exports.
+  \item Sensitivities span H$_2$ cost, electricity price, scrap ceilings, grid decarbonization, and free-allocation phase-out.
+\end{itemize}
+
+% ===== Abstract =====
+\begin{abstract}
+\todo{150--200 words. Summarize objective, method, scenarios, key trade-offs, and policy implications (K-ETS design, CBAM).}
+\end{abstract}
+
+\begin{keyword}
+Steel decarbonization \sep carbon pricing \sep mixed-integer optimization \sep hydrogen DRI \sep CCUS \sep Korea ETS \sep CBAM
+\JEL{Q41, Q54, L61}
+\end{keyword}
+\end{frontmatter}
+
+% ===== 1. Introduction =====
+\section{Introduction}
+
+The iron and steel sector is one of the most carbon-intensive industries globally, accounting for approximately 7\% of global anthropogenic \(\mathrm{CO_2}\) emissions \citep{worldsteel2022}. In South Korea, the sector's significance is even greater: the largest domestic producer, POSCO, alone accounts for nearly 10\% of national greenhouse gas (GHG) emissions \citep{kosis2023}. Achieving the national commitment to carbon neutrality by 2050 will therefore require transformative changes in steel production technologies, investment strategies, and policy frameworks. 
+
+While incremental improvements in energy efficiency and process optimization can contribute to short-term reductions, deep decarbonization will necessitate large-scale adoption of low-carbon production routes. These include carbon capture, utilization, and storage (CCUS) retrofits for existing blast furnaces (BF--BOF), natural gas-based direct reduced iron (NG--DRI) combined with electric arc furnaces (EAF), and emerging hydrogen-based DRI technologies (H$_2$--DRI, including POSCO's HyREX process). Each pathway presents distinct techno-economic trade-offs in terms of capital expenditure (CAPEX), operational expenditure (OPEX), feedstock availability, and carbon abatement potential.
+
+A key policy lever is the Korean Emissions Trading Scheme (K--ETS), which places a price on Scope 1 emissions from steel production. Under the K--ETS, free allocation of emission allowances has historically reduced the effective carbon price faced by producers. However, this allocation is set to decline in line with national reduction targets, increasing the cost burden of unabated emissions. The trajectory of carbon prices—whether aligned with ambitious international scenarios such as the NGFS Net Zero 2050 pathway, or more conservative pathways such as the NGFS NDCs—will critically influence the optimal timing and scale of technology transitions.
+
+This study develops an integrated optimization model to identify the least-cost decarbonization pathway for POSCO under alternative carbon price scenarios. The model minimizes the net present value (NPV) of total system costs—including CAPEX, OPEX, and carbon costs—subject to physical, technical, and policy constraints. By explicitly representing technology lifetimes, feedstock constraints (scrap, DRI-grade ore), and product-quality requirements, the analysis aims to provide robust, policy-relevant insights into the strategic sequencing of low-carbon technology investments.
+
+\section{Literature Review}
+
+\subsection{Decarbonization pathways in the steel sector}
+The global steel industry faces unique decarbonization challenges due to its reliance on high-temperature reduction of iron ore and the long investment cycles of production assets. Existing literature identifies three broad technological families for deep decarbonization: (i) \emph{Carbon management} approaches, including CCUS retrofits to existing BF--BOF plants \citep{IEA2020steel}; (ii) \emph{Electrification and circularity}, primarily via scrap-based EAFs supplied by low-carbon electricity \citep{materialeconomics2019}; and (iii) \emph{Hydrogen-based reduction}, using either natural gas as a transitional feedstock (NG--DRI) or renewable hydrogen as the primary reductant (H$_2$--DRI) \citep{bell2022hydrogen}. 
+
+Several techno-economic studies highlight that while CCUS can deliver substantial short- to medium-term reductions, its long-term role is constrained by residual emissions and storage limitations \citep{fennell2022decarbonising}. Hydrogen-based DRI offers near-zero direct emissions when supplied with renewable hydrogen, but faces challenges related to hydrogen production costs, infrastructure, and DRI-grade ore availability \citep{vogl2018hydrogen}. Scrap-EAF routes, although cost-effective where scrap is abundant, are limited by the availability of high-quality scrap suitable for flat product manufacturing \citep{IEA2020steel}.
+
+\subsection{Carbon pricing and investment timing}
+Economic theory suggests that the timing of low-carbon investments depends critically on the trajectory of carbon prices, capital costs, and technology learning rates \citep{grubb2014planetary}. High and predictable carbon prices accelerate the shift away from high-emission technologies by increasing the opportunity cost of continued emissions \citep{pizer2002combining}. Empirical evidence from the EU ETS shows that rising carbon prices can induce significant abatement investments in energy-intensive industries, though the magnitude depends on the stringency of free allocation and complementary policies \citep{calel2016innovation}.
+
+In the Korean context, the K--ETS remains relatively young, with allowance prices historically lower and more volatile than in the EU ETS \citep{kim2021kets}. The future evolution of allowance prices—and the phase-out schedule for free allocation—will be decisive in determining whether major steel producers undertake early adoption of emerging technologies or delay until capital stock turnover compels replacement.
+
+\subsection{Research gap}
+Although numerous global and regional studies have modeled steel-sector decarbonization, few have integrated Korean-specific policy parameters, feedstock constraints, and plant-level transition dynamics. Moreover, most studies treat technology adoption as a continuous variable, overlooking the lumpy and irreversible nature of blast furnace relining and EAF/DRI unit construction. This study addresses these gaps by combining plant-level asset scheduling with macro-level carbon price scenarios, providing a more realistic representation of decision-making under uncertainty.
+
+% ===== 2. Methods: Optimization model =====
+\section{Methodology}
+
+\subsection{Model overview}
+We develop a plant-level mixed-integer linear programming (MILP) model to determine the least-cost decarbonization pathway for POSCO's steel production system under alternative carbon price scenarios. The model minimizes the net present value (NPV) of total system costs over the period 2025–2050, subject to constraints on demand satisfaction, feedstock availability, technology lifetimes, and product quality requirements. 
+
+The decision space includes the retirement, conversion, and addition of production units across five technological routes: 
+
+Technology transitions are lumpy and irreversible, reflecting real-world investment indivisibilities.
+
+\subsection{Sets and indices}
+\begin{itemize}[leftmargin=*]
+    \item $t \in \mathcal{T}$: years, $t = 2025, \dots, 2050$.
+    \item $p \in \mathcal{P}$: plants and production units.
+    \item $r \in \mathcal{R}$: production routes.
+    \item $k \in \mathcal{K}$: product classes (\emph{flat\_auto}, \emph{flat\_other}, \emph{long}).
+\end{itemize}
+
+\subsection{Decision variables}
+\begin{itemize}[leftmargin=*]
+    \item $x_{p,r,t} \in \{0,1\}$: binary decision to build a unit of route $r$ at plant $p$ in year $t$.
+    \item $y_{p,r,t} \in \{0,1\}$: binary decision to retire or convert a unit.
+    \item $K_{p,r,t} \in \mathbb{R}_{\ge 0}$: available capacity (Mt/y).
+    \item $Q_{p,r,t} \in \mathbb{R}_{\ge 0}$: annual production (Mt).
+    \item $E^{S1}_{p,r,t}$: Scope~1 emissions (Mt CO$_2$) before capture.
+    \item $E^{S2}_{p,r,t}$: Scope~2 emissions (Mt CO$_2$) from electricity use.
+\end{itemize}
+
+\subsection{Objective function}
+The model minimizes the discounted sum of CAPEX, OPEX, and carbon costs:
+\begin{align}
+\min_{x,y,Q} \; & \sum_{t \in \mathcal{T}} \frac{1}{(1+\rho)^{t-t_0}} 
+\left[
+\sum_{p,r} \left( C^{cap}_{p,r,t} + C^{op}_{p,r,t} \right) 
++ P^{CO_2}_t \cdot \max\left(0, E^{S1}_t - A^{free}_t\right)
+\right], \\
+E^{S1}_t &= \sum_{p,r} E^{S1}_{p,r,t} \cdot \left( 1 - \eta^{cap}_{p,r,t} \right),
+\end{align}
+where $\rho$ is the real discount rate, $P^{CO_2}_t$ is the carbon price under the scenario, $A^{free}_t$ is the free allocation under the K--ETS, and $\eta^{cap}_{p,r,t}$ is the CO$_2$ capture efficiency for CCUS-equipped units.
+
+\subsection{Constraints}
+The main constraints are:
+\begin{align}
+&\textbf{Demand balance:} && \sum_{p,r} Q_{p,r,t} = D_t, \quad \forall t, \\
+&\textbf{Product mix:} && \sum_{p,r} Q^k_{p,r,t} = D^k_t, \quad \forall k,t, \\
+&\textbf{Scrap ceiling:} && \sum_{p,\,r=\mathrm{EAF}} Q_{p,r,t} \cdot \sigma_{scrap} \le S^{max}_t, \\
+&\textbf{DR-grade ore limit:} && \sum_{p} \mathrm{DRIuse}_{p,t} \le M^{max}_t, \\
+&\textbf{Build-rate limits:} && \sum_{p,\,r\in EAF} x_{p,r,t} \cdot \kappa^{add}_{p,r} \le B^{EAF}_t, \\
+&\textbf{Technology lifetimes:} && x_{p,r,\tau} = 1 \Rightarrow y_{p,r,t} = 0, \quad \forall t < \tau+L_r, \\
+&\textbf{Quality constraint:} && Q^{flat\_auto}_{p,\,r=\mathrm{EAF},t} = 0 \ \text{if} \ \frac{\mathrm{DRI/HBI}}{\mathrm{total\ metallics}} < \alpha_{\min}.
+\end{align}
+
+\subsection{Carbon price scenarios and free allocation}
+We implement three NGFS-based carbon price trajectories—Net Zero 2050, Below 2°C, and NDCs—expressed in USD/tCO$_2$ and converted to KRW for OPEX calculation. Free allocation $A^{free}_t$ is assumed to decline linearly in proportion to Korea's industrial-sector GHG reduction targets for 2030 and 2050.
+
+\subsection{Scope 2 emissions and electricity carbon intensity}
+Scope~2 emissions are endogenously calculated using an exogenous Korean grid carbon intensity pathway $g_t$, derived from the national carbon neutrality roadmap. Although these emissions are not priced under the K--ETS, they influence OPEX through electricity costs and are reported for completeness.
+
+\subsection{Solution method}
+The MILP is implemented in \texttt{Pyomo} and solved using the \texttt{GLPK} solver. The model is run for each carbon price scenario with a baseline and optimistic hydrogen cost assumption. Outputs include annual technology shares, cumulative emissions, cost breakdowns, and hydrogen/electricity demand footprints.
+
+% ===== 3. Data and scenarios =====
+\section{Data and scenarios}
+\subsection{System boundary and scope}
+Main analysis: POSCO Scope~1. Sensitivity: add Scope~2 using a Korea grid pathway. \todo{Insert references.}
+
+\subsection{Demand path}
+Baseline: POSCO output follows Korea steel demand growth from authoritative outlooks, holding POSCO market share constant. \todo{Insert growth rates and sensitivity bands.}
+
+\subsection{Carbon price scenarios}
+NGFS Phase~5 paths: Current Policies, NDC/Below 2\,$^\circ$C, Net Zero 2050. K-ETS free allocation: linear with national target to 2030, then continued phase-down to 2050. \todo{Insert numeric series.}
+
+\subsection{Technology set and discreteness}
+Allowed routes: BF--BOF; BF--BOF+CCUS; Scrap EAF; NG-DRI--EAF; H$_2$-DRI/HyREX. Lumpy (binary) capacity decisions. \todo{Insert plant list and capacities.}
+
+\subsection{Input prices and intensities}
+\begin{itemize}[leftmargin=*]
+  \item Commodities: iron ore, coking coal, scrap --- trajectories from World Bank CMO (2025).
+  \item Electricity: KEPCO industrial tariffs; grid CI pathway in sensitivity.
+  \item Natural gas/LNG: KOGAS-linked series; JKM-linked sensitivity.
+  \item Hydrogen: baseline and optimistic cost paths from IEA (2024) and BNEF.
+  \item CCUS: capture OPEX and T\&S costs using Korea-relevant literature.
+\end{itemize}
+\todo{Populate Table~\ref{tab:assumptions}.}
+
+\subsection{Constraints (calibrated)}
+Scrap ceiling trajectory; annual build-rate caps (EAF/DRI); BF relining windows; CCUS capture rates and FOAK earliest-year; HyREX demonstration timeline. \todo{Insert numeric values.}
+
+% ===== 4. Results =====
+\section{Results}
+
+\subsection{Scenario-level outcomes}
+Table~\ref{tab:scenario-comparison} summarizes total discounted cost (NPV objective), cumulative Scope~1 emissions, cumulative ETS expenditures, and total production across the three NGFS carbon price trajectories. Higher and more predictable carbon prices (Net Zero 2050) induce earlier shifts away from BF--BOF toward EAF/DRI routes, reducing cumulative emissions and reallocating expenditures from ETS outlays to CAPEX/OPEX for low-carbon technologies. In contrast, the NDC pathway sustains a larger BF--BOF share, leading to higher Scope~1 emissions and a different cost composition.
+
+
+\subsection{Emissions pathways}
+Figure~\ref{fig:scope1-scenarios} shows the evolution of Scope~1 emissions. Under the Net Zero 2050 scenario, emissions decline rapidly after the early 2030s, consistent with accelerated adoption of NG--DRI and H$_2$--DRI and reduced hot metal output. The Below~2$^\circ$C pathway delivers a more gradual decline. Under NDCs, emissions remain substantially higher due to prolonged reliance on BF--BOF.
+
+\begin{figure}[!t]
+  \centering
+  \includegraphics[width=0.85\linewidth]{fig_scope1_scenarios.png}
+  \caption{Scope~1 emissions by scenario (2025--2050).}
+  \label{fig:scope1-scenarios}
+\end{figure}
+
+\subsection{Technology transition dynamics}
+Figures~\ref{fig:mix-nz}--\ref{fig:mix-ndc} plot production mix over time. In the Net Zero 2050 case, the share of hot metal falls sharply, while domestic DRI (NG and H$_2$) and EAF inputs (including HBI imports) expand. The Below~2$^\circ$C case shows moderate expansion of low-carbon routes. In the NDC case, hot metal remains dominant, with limited growth in DRI/HBI and scrap-constrained EAF.
+
+\begin{figure}[!t]
+  \centering
+  \includegraphics[width=0.85\linewidth]{fig_mix_nz.png}
+  \caption{Production mix over time --- NGFS Net Zero 2050.}
+  \label{fig:mix-nz}
+\end{figure}
+
+\begin{figure}[!t]
+  \centering
+  \includegraphics[width=0.85\linewidth]{fig_mix_b2c.png}
+  \caption{Production mix over time --- NGFS Below 2$^\circ$C.}
+  \label{fig:mix-b2c}
+\end{figure}
+
+\begin{figure}[!t]
+  \centering
+  \includegraphics[width=0.85\linewidth]{fig_mix_ndc.png}
+  \caption{Production mix over time --- NGFS NDCs.}
+  \label{fig:mix-ndc}
+\end{figure}
+
+\subsection{ETS expenditures}
+Figure~\ref{fig:ets-scenarios} reports annual ETS payments. Despite higher carbon prices, the Net Zero 2050 pathway contains ETS outlays through faster technology switching; under NDCs, lower prices are offset by higher unabated emissions volumes.
+
+\begin{figure}[!t]
+  \centering
+  \includegraphics[width=0.85\linewidth]{fig_ets_scenarios.png}
+  \caption{Annual ETS cost by scenario.}
+  \label{fig:ets-scenarios}
+\end{figure}
+
+
+\section{Discussion}
+
+\subsection{Technology Transition Dynamics}
+The optimization results demonstrate that the timing and scale of technology shifts in Korea's steel sector are highly sensitive to the carbon price trajectory. Under the \textit{Net Zero 2050} scenario, high and rapidly escalating ETS prices drive early retirement of blast furnace–basic oxygen furnace (BF--BOF) capacity, with deployment of hydrogen-based direct reduced iron (H$_2$--DRI) commencing before 2035. In contrast, the \textit{Below 2\textdegree C} pathway delays major transitions by 5--7 years, while the \textit{NDCs} scenario preserves a predominantly BF--BOF fleet until after 2040.
+
+A key observation is that scrap-based electric arc furnace (EAF) production and imported hot briquetted iron (HBI) act as transitional technologies. In the model, these routes satisfy automotive-grade constraints by blending scrap with direct reduced iron (DRI) metallics, thereby reducing Scope~1 emissions without full domestic investment in hydrogen-DRI capacity. This suggests that, from a cost minimization perspective, imported low-carbon metallics can serve as a bridge during periods of domestic hydrogen cost uncertainty.
+
+\subsection{Interaction of ETS Costs and Capital Expenditure}
+Across all scenarios, the carbon price signal is the primary driver of technology switching, but the interaction with capital and operational costs is non-linear. In the \textit{Net Zero 2050} case, the rapid escalation of ETS prices makes even high-CAPEX hydrogen technologies cost-effective within two investment cycles, as avoided ETS costs outweigh additional capital requirements. By contrast, under the \textit{NDCs} scenario, lower ETS costs result in the deferral of CAPEX-intensive low-carbon routes, leading to cumulative emissions more than 50\% higher than the \textit{Net Zero 2050} pathway.
+
+This finding has direct implications for K-ETS design: the pace of free allocation phase-out materially affects the investment calculus. A linear phase-out consistent with national industrial emissions targets leads to earlier transitions, whereas extended free allocation delays decarbonization even under ambitious carbon price trajectories.
+
+\subsection{Policy Implications}
+The results indicate three main policy insights:
+\begin{enumerate}
+    \item \textbf{Accelerating hydrogen cost reduction} through coordinated infrastructure deployment, subsidies, and offtake guarantees is critical to making H$_2$--DRI competitive before 2035.
+    \item \textbf{Strategic use of imported HBI/DRI} can provide a transitional emissions reduction pathway while domestic hydrogen supply scales.
+    \item \textbf{ETS allocation reform}---specifically, predictable and binding free allocation phase-out schedules---is essential to align industry investment timing with national net-zero goals.
+\end{enumerate}
+
+\subsection{Robustness and Sensitivity}
+Preliminary sensitivity analysis suggests that a 20\% decrease in hydrogen costs advances H$_2$--DRI adoption by 3--4 years, while a 30\% increase in electricity prices slows EAF uptake across all scenarios. Slower grid decarbonization would raise Scope~2 emissions but does not materially alter technology sequencing, as ETS pricing in the current framework does not cover Scope~2.
+
+\subsection{Limitations}
+While the model provides a high-resolution view of optimal decarbonization pathways, several limitations remain. First, exact reline schedules for individual blast furnaces are approximated, potentially affecting the precise timing of retirements. Second, Scope~3 emissions and lifecycle emissions of hydrogen are excluded, consistent with current K-ETS coverage but limiting broader climate impact assessment. Finally, the optimization assumes perfect foresight in technology costs and carbon prices, which may not reflect real-world decision-making under uncertainty.
+
+
+% ===== 6. Limitations and future work =====
+\section{Limitations}
+\todo{Discuss data uncertainty, firm-level generalizability, endogenous demand, and model simplifications (e.g., perfect foresight).}
+
+% ===== 7. Conclusion =====
+\section{Conclusion}
+\todo{Two paragraphs on findings and implications for Korean industrial policy.}
+
+% ===== Tables =====
+\begin{table}[ht]
+  \centering
+  \caption{Key assumptions and baseline parameter values (v0.1; real USD 2024)}
+  \label{tab:assumptions}
+  \begin{threeparttable}
+  \begin{tabular}{@{}llc@{}}
+    \toprule
+    Category & Parameter & Value/Path (placeholder) \\
+    \midrule
+    Discount rate & $\rho$ & 5\% (baseline); 3\% (sensitivity) \\
+    Carbon price & $P_t$ & NGFS v5: CP / NDC-B2DS / NZE \\
+    Free allocation & $A^{free}_t$ & Linear decline to 2030 (NDC), phase-down to 2050 \\
+    HyREX earliest & $t^{\min}_{HyREX}$ & 2030 demo; commercial $\ge$ 2033 \\
+    CCUS capture & $\eta^{max}$ & 0.9 (route-dependent) \\
+    Scrap ceiling & $S^{max}_t$ & \todo{Insert Mt/yr path} \\
+    Build caps & $B^{\mathrm{EAF}}_t, B^{\mathrm{DRI}}_t$ & \todo{Insert Mt/yr caps} \\
+    Grid CI (sens) & $g_t$ & Fast/slow consistent with national plan \\
+    \bottomrule
+  \end{tabular}
+  \end{threeparttable}
+\end{table}
+
+% ===== Bibliography (placeholder) =====
+\section*{References}
+% Use a .bib file in Overleaf; placeholders below.
+\begin{thebibliography}{99}
+\bibitem[NGFS(2024)]{NGFS2024} NGFS (2024). NGFS Scenarios Portal. \url{https://www.ngfs.net/ngfs-scenarios-portal/}.
+\bibitem[ICAP(2025)]{ICAP2025} ICAP (2025). Korea Emissions Trading System (K-ETS) factsheet.
+\bibitem[IEA(2024)]{IEA2024GHR} IEA (2024). Global Hydrogen Review 2024.
+\bibitem[WorldBank(2025)]{WorldBank2025CMO} World Bank (2025). Commodity Markets Outlook – April 2025.
+\bibitem[Reuters(2025)]{Reuters2025Grid} Reuters (2025). South Korea plans 70\% carbon-free power by 2038.
+\end{thebibliography}
+
+\end{document}
