@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.5.5)  14 OCT 2025 00:54
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.5.5)  14 OCT 2025 00:55
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -983,11 +983,7 @@ LaTeX Font Info:    Trying to load font information for T1+lmr on input line 36
 .
  (/usr/local/texlive/2023/texmf-dist/tex/latex/lm/t1lmr.fd
 File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-) (./main.aux
-
-Package natbib Warning: Citation `Vogl2018' multiply defined.
-
-)
+) (./main.aux)
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 36.
@@ -1008,7 +1004,8 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 36.
 LaTeX Font Info:    ... okay on input line 36.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 36.
 LaTeX Font Info:    ... okay on input line 36.
- (/usr/local/texlive/2023/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+
+(/usr/local/texlive/2023/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count354
 \scratchdimen=\dimen320
@@ -1147,6 +1144,19 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <6> on input line 63.
 
+
+Package natbib Warning: Citation `Green2021' on page 1 undefined on input line 
+68.
+
+
+Package natbib Warning: Citation `worldsteel2022' on page 1 undefined on input 
+line 70.
+
+
+Package natbib Warning: Citation `KOSIS2023' on page 1 undefined on input line 
+70.
+
+
 Overfull \hbox (2.22221pt too wide) has occurred while \output is active
 [] 
  []
@@ -1156,10 +1166,147 @@ Overfull \hbox (2.22221pt too wide) has occurred while \output is active
 {/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/loc
 al/texlive/2023/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/local/texlive/202
 3/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}{/usr/local/texlive/2023/texmf-dist/
-fonts/enc/dvips/lm/lm-rm.enc}] [2] [3] [4{/usr/local/texlive/2023/texmf-dist/fo
-nts/enc/dvips/lm/lm-mathit.enc}{/usr/local/texlive/2023/texmf-dist/fonts/enc/dv
-ips/lm/lm-mathsy.enc}] [5{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/lm
-/lm-mathex.enc}]
+fonts/enc/dvips/lm/lm-rm.enc}]
+
+Package natbib Warning: Citation `IEA2020steel' on page 2 undefined on input li
+ne 72.
+
+
+Package natbib Warning: Citation `MaterialEconomics2019' on page 2 undefined on
+ input line 72.
+
+
+Package natbib Warning: Citation `kim2021kets' on page 2 undefined on input lin
+e 74.
+
+
+Package natbib Warning: Citation `ICAP2024' on page 2 undefined on input line 7
+4.
+
+
+Package natbib Warning: Citation `korea2020carbon' on page 2 undefined on input
+ line 76.
+
+
+Package natbib Warning: Citation `NGFS2024' on page 2 undefined on input line 7
+8.
+
+
+Package natbib Warning: Citation `IEA2020steel' on page 2 undefined on input li
+ne 90.
+
+
+Package natbib Warning: Citation `Vogl2018' on page 2 undefined on input line 9
+2.
+
+
+Package natbib Warning: Citation `Otto2017' on page 2 undefined on input line 9
+2.
+
+
+Package natbib Warning: Citation `prammer2021steel' on page 2 undefined on inpu
+t line 92.
+
+
+Package natbib Warning: Citation `ueckerdt2021potential' on page 2 undefined on
+ input line 92.
+
+
+Package natbib Warning: Citation `pauliuk2013global' on page 2 undefined on inp
+ut line 92.
+
+
+Package natbib Warning: Citation `wang2021hydrogen' on page 2 undefined on inpu
+t line 92.
+
+
+Package natbib Warning: Citation `MaterialEconomics2019' on page 2 undefined on
+ input line 92.
+
+[2]
+
+Package natbib Warning: Citation `Griffin2020' on page 3 undefined on input lin
+e 94.
+
+
+Package natbib Warning: Citation `zhang2022steel' on page 3 undefined on input 
+line 94.
+
+
+Package natbib Warning: Citation `jarke2021carbon' on page 3 undefined on input
+ line 98.
+
+
+Package natbib Warning: Citation `fowlie2016carbon' on page 3 undefined on inpu
+t line 98.
+
+
+Package natbib Warning: Citation `calel2016innovation' on page 3 undefined on i
+nput line 98.
+
+
+Package natbib Warning: Citation `martin2016industry' on page 3 undefined on in
+put line 98.
+
+
+Package natbib Warning: Citation `sartor2017benchmark' on page 3 undefined on i
+nput line 100.
+
+
+Package natbib Warning: Citation `neuhoff2012inclusion' on page 3 undefined on 
+input line 100.
+
+
+Package natbib Warning: Citation `demailly2018european' on page 3 undefined on 
+input line 100.
+
+
+Package natbib Warning: Citation `kim2021kets' on page 3 undefined on input lin
+e 102.
+
+
+Package natbib Warning: Citation `wang2021carbon' on page 3 undefined on input 
+line 102.
+
+
+Package natbib Warning: Citation `matthews2009proportionality' on page 3 undefi
+ned on input line 106.
+
+
+Package natbib Warning: Citation `raupach2014sharing' on page 3 undefined on in
+put line 106.
+
+
+Package natbib Warning: Citation `gasser2018negative' on page 3 undefined on in
+put line 106.
+
+
+Package natbib Warning: Citation `rogelj2019new' on page 3 undefined on input l
+ine 108.
+
+
+Package natbib Warning: Citation `millar2017emission' on page 3 undefined on in
+put line 108.
+
+
+Package natbib Warning: Citation `robiou2019national' on page 3 undefined on in
+put line 108.
+
+
+Package natbib Warning: Citation `kuramochi2018beyond' on page 3 undefined on i
+nput line 108.
+
+
+Package natbib Warning: Citation `bataille2018role' on page 3 undefined on inpu
+t line 110.
+
+
+Package natbib Warning: Citation `Griffin2020' on page 3 undefined on input lin
+e 110.
+
+[3] [4{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/us
+r/local/texlive/2023/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/local/te
+xlive/2023/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}] [5]
 Overfull \hbox (33.0733pt too wide) in paragraph at lines 244--245
 []\T1/lmr/m/n/10 We im-ple-ment three NGFS-based car-bon price tra-jec-to-ries^
 ^VNet Zero 2050, Be-low 2\TS1/lmr/m/n/10 °\T1/lmr/m/n/10 C, and NDCs^^Vexpresse
@@ -1170,23 +1317,296 @@ LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 2
 54.
 (/usr/local/texlive/2023/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-) [6] [7]
-! Undefined control sequence.
-l.324 ...zation. Sensitivity analysis considers \Â
-                                                  ±30\% price variation.
-? 
-! Emergency stop.
-l.324 
-      
-End of file on the terminal!
+) [6]
 
- 
+Package natbib Warning: Citation `NGFS2024' on page 7 undefined on input line 2
+94.
+
+[7]
+
+LaTeX Warning: Reference `tab:scenario-comparison' on page 8 undefined on input
+ line 350.
+
+
+LaTeX Warning: Reference `fig:scope1-by-scenario' on page 8 undefined on input 
+line 354.
+
+[8]
+<figures//scope1_by_scenario.png, id=174, 715.473pt x 425.1885pt>
+File: figures//scope1_by_scenario.png Graphic file (type png)
+<use figures//scope1_by_scenario.png>
+Package pdftex.def Info: figures//scope1_by_scenario.png  used on input line 35
+8.
+(pdftex.def)             Requested size: 362.37569pt x 215.35106pt.
+
+
+LaTeX Warning: Reference `fig:technology-transition' on page 9 undefined on inp
+ut line 365.
+
+
+LaTeX Warning: Reference `tab:technology-thresholds' on page 9 undefined on inp
+ut line 365.
+
+
+Package natbib Warning: Citation `MaterialEconomics2019' on page 9 undefined on
+ input line 367.
+
+
+Package natbib Warning: Citation `demailly2018european' on page 9 undefined on 
+input line 367.
+
+<figures//technology_transition.png, id=176, 1065.7416pt x 711.8595pt>
+File: figures//technology_transition.png Graphic file (type png)
+<use figures//technology_transition.png>
+Package pdftex.def Info: figures//technology_transition.png  used on input line
+ 371.
+(pdftex.def)             Requested size: 362.37569pt x 242.05075pt.
+
+LaTeX Warning: Reference `fig:ets-costs' on page 9 undefined on input line 382.
+
+
+
+LaTeX Warning: Reference `tab:cost-abatement' on page 9 undefined on input line
+ 382.
+
+
+Package natbib Warning: Citation `fowlie2016carbon' on page 9 undefined on inpu
+t line 382.
+
+[9 <./figures//scope1_by_scenario.png>]
+<figures//ets_cost_by_scenario.png, id=187, 715.473pt x 425.1885pt>
+File: figures//ets_cost_by_scenario.png Graphic file (type png)
+<use figures//ets_cost_by_scenario.png>
+Package pdftex.def Info: figures//ets_cost_by_scenario.png  used on input line 
+386.
+(pdftex.def)             Requested size: 362.37569pt x 215.35106pt.
+
+
+Package natbib Warning: Citation `Vogl2018' on page 10 undefined on input line 
+393.
+
+
+Package natbib Warning: Citation `Griffin2020' on page 10 undefined on input li
+ne 393.
+
+[10 <./figures//technology_transition.png> <./figures//ets_cost_by_scenario.png
+>]
+
+Package natbib Warning: Citation `Green2021' on page 11 undefined on input line
+ 401.
+
+
+Package natbib Warning: Citation `martin2016industry' on page 11 undefined on i
+nput line 401.
+
+
+Package natbib Warning: Citation `kim2021kets' on page 11 undefined on input li
+ne 405.
+
+
+Package natbib Warning: Citation `ICAP2024' on page 11 undefined on input line 
+405.
+
+
+Package natbib Warning: Citation `neuhoff2012inclusion' on page 11 undefined on
+ input line 405.
+
+
+Package natbib Warning: Citation `MaterialEconomics2019' on page 11 undefined o
+n input line 405.
+
+
+Overfull \hbox (10.36967pt too wide) in paragraph at lines 405--406
+\T1/lmr/m/n/10 abate-ment (\T1/lmr/bx/n/10 ?\T1/lmr/m/n/10 ). More-over, in-dus
+-trial pol-icy has pri-ori-tised hy-dro-gen pi-lots and CCUS retrofits^^Vtechno
+logies
+ []
+
+
+LaTeX Warning: Reference `tab:policy-matrix' on page 11 undefined on input line
+ 409.
+
+
+Package natbib Warning: Citation `fowlie2016carbon' on page 11 undefined on inp
+ut line 409.
+
+[11] (./tables/assumptions.tex) (./tables/scenario_comparison.tex)
+(./tables/technology_thresholds.tex
+Overfull \hbox (12.51842pt too wide) in paragraph at lines 6--20
+ [] 
+ []
+
+) (./tables/cost_abatement.tex) (./tables/policy_matrix.tex
+Underfull \hbox (badness 3557) in paragraph at lines 10--10
+[]|\T1/lmr/m/n/10 Carbon price floor
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 10--10
+[]|\T1/lmr/m/n/10 K-ETS al-lowance
+ []
+
+
+Underfull \hbox (badness 7238) in paragraph at lines 10--11
+\T1/lmr/m/n/10 ac-cel-er-at-ing scrap-EAF in-vest-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 11--11
+[]|\T1/lmr/m/n/10 Accelerated free-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 11--11
+[]|\T1/lmr/m/n/10 Emissions-intensive
+ []
+
+
+Underfull \hbox (badness 1127) in paragraph at lines 11--12
+[]|\T1/lmr/m/n/10 Reduces free al-lo-ca-tion by 5--7
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 12--12
+[]|\T1/lmr/m/n/10 Scrap col-lec-tors,
+ []
+
+
+Underfull \hbox (badness 1472) in paragraph at lines 12--13
+\T1/lmr/m/n/10 and pro-cess-ing, sup-port-ing the
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 13--13
+[]|\T1/lmr/m/n/10 Industrial power
+ []
+
+
+Underfull \hbox (badness 4391) in paragraph at lines 13--13
+\T1/lmr/m/n/10 con-tracts for EAF
+ []
+
+
+Underfull \hbox (badness 3343) in paragraph at lines 13--13
+[]|\T1/lmr/m/n/10 KEPCO and large
+ []
+
+
+Underfull \hbox (badness 1215) in paragraph at lines 13--14
+[]|\T1/lmr/m/n/10 Provides pre-dictable low-carbon
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 13--14
+\T1/lmr/m/n/10 elec-tric-ity tar-iffs, mit-i-gat-ing
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 14--14
+[]|\T1/lmr/m/n/10 Conditional hy-
+ []
+
+
+Underfull \hbox (badness 3884) in paragraph at lines 14--14
+\T1/lmr/m/n/10 dro-gen and CCUS
+ []
+
+
+Underfull \hbox (badness 3386) in paragraph at lines 14--15
+[]|\T1/lmr/m/n/10 Links pub-lic fund-ing to cost-
+ []
+
+
+Underfull \hbox (badness 5431) in paragraph at lines 14--15
+\T1/lmr/m/n/10 reduction mile-stones; pre-vents
+ []
+
+
+Underfull \hbox (badness 1259) in paragraph at lines 14--15
+\T1/lmr/m/n/10 sub-sidy lock-in for tech-nolo-gies
+ []
+
+
+Underfull \hbox (badness 1062) in paragraph at lines 15--16
+\T1/lmr/m/n/10 man-age leak-age risks as Ko-rea
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 16--16
+[]|\T1/lmr/m/n/10 Carbon bor-der
+ []
+
+
+Underfull \hbox (badness 4647) in paragraph at lines 16--16
+\T1/lmr/m/n/10 ad-just-ment en-gage-
+ []
+
+
+Underfull \hbox (badness 3525) in paragraph at lines 16--16
+[]|\T1/lmr/m/n/10 Ministry of Trade,
+ []
+
+) [12] [13] [14] [15]
+pdfTeX warning (ext4): destination with the same identifier (name{cite.Vogl2018
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.583 \bibitem[Vogl et al.(2018)]{Vogl2018}
+                                            Vogl, V., Ã…hman, M., Nilsson, L...
+[16]
+
+Package natbib Warning: There were undefined citations.
+
+[17] (./main.aux
+
+Package natbib Warning: Citation(s) may have changed.
+(natbib)                Rerun to get citations correct.
+
+)
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package rerunfilecheck Warning: File `main.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `main.out':
+(rerunfilecheck)             Before: 9AA2B207FCFD00D1299E230DD5337CE2;4876
+(rerunfilecheck)             After:  EA32BE3B10FC50C167C38AAF973E453D;9148.
+ ) 
 Here is how much of TeX's memory you used:
- 38922 strings out of 476025
- 932668 string characters out of 5790018
- 1872388 words of memory out of 5000000
- 58663 multiletter control sequences out of 15000+600000
- 565126 words of font info for 71 fonts, out of 8000000 for 9000
+ 39187 strings out of 476025
+ 938658 string characters out of 5790018
+ 1883388 words of memory out of 5000000
+ 58842 multiletter control sequences out of 15000+600000
+ 568807 words of font info for 74 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 109i,10n,108p,1360b,896s stack positions out of 10000i,1000n,20000p,200000b,200000s
-!  ==> Fatal error occurred, no output PDF file produced!
+ 109i,13n,108p,1360b,1164s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></usr/lo
+cal/texlive/2023/texmf-dist/fonts/type1/public/lm/lmex10.pfb></usr/local/texliv
+e/2023/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></usr/local/texlive/2023/tex
+mf-dist/fonts/type1/public/lm/lmmi5.pfb></usr/local/texlive/2023/texmf-dist/fon
+ts/type1/public/lm/lmmi7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/pu
+blic/lm/lmr10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr
+12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr5.pfb></usr
+/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr6.pfb></usr/local/texli
+ve/2023/texmf-dist/fonts/type1/public/lm/lmr7.pfb></usr/local/texlive/2023/texm
+f-dist/fonts/type1/public/lm/lmr8.pfb></usr/local/texlive/2023/texmf-dist/fonts
+/type1/public/lm/lmri10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/pub
+lic/lm/lmri7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmri
+8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></us
+r/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmsy7.pfb></usr/local/tex
+live/2023/texmf-dist/fonts/type1/public/lm/lmtt10.pfb></usr/local/texlive/2023/
+texmf-dist/fonts/type1/public/lm/lmtt8.pfb></usr/local/texlive/2023/texmf-dist/
+fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on main.pdf (17 pages, 930818 bytes).
+PDF statistics:
+ 461 PDF objects out of 1000 (max. 8388607)
+ 389 compressed objects within 4 object streams
+ 165 named destinations out of 1000 (max. 500000)
+ 196 words of extra memory for PDF output out of 10000 (max. 10000000)
+
