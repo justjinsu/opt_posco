@@ -1,0 +1,4 @@
+scenario,cumulative_emissions_MtCO2,carbon_budget_MtCO2,overshoot_MtCO2,overshoot_percent,budget_compliant,budget_utilization_percent
+NGFS_Below2C,1365.026,1110,255.026,22.98,False,122.98
+NGFS_NDCs,1980.536,1110,870.536,78.43,False,178.43
+NGFS_NetZero2050,1154.312,1110,44.312,3.99,False,103.99
