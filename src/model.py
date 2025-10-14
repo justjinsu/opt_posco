@@ -76,7 +76,10 @@ def build_model(
     intensities = params['intensity']
     model.iron_ore_int = pyo.Param(model.routes, initialize=intensities.get('iron_ore_t', {}), doc="Iron ore intensity (t/t)")
     model.coking_coal_int = pyo.Param(model.routes, initialize=intensities.get('coking_coal_t', {}), doc="Coking coal intensity (t/t)")
-    model.scrap_int = pyo.Param(model.routes, initialize=intensities.get('scrap_t', {}), doc="Scrap intensity (t/t)")
+    scrap_intensity = intensities.get('scrap_t', {})
+    # ensure routes without entries default to zero
+    scrap_init = {route: scrap_intensity.get(route, 0.0) for route in params['routes']}
+    model.scrap_int = pyo.Param(model.routes, initialize=scrap_init, doc="Scrap intensity (t/t)")
     model.ng_int = pyo.Param(model.routes, initialize=intensities.get('ng_GJ', {}), doc="Natural gas intensity (GJ/t)")
     model.elec_int = pyo.Param(model.routes, initialize=intensities.get('electricity_MWh', {}), doc="Electricity intensity (MWh/t)")
     model.h2_int = pyo.Param(model.routes, initialize=intensities.get('h2_kg', {}), doc="Hydrogen intensity (kg/t)")
@@ -87,6 +90,7 @@ def build_model(
     model.demand = pyo.Param(model.years, initialize=params['demand'], doc="Steel demand (Mt/y)")
     model.carbon_price = pyo.Param(model.years, initialize=params['carbon_price'], doc="Carbon price (USD/tCO2)")
     model.free_alloc = pyo.Param(model.years, initialize=params['free_alloc'], doc="Free allocation (MtCO2/y)")
+    model.scrap_supply = pyo.Param(model.years, initialize=params['scrap_supply'], doc="Available scrap (Mt/y)")
     
     # Discount factors
     discount_factors = {y: 1.0 / ((1 + discount_rate) ** (y - t0)) for y in params['years']}
@@ -135,8 +139,14 @@ def build_model(
     def utilization_rule(model, route, year):
         return model.Q[route, year] <= utilization * model.K[route, year]
     model.utilization_constraint = pyo.Constraint(model.routes, model.years, rule=utilization_rule, doc="Utilization limit")
+
+    # 4. Scrap availability constraint
+    def scrap_limit_rule(model, year):
+        total_scrap = sum(model.scrap_int[route] * model.Q[route, year] for route in model.routes)
+        return total_scrap <= model.scrap_supply[year]
+    model.scrap_limit = pyo.Constraint(model.years, rule=scrap_limit_rule, doc="Scrap availability limit")
     
-    # 4. ETS linearization: ETSpos[t] >= sum(ef_net[r] * Q[r,t]) - free_alloc[t]
+    # 5. ETS linearization: ETSpos[t] >= sum(ef_net[r] * Q[r,t]) - free_alloc[t]
     def ets_balance_rule(model, year):
         # Scope 1 emissions in MtCO2: Mt production * tCO2/t = MtCO2
         scope1_mt = sum(model.ef_net[route] * model.Q[route, year] for route in model.routes)
@@ -144,7 +154,7 @@ def build_model(
         return model.ETSpos[year] >= scope1_mt - free_mt
     model.ets_balance = pyo.Constraint(model.years, rule=ets_balance_rule, doc="ETS positive part constraint")
     
-    # 5. Technology timing constraints
+    # 6. Technology timing constraints
     h2_routes = [r for r in model.routes if 'H2' in r or 'HyREX' in r]
     if h2_routes:
         def h2_timing_rule(model, route, year):

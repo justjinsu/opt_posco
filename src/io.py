@@ -189,6 +189,23 @@ def load_parameters(
     _validate_columns(demand_df, ['year', 'posco_crude_steel_Mt'], 'demand_path')
     params['demand'] = dict(zip(demand_df['year'], demand_df['posco_crude_steel_Mt']))
     
+    # Load scrap availability (optional)
+    if 'scrap_supply' in xls.sheet_names:
+        logger.info("Loading scrap availability from workbook")
+        scrap_df = pd.read_excel(xls, 'scrap_supply')
+        _validate_columns(scrap_df, ['year', 'scrap_available_Mt'], 'scrap_supply')
+        scrap_supply = dict(zip(scrap_df['year'], scrap_df['scrap_available_Mt']))
+    else:
+        logger.warning("Sheet 'scrap_supply' not found; applying default scrap availability trajectory")
+        base_year = params['years'][0]
+        base_supply = 12.0  # Mt scrap available in base year
+        annual_growth = 0.30  # Mt per year growth reflecting expansion of scrap collection/imports
+        scrap_supply = {
+            year: base_supply + annual_growth * (year - base_year)
+            for year in params['years']
+        }
+    params['scrap_supply'] = scrap_supply
+    
     # Load and compute free allocation
     logger.info("Loading free allocation parameters")
     
@@ -248,6 +265,7 @@ def load_parameters(
     logger.info(f"Years: {params['years'][0]}-{params['years'][-1]}")
     logger.info(f"Routes: {params['routes']}")
     logger.info(f"Free allocation 2025: {params['free_alloc'].get(2025, 'N/A'):.3f} MtCO2")
+    logger.info(f"Scrap availability 2025: {params['scrap_supply'].get(2025, 'N/A'):.3f} Mt")
     
     return params
 
@@ -295,6 +313,15 @@ def _validate_parameters(params: Dict[str, Any]) -> None:
     if not param_years.issubset(carbon_years):
         missing = param_years - carbon_years
         raise ValueError(f"Carbon price data missing for years: {sorted(missing)}")
+    
+    # Check scrap availability coverage
+    scrap_years = set(params['scrap_supply'].keys())
+    if not param_years.issubset(scrap_years):
+        missing = param_years - scrap_years
+        raise ValueError(f"Scrap availability data missing for years: {sorted(missing)}")
+    for year in param_years:
+        if params['scrap_supply'][year] < 0:
+            raise ValueError(f"Negative scrap availability in year {year}")
     
     logger.info("Parameter validation passed")
 
