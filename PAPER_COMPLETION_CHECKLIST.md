@@ -1,6 +1,6 @@
 # PAPER COMPLETION CHECKLIST
 
-## Status: Ready for Economics AI Analysis
+## Status: Draft manuscript updated with refreshed results
 
 ---
 
@@ -29,68 +29,30 @@
 - [x] Methodology (Section 3) - Complete
 - [x] LaTeX manuscript template (`main.tex`)
 
+### Manuscript drafting
+- [x] Section 4 updated with current data (technology pathways, budget, cost, sensitivity)
+- [x] Section 5 discussion revised for CCUS-heavy portfolio
+- [x] Section 6 conclusion refreshed with new quantitative findings
+
 ---
 
 ## 🔄 IN PROGRESS (Your Next Steps)
 
 ### Data Preparation
-- [ ] Export all 7 CSV files from `outputs/analysis/`
-- [ ] Verify carbon budget compliance CSV exists
-- [ ] Check data quality (no missing values, correct units)
-
-### AI Prompt Delivery
-- [ ] Read `AI_ECONOMICS_RESEARCH_PROMPT.md` (the comprehensive prompt)
-- [ ] Read `DATA_DELIVERY_GUIDE.md` (the instructions)
-- [ ] Prepare CSV data in copy-paste format
-- [ ] Send to advanced economics AI (Claude Opus / GPT-4)
-
+- [x] Export all 7 CSV files from `outputs/analysis/`
+- [x] Verify carbon budget compliance CSV exists
+- [x] Check data quality (no missing values, correct units)
+### AI Prompt Delivery (optional if external economics AI support is desired)
+- [ ] Review `AI_ECONOMICS_RESEARCH_PROMPT.md` for alignment with refreshed results
+- [ ] Decide whether additional external AI drafting is still required
+- [ ] If so, prepare CSV data in copy-paste format and send to preferred model
 ---
 
-## ⏳ AWAITING AI OUTPUT
-
-### Results Section (Section 4) - ~8 pages
-- [ ] 4.1 Technology Transition Pathways
-- [ ] 4.2 Carbon Budget Compliance Analysis
-- [ ] 4.3 Cost and Competitiveness Implications
-- [ ] 4.4 Sensitivity Analysis
-
-### Discussion Section (Section 5) - ~6 pages
-- [ ] 5.1 Carbon Pricing Adequacy Gap
-- [ ] 5.2 Institutional and Political Economy Barriers
-- [ ] 5.3 Policy Recommendations (5-7 numbered items)
-
-### Conclusion Section (Section 6) - ~2 pages
-- [ ] 6.1 Summary of Key Findings
-- [ ] 6.2 Limitations
-- [ ] 6.3 Future Research Directions
-
----
-
-## 📊 TABLES TO CREATE
-
-After receiving AI output, format these tables:
-
-### Table 1: Scenario Results Summary
-| Scenario | Cumulative Emissions | Budget Overshoot | NPV Cost | ETS Share |
-|----------|---------------------|------------------|----------|-----------|
-| ... | ... | ... | ... | ... |
-
-### Table 2: Technology Adoption Thresholds
-| Technology | First Adoption Year | Carbon Price Threshold | Peak Share 2050 |
-|------------|--------------------|-----------------------|-----------------|
-| ... | ... | ... | ... |
-
-### Table 3: Cost per Ton CO₂ Abated
-| Comparison | ΔCost | ΔEmissions | Cost/ton CO₂ |
-|------------|-------|------------|--------------|
-| ... | ... | ... | ... |
-
-### Table 4: Policy Recommendations Matrix
-| Policy | Target | Timeline | Expected Impact |
-|--------|--------|----------|-----------------|
-| ... | ... | ... | ... |
-
----
+## 📊 TABLES (current LaTeX sources)
+- \`tables/scenario_comparison.tex\` — scenario metrics synced with latest data
+- \`tables/technology_thresholds.tex\` — scrap share saturation documented
+- \`tables/cost_abatement.tex\` — updated cost per tCO$_2$ differentials
+- \`tables/policy_matrix.tex\` — policy package aligned with CCUS + scrap pathway
 
 ## 🖼️ FIGURES TO REFERENCE
 
@@ -150,28 +112,28 @@ Before sending to AI, verify these key numbers:
 ### From scenario_comparison.csv:
 ```
 NGFS_NetZero2050:
-  - Cumulative emissions = 613.6 MtCO₂
-  - NPV total cost = $185.9B
-  - Emissions reduction = 51.3%
+  - Cumulative emissions = 1,189.6 MtCO₂
+  - NPV total cost = $425.6B
+  - Emissions reduction = 71.5%
 
 NGFS_Below2C:
-  - Cumulative emissions = 651.4 MtCO₂
-  - NPV total cost = $185.1B
-  - Emissions reduction = 21.0%
+  - Cumulative emissions = 1,713.1 MtCO₂
+  - NPV total cost = $414.2B
+  - Emissions reduction = 34.2%
 
 NGFS_NDCs:
-  - Cumulative emissions = 757.3 MtCO₂
-  - NPV total cost = $182.7B
-  - Emissions reduction = 18.2%
+  - Cumulative emissions = 1,980.5 MtCO₂
+  - NPV total cost = $381.6B
+  - Emissions reduction = 14.6%
 ```
 
 ### Carbon Budget:
 ```
 POSCO allocation (2025-2050): 1,110 MtCO₂
 Overshoot:
-  - NZ2050: -6% (compliant)
-  - Below2C: +16% (overshoot)
-  - NDCs: +38% (severe overshoot)
+  - NZ2050: +7% (partial overshoot)
+  - Below2C: +54% (overshoot)
+  - NDCs: +78% (severe overshoot)
 ```
 
 **If these numbers don't match, you may need to update input data first!**
@@ -188,11 +150,11 @@ cd /Users/jinsupark/jinsu-coding/opt_posco/opt_posco
 code main.tex  # or your preferred editor
 ```
 
-### 2. Create Tables
+### 2. Verify tables
 ```bash
-# Export tables to LaTeX format
-cd tables/
-# Create .tex files for each table
+# Review LaTeX tables for alignment with latest data
+cd tables
+rg "\midrule" scenario_comparison.tex
 ```
 
 ### 3. Update Figure References

@@ -128,9 +128,9 @@ Please complete the Results and Discussion sections as specified.
 
 ### ✅ Model Results
 - **Three scenarios:** NZ2050, Below2C, NDCs
-- **Key finding:** Only NZ2050 complies with carbon budget (613.6 MtCO₂ vs. 1,110 MtCO₂ budget)
-- **Policy gap:** NDCs scenario overshoots by 38% (425 MtCO₂ excess)
-- **Threshold effect:** H₂-DRI requires >$130/tCO₂ by 2030
+- **Key finding:** Even NZ2050 overshoots the 1,110 MtCO₂ budget (1,189.6 MtCO₂; +7\%), highlighting the need for complementary reforms.
+- **Policy gap:** NDCs scenario overshoots by 78\% (+870 MtCO₂) and Below2C by 54\% (+603 MtCO₂).
+- **Technology mix:** Net Zero relies on 51\% BF--BOF+CCUS and 36\% scrap-EAF in 2050; hydrogen does not enter at baseline costs.
 
 ### ✅ Visualizations
 - 8 high-quality publication-ready figures
@@ -139,72 +139,17 @@ Please complete the Results and Discussion sections as specified.
 
 ---
 
-## 🎓 What the AI Will Provide
+## 🎓 Current status of writing
 
-### Section 4: Results (~8 pages)
-**4.1 Technology Transition Pathways**
-- When and why different technologies are adopted
-- Carbon price thresholds triggering H₂-DRI adoption
-- Role of CCUS, EAF, conventional routes
-- Path dependency and lock-in effects
-
-**4.2 Carbon Budget Compliance Analysis**
-- Why scenarios overshoot/comply with budget
-- Shadow price of carbon constraint
-- Free allocation distortions
-- Intertemporal optimization effects
-
-**4.3 Cost and Competitiveness**
-- Cost per ton CO₂ abated
-- NPV comparison across scenarios
-- CBAM implications for EU exports
-- Learning-by-doing benefits
-
-**4.4 Sensitivity Analysis**
-- Discount rate variations
-- Hydrogen cost uncertainty
-- Scrap availability constraints
-- CCUS cost thresholds
+Section 4 (Results) now explains the CCUS-plus-scrap transition, quantifies the overshoot, and incorporates a hydrogen cost sensitivity (Section 4.4). Use the updated manuscript to polish narrative flow, tighten citations, and prepare for co-author review.
 
 ---
 
 ### Section 5: Discussion (~6 pages)
-**5.1 Carbon Pricing Adequacy Gap**
-- Why pricing fails in NDCs/Below2C scenarios
-- Price level vs. price certainty
-- Pigouvian tax theory implications
-- Prices vs. standards debate
-
-**5.2 Institutional Barriers**
-- Political economy of carbon pricing in Korea
-- Industry lobbying and regulatory capture
-- Free allocation as implicit subsidy
-- International coordination challenges
-
-**5.3 Policy Recommendations**
-- Specific carbon price trajectory (e.g., "$130/tCO₂ by 2030")
-- Free allocation phase-out schedule
-- Hydrogen infrastructure investments
-- CBAM coordination with EU
-
----
+The revised discussion diagnoses the 80 MtCO₂ adequacy gap, unpacks institutional barriers (free allocation, CCUS infrastructure, scrap logistics), and lays out the updated policy package. Use this section for refining citations and sharpening policy language.
 
 ### Section 6: Conclusion (~2 pages)
-**6.1 Summary**
-- Key findings recap
-- Central contribution to literature
-
-**6.2 Limitations**
-- Partial equilibrium (exogenous prices)
-- Single firm (no competition)
-- Perfect foresight
-- Technology availability assumptions
-
-**6.3 Future Research**
-- General equilibrium extensions
-- Stochastic optimization under uncertainty
-- Multi-firm game theory
-- Trade and carbon leakage modeling
+The conclusion now summarises the CCUS-plus-scrap transition, quantifies the residual overshoot, and reiterates policy reforms. Future work and limitations remain placeholders for any additional nuance you want to add.
 
 ---
 
@@ -214,11 +159,11 @@ From your current results:
 
 | Metric | NZ2050 | Below2C | NDCs |
 |--------|--------|---------|------|
-| **Cumulative Emissions (MtCO₂)** | 613.6 | 651.4 | 757.3 |
-| **Budget Overshoot** | -6% ✅ | +16% ⚠️ | +38% ❌ |
-| **NPV Cost (Billion USD)** | $185.9 | $185.1 | $182.7 |
-| **ETS Cost Share** | 1.5% | 4.9% | 3.8% |
-| **Emissions Reduction** | 51.3% | 21.0% | 18.2% |
+| **Cumulative Emissions (MtCO₂)** | 1,189.6 | 1,713.1 | 1,980.5 |
+| **Budget Overshoot** | +7% ⚠️ | +54% ❌ | +78% ❌ |
+| **NPV Cost (Billion USD)** | $425.6 | $414.2 | $381.6 |
+| **ETS Cost Share** | 2.2% | 21.4% | 15.7% |
+| **Emissions Reduction** | 71.5% | 34.2% | 14.6% |
 | **2050 Carbon Price** | $450/tCO₂ | $240/tCO₂ | $100/tCO₂ |
 
 **Carbon Budget:** 1,110 MtCO₂ (POSCO allocation, 2025-2050)
@@ -232,9 +177,9 @@ Your paper will be submission-ready when:
 ### Content Quality
 - [x] Introduction establishes clear research question ✅
 - [x] Methodology describes model rigorously ✅
-- [ ] Results interpret findings with economic theory ⏳
-- [ ] Discussion connects to policy implications ⏳
-- [ ] Conclusion synthesizes contributions ⏳
+- [x] Results interpret findings with economic theory ✅
+- [x] Discussion connects to policy implications ✅
+- [x] Conclusion synthesizes contributions ✅
 
 ### Academic Standards
 - [ ] All claims supported by data

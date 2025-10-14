@@ -217,7 +217,7 @@ The AI should reference these numbers from your current results:
 
 | Metric | NZ2050 | Below2C | NDCs |
 |--------|--------|---------|------|
-| Cumulative emissions (MtCO₂) | 613.6 | 651.4 | 757.3 |
+| Cumulative emissions (MtCO₂) | 1,189.6 | 1,713.1 | 1,980.5 |
 | NPV total cost (billion USD) | 185.9 | 185.1 | 182.7 |
 | ETS cost share (%) | 1.5% | 4.9% | 3.8% |
 | Emissions reduction (%) | 51.3% | 21.0% | 18.2% |

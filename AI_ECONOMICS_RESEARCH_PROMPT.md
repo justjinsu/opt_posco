@@ -24,9 +24,9 @@ You are tasked with completing a high-impact academic paper for submission to **
 - **Carbon Budget:** 1,110 MtCO₂ for POSCO (2025-2050)
 
 ### Key Findings (Already Established)
-1. **NDC Scenario:** OVERSHOOTS budget by 38% (+425 MtCO₂)
-2. **Below 2°C Scenario:** OVERSHOOTS budget by 16% (+180 MtCO₂)
-3. **Net Zero 2050 Scenario:** COMPLIANT with budget (1,045 MtCO₂, -6% under)
+1. **NDC Scenario:** OVERSHOOTS budget by 78% (+871 MtCO₂)
+2. **Below 2°C Scenario:** OVERSHOOTS budget by 54% (+603 MtCO₂)
+3. **Net Zero 2050 Scenario:** STILL OVERSHOOTS budget by 7% (+80 MtCO₂) despite higher prices and extensive CCUS deployment
 
 ### Policy Implication
 Current Korean ETS carbon price trajectories are **systematically inadequate** for achieving climate targets in energy-intensive industries.
@@ -48,10 +48,10 @@ hotmetal_share_2050_percent, eaf_share_2050_percent, scope1_emissions_2025_MtCO2
 emissions_reduction_percent, cumulative_emissions_MtCO2, runtime_seconds
 ```
 
-Example values:
-- NGFS_NetZero2050: NPV = $186B, Cumulative = 613.6 MtCO₂
-- NGFS_Below2C: NPV = $185B, Cumulative = 651.4 MtCO₂
-- NGFS_NDCs: NPV = $182.7B, Cumulative = 757.3 MtCO₂
+Example values (baseline run):
+- NGFS_NetZero2050: NPV = \$425.6B, Cumulative = 1,189.6 MtCO₂
+- NGFS_Below2C: NPV = \$414.2B, Cumulative = 1,713.1 MtCO₂
+- NGFS_NDCs: NPV = \$381.6B, Cumulative = 1,980.5 MtCO₂
 
 #### 2. **Emission Trajectories** (`emission_trajectories_all_scenarios.csv`)
 Annual data (2025-2050) for each scenario:
@@ -112,7 +112,7 @@ Annual data:
 
 **Questions to Answer:**
 1. At what carbon price does H₂-DRI become economically competitive?
-2. Why does BF-BOF+CCUS NOT get selected in optimal pathways despite 80% capture?
+2. Why does BF-BOF+CCUS become the dominant abatement option under Net Zero despite its capital intensity?
 3. What is the role of EAF/scrap in the transition portfolio?
 4. How do investment lumps (discrete capacity additions) shape transition timing?
 
@@ -132,7 +132,7 @@ Annual data:
   - Intertemporal optimization and discounting
 
 **Questions to Answer:**
-1. Why does NDCs scenario overshoot by 38% despite cost optimization?
+1. Why does NDCs scenario overshoot by 78% despite cost optimization?
 2. What is the "carbon budget shadow price" (Lagrange multiplier if budget were binding)?
 3. What additional carbon price increase would align NDCs scenario with budget?
 4. How does free allocation distort investment timing?
@@ -326,7 +326,7 @@ Construct an implicit MACC from technology adoption patterns:
 Estimate the **deadweight loss** from sub-optimal carbon pricing:
 
 **Concept:**
-- If NDCs scenario overshoots by 38%, society bears climate damages from excess emissions
+- If NDCs scenario overshoots by 78%, society bears climate damages from excess emissions
 - Using social cost of carbon (SCC), calculate welfare loss
 
 **Calculation:**
@@ -442,11 +442,11 @@ Before submitting your analysis, ensure:
 
 ### Subsection 4.1: Technology Transition Pathways
 
-The optimal technology portfolio exhibits sharp discontinuities across carbon price scenarios, revealing threshold effects in industrial decarbonization. Under the Net Zero 2050 scenario, hydrogen-based direct reduced iron (H$_2$-DRI) adoption commences in 2032 when carbon prices reach \$152/tCO$_2$ (Figure 3a), ultimately capturing 35\% of production capacity by 2050. This transition generates cumulative emissions of 613.6 MtCO$_2$ over 2025-2050—within POSCO's sectoral carbon budget allocation of 1,110 MtCO$_2$ with a 45\% compliance margin.
+The optimal technology portfolio exhibits sharp discontinuities across carbon price scenarios, revealing threshold effects in industrial decarbonization. Under the Net Zero 2050 scenario, carbon capture retrofits on blast furnaces become cost-effective in 2031 when allowance prices reach roughly $165/tCO$_2$, and CCUS-equipped routes expand to 51\% of output by 2050. Scrap-based electric arc furnaces accelerate in parallel—from 4.5\% of production in 2025 to 36\% in 2050—but realistic scrap ceilings prevent deeper electrification. This hybrid pathway still emits 1,189.6 MtCO$_2$ over 2025--2050, overshooting the 1,110 MtCO$_2$ carbon budget by about 7\%.
 
-In stark contrast, the NDCs scenario—with carbon prices plateauing at \$100/tCO$_2$ by 2050—fails to trigger H$_2$-DRI adoption entirely. Production remains dominated by conventional BF-BOF routes (64\% share in 2050), supplemented by scrap-based EAF (36\%). This technology inertia results in cumulative emissions of 757.3 MtCO$_2$, overshooting the carbon budget by 38\% (425 MtCO$_2$ excess). The Below 2°C scenario exhibits intermediate behavior: H$_2$-DRI adoption is delayed until 2038, achieving only 18\% market share by 2050 and resulting in a 16\% budget overshoot.
+In stark contrast, the NDCs scenario—with carbon prices capped at $100/tCO$_2$ by 2050—never deploys CCUS and leaves scrap shares near 5\%, so conventional BF--BOF routes supply 95\% of 2050 output. Cumulative emissions consequently reach 1,980.5 MtCO$_2$, exceeding the budget by 78\% (870 MtCO$_2$ excess). The Below 2$^\circ$C trajectory delivers an intermediate outcome: scrap shares rise to 36\% but CCUS remains uneconomic, leaving 64\% unabated blast furnace output and a 54\% budget overshoot (603 MtCO$_2$).
 
-These findings expose a critical non-linearity in carbon pricing effectiveness. The \$52/tCO$_2$ difference in 2030 carbon prices between Net Zero 2050 (\$150/tCO$_2$) and Below 2°C scenarios (\$80/tCO$_2$) translates to a 17-year delay in H$_2$-DRI adoption and 180 MtCO$_2$ of excess cumulative emissions. This threshold effect reflects the lumpy nature of steel industry investments: blast furnace relining cycles occur every 15-20 years, creating discrete decision windows where carbon price levels either trigger or foreclose technology switching. Once a conventional blast furnace is rebuilt, path dependency locks in high emissions for its entire operating lifetime—a phenomenon absent from smooth marginal abatement cost curves commonly used in policy analysis \citep{Griffin2020industrial}.
+These findings expose a critical non-linearity in carbon pricing effectiveness. The $70/tCO$_2$ difference in 2035 carbon prices between Net Zero 2050 ($225/tCO$_2$) and Below 2$^\circ$C ($155/tCO$_2$) determines whether POSCO invests in CCUS during the 2030 blast-furnace relining window. Once relinings proceed without capture, path dependency locks in high emissions for another investment cycle—a phenomenon absent from smooth marginal abatement cost curves commonly used in policy analysis \citep{Griffin2020industrial}.
 
 [Continue with economic interpretation...]
 
@@ -483,7 +483,7 @@ Your output will be copy-pasted directly into the paper manuscript. Write with p
 ```csv
 # FILE: scenario_comparison.csv
 scenario,status,npv_total_billion_usd,...
-NGFS_NetZero2050,SUCCESS,185.93,...
+NGFS_NetZero2050,SUCCESS,425.58,...
 ```
 
 Once data is provided, I will generate the complete economic analysis and academic text for the paper sections listed above.
