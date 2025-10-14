@@ -1237,6 +1237,13 @@ INPUT ./tables/tech_costs.tex
 INPUT tables/tech_costs.tex
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/lm/ec-lmr6.tfm
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/lm/ec-lmtt8.tfm
+INPUT ./tables/tech_intensity.tex
+INPUT ./tables/tech_intensity.tex
+INPUT ./tables/tech_intensity.tex
+INPUT tables/tech_intensity.tex
+INPUT ./tables/tech_intensity.tex
+INPUT ./tables/tech_intensity.tex
+INPUT tables/tech_intensity.tex
 INPUT ./figures//scope1_by_scenario.png
 INPUT figures//scope1_by_scenario.png
 INPUT ./figures//scope1_by_scenario.png

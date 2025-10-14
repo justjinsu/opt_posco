@@ -1,0 +1,27 @@
+\begin{table}[ht]
+  \centering
+  \caption{Scope-1 emission factors and feedstock intensities by technology route}
+  \label{tab:tech-intensity}
+  \begin{threeparttable}
+  \begin{tabular}{@{}lcccccc@{}}
+    \toprule
+    \multirow{2}{*}{Route} & Scope-1 EF & \multicolumn{5}{c}{Feedstock and energy intensity (per t crude steel)} \\
+    \cmidrule(lr){3-7}
+     & (tCO$_2$/t) & Iron ore (t) & Scrap (t) & Natural gas (GJ) & Electricity (MWh) & H$_2$ (kg) \\
+    \midrule
+    BF--BOF & 2.10 & 1.50 & 0.10 & 0.50 & 0.60 & 0 \\
+    BF--BOF+CCUS & 2.10\tnote{a} & 1.50 & 0.10 & 0.50 & 0.80 & 0 \\
+    FINEX--BOF & 1.95 & 1.40 & 0.15 & 0.40 & 0.65 & 0 \\
+    Scrap--EAF & 0.45 & 0.05 & 1.05 & 1.80 & 0.50 & 0 \\
+    NG--DRI--EAF & 1.20 & 1.30 & 0.20 & 12.00 & 0.70 & 0 \\
+    H$_2$--DRI--EAF & 0.15 & 1.25 & 0.15 & 0.00 & 2.20 & 45 \\
+    HyREX & 0.10 & 1.20 & 0.10 & 0.00 & 2.50 & 50 \\
+    \bottomrule
+  \end{tabular}
+  \begin{tablenotes}
+    \footnotesize
+    \item Notes: Intensities drawn from the \texttt{process\_intensity} and \texttt{ef\_scope1} sheets in \texttt{data/posco\_parameters\_consolidated.xlsx}. Figures reflect steady-state operation with 90\% utilisation.
+    \item[a] CCUS routes assume gross emissions of 2.10~tCO$_2$/t with 80\% capture efficiency; the net factor used in the model is 0.42~tCO$_2$/t.
+  \end{tablenotes}
+  \end{threeparttable}
+\end{table}
