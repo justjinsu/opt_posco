@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.5.5)  14 OCT 2025 01:30
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.5.5)  14 OCT 2025 10:26
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1153,9 +1153,9 @@ Overfull \hbox (2.22221pt too wide) has occurred while \output is active
 {/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/loc
 al/texlive/2023/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/local/texlive/202
 3/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}{/usr/local/texlive/2023/texmf-dist/
-fonts/enc/dvips/lm/lm-rm.enc}] [2] [3] [4{/usr/local/texlive/2023/texmf-dist/fo
-nts/enc/dvips/lm/lm-mathit.enc}{/usr/local/texlive/2023/texmf-dist/fonts/enc/dv
-ips/lm/lm-mathsy.enc}] [5{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/lm
+fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvip
+s/lm/lm-mathsy.enc}] [2] [3] [4{/usr/local/texlive/2023/texmf-dist/fonts/enc/dv
+ips/lm/lm-mathit.enc}] [5{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/lm
 /lm-mathex.enc}]
 Overfull \hbox (33.0733pt too wide) in paragraph at lines 244--245
 []\T1/lmr/m/n/10 We im-ple-ment three NGFS-based car-bon price tra-jec-to-ries^
@@ -1342,7 +1342,7 @@ Here is how much of TeX's memory you used:
  58792 multiletter control sequences out of 15000+600000
  568807 words of font info for 74 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 109i,13n,108p,1360b,1094s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 109i,13n,108p,1240b,1094s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></usr/lo
 cal/texlive/2023/texmf-dist/fonts/type1/public/lm/lmex10.pfb></usr/local/texliv
 e/2023/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></usr/local/texlive/2023/tex
@@ -1360,7 +1360,7 @@ r/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmsy7.pfb></usr/local/tex
 live/2023/texmf-dist/fonts/type1/public/lm/lmtt10.pfb></usr/local/texlive/2023/
 texmf-dist/fonts/type1/public/lm/lmtt8.pfb></usr/local/texlive/2023/texmf-dist/
 fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (17 pages, 1375989 bytes).
+Output written on main.pdf (17 pages, 1375917 bytes).
 PDF statistics:
  595 PDF objects out of 1000 (max. 8388607)
  517 compressed objects within 6 object streams

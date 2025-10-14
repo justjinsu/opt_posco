@@ -44,16 +44,16 @@
 
 \section*{Highlights}
 \begin{itemize}[leftmargin=*]
-  \item \textbf{First empirical test} of carbon pricing adequacy: Only NGFS Net Zero 2050 scenario keeps POSCO within Korea's sectoral carbon budget (1,110 MtCO$_2$, 2025-2050).
-  \item \textbf{Policy-performance gap revealed}: NDC-consistent carbon prices overshoot carbon budget by 38\%, exposing systematic policy failure in energy-intensive industries.
-  \item \textbf{Threshold effects identified}: Carbon prices must reach \$130/tCO$_2$ by 2030 to trigger hydrogen-DRI adoption before 2035, enabling budget compliance.
-  \item \textbf{Mixed-integer optimization} of technology transitions across five routes (BF-BOF, CCUS, EAF, NG-DRI, H$_2$-DRI) with realistic investment constraints and lumpy capacity decisions.
-  \item \textbf{Clear policy prescription}: Korea must double current K-ETS price trajectory and accelerate free allocation phase-out to align industrial investments with climate targets.
+  \item \textbf{Integrated policy assessment}: We couple a mixed-integer optimisation model with NGFS carbon-price pathways to test K-ETS adequacy against POSCO's 1,110~MtCO$_2$ sectoral budget (2025--2050).
+  \item \textbf{Updated NGFS pricing}: Net Zero 2050 reaches \$150/tCO$_2$ by 2030 and \$450/tCO$_2$ by 2050; Below~2$^\circ$C attains \$80/tCO$_2$ and \$240/tCO$_2$; the NDC case plateaus at \$40/tCO$_2$ and \$100/tCO$_2$.
+  \item \textbf{Persistent budget overshoot}: Even under Net Zero 2050, cumulative emissions reach 1,154~MtCO$_2$ (+4\%), revealing that current trajectories remain insufficient without complementary reforms.
+  \item \textbf{Scrap constraints matter}: Scrap-EAF expansion delivers most abatement, but realistic scrap availability limits must be respected to avoid overstating achievable market share.
+  \item \textbf{Policy focus}: Budget alignment demands higher price floors, accelerated free-allocation phase-out, and targeted support for scrap and hydrogen infrastructure.
 \end{itemize}
 
 % ===== Abstract =====
 \begin{abstract}
-Can carbon pricing alone drive the massive industrial transformation required for climate neutrality? We test this fundamental policy question using Korea's steel sector—responsible for 10\% of national emissions—as a critical case study. Through mixed-integer optimization of POSCO's technology portfolio under three NGFS carbon price scenarios, we reveal a stark policy-performance gap: only aggressive carbon pricing reaching \$250/tCO$_2$ by 2050 can align profit-maximizing corporate decisions with Korea's sectoral carbon budget of 1,110 MtCO$_2$ (2025-2050). Current policy trajectories systematically fail this test. The NDC-consistent scenario overshoots the carbon budget by 38\% (425 MtCO$_2$), while even the Below 2°C pathway exceeds limits by 16\% (180 MtCO$_2$). Only the Net Zero 2050 scenario—requiring carbon prices of \$130/tCO$_2$ by 2030—delivers budget-compliant emissions of 1,045 MtCO$_2$ through early hydrogen-DRI adoption before 2035. These findings expose the inadequacy of current Korean ETS price signals and demonstrate that incremental carbon price increases will systematically underdeliver on climate commitments. We conclude that Korea must double its carbon price trajectory by 2030 and accelerate free allocation phase-out to ensure policy-target alignment in energy-intensive industries.
+Can carbon pricing alone deliver the deep industrial decarbonisation required for climate neutrality? We investigate this question for Korea's steel sector—responsible for roughly 10\% of national emissions—using a mixed-integer optimisation model of POSCO's technology portfolio. We update the analysis with internally consistent NGFS carbon-price pathways (Net Zero 2050: \$150/tCO$_2$ in 2030 and \$450/tCO$_2$ in 2050; Below~2$^\circ$C: \$80/tCO$_2$ and \$240/tCO$_2$; NDCs: \$40/tCO$_2$ and \$100/tCO$_2$) and reassess investment behaviour against a 1,110~MtCO$_2$ budget (2025--2050). Current trajectories remain inadequate: cumulative emissions reach 1,154~MtCO$_2$ (+4\%) under Net Zero 2050, 1,365~MtCO$_2$ (+23\%) under Below~2$^\circ$C, and 1,981~MtCO$_2$ (+78\%) under the NDC case. Scrap-based electric arc furnaces deliver the bulk of abatement, while hydrogen routes stay uneconomic at baseline costs. Achieving budget compliance therefore requires higher and more credible price floors, faster free-allocation phase-out, and complementary infrastructure policies that unlock both scrap availability and low-carbon hydrogen.
 \end{abstract}
 
 \begin{keyword}
@@ -77,9 +77,9 @@ The critical policy question is whether planned carbon price trajectories—refl
 
 To examine this question empirically, we develop a mixed-integer linear programming model that optimizes POSCO's technology portfolio under three carbon price scenarios aligned with Network for Greening the Financial System (NGFS) pathways \citep{NGFS2024}. The model minimizes the net present value of total system costs—capital expenditure, operating costs, and carbon costs—subject to technology constraints, feedstock availability, and product quality requirements. By comparing optimal emission pathways against derived carbon budgets, we provide the first rigorous assessment of whether current carbon pricing trajectories can align industrial investment incentives with climate targets.
 
-\textbf{Central Hypothesis:} We hypothesize that carbon pricing aligned with ambitious climate scenarios (NGFS Net Zero 2050, reaching \$250/tCO$_2$ by 2050) represents a necessary but potentially insufficient condition for sectoral carbon budget compliance, while carbon pricing consistent with current policy trajectories (NGFS NDCs, reaching \$75/tCO$_2$ by 2050) will systematically overshoot budget allocations, creating a dangerous policy-performance gap that threatens national climate commitments.
+\textbf{Central Hypothesis:} We hypothesize that carbon pricing aligned with ambitious climate scenarios (NGFS Net Zero 2050, reaching \$450/tCO$_2$ by 2050) represents a necessary but potentially insufficient condition for sectoral carbon budget compliance, while carbon pricing consistent with current policy trajectories (NGFS NDCs, reaching \$100/tCO$_2$ by 2050) will systematically overshoot budget allocations, creating a dangerous policy-performance gap that threatens national climate commitments.
 
-\textbf{Preview of Findings:} Our results provide sobering evidence of carbon pricing limitations under current policy settings. Only the most aggressive carbon price scenario—Net Zero 2050—delivers emissions consistent with sectoral carbon budget constraints. Even the Below 2°C pathway overshoots budget allocations by 16\%, while NDC-consistent carbon pricing leads to a 38\% budget overshoot equivalent to 425 MtCO$_2$ of excess emissions. These findings suggest that current carbon pricing trajectories are fundamentally inadequate for achieving stated climate targets in energy-intensive industries, requiring urgent policy recalibration to close the emerging policy-performance gap.
+\textbf{Preview of Findings:} Our results provide sobering evidence of carbon pricing limitations under current policy settings. Even the most aggressive carbon price scenario—Net Zero 2050—still overshoots POSCO's carbon budget by 44~MtCO$_2$ (+4\%). The Below~2$^\circ$C pathway exceeds the allocation by 255~MtCO$_2$ (+23\%), while NDC-consistent pricing produces an 871~MtCO$_2$ (+78\%) overshoot. These findings indicate that current carbon pricing trajectories are fundamentally inadequate for achieving stated climate targets in energy-intensive industries, requiring urgent policy recalibration to close the emerging policy-performance gap.
 
 \section{Literature Review}
 
@@ -293,11 +293,11 @@ This technology set captures realistic transition pathways while maintaining com
 
 Carbon price trajectories are derived from NGFS Phase 5 scenarios \citep{NGFS2024}, representing different levels of global climate policy ambition:
 
-\textbf{Net Zero 2050 (NZ2050):} Aggressive decarbonization consistent with 1.5°C temperature targets. Carbon prices escalate from \$35/tCO$_2$ (2025) to \$130/tCO$_2$ (2030) and \$250/tCO$_2$ (2050). Reflects coordinated global action and technology deployment at scale.
+\textbf{Net Zero 2050 (NZ2050):} Aggressive decarbonisation consistent with a 1.5°C temperature objective. Carbon prices climb from \$50/tCO$_2$ in 2025 to \$150/tCO$_2$ in 2030 and \$450/tCO$_2$ in 2050, mirroring the NGFS Phase~V central estimates for advanced Asia-Pacific jurisdictions.
 
-\textbf{Below 2°C (B2C):} Moderate climate ambition consistent with Paris Agreement lower bound. Carbon prices reach \$20/tCO$_2$ (2025), \$80/tCO$_2$ (2030), and \$185/tCO$_2$ (2050). Represents current policy trajectory extensions with gradual strengthening.
+\textbf{Below 2°C (B2C):} Moderate ambition aligned with a well-below 2°C outcome. Prices reach \$30/tCO$_2$ in 2025, \$80/tCO$_2$ in 2030, and \$240/tCO$_2$ in 2050, representing incremental strengthening relative to current policy.
 
-\textbf{Nationally Determined Contributions (NDCs):} Limited climate action reflecting current policy commitments without enhancement. Carbon prices remain at \$15/tCO$_2$ (2025), \$25/tCO$_2$ (2030), and \$75/tCO$_2$ (2050).
+\textbf{Nationally Determined Contributions (NDCs):} Continuation of pledged but unenforced commitments. Carbon prices remain at \$15/tCO$_2$ in 2025, rise modestly to \$40/tCO$_2$ by 2030, and plateau at \$100/tCO$_2$ in 2050.
 
 K-ETS free allocation follows Korea's industrial sector decarbonization timeline, declining from 8.5 MtCO$_2$ (2025) to 4.2 MtCO$_2$ (2030) consistent with 40\% NDC reduction targets. Post-2030, allocation phases out linearly reaching 1.0 MtCO$_2$ by 2050 to ensure meaningful carbon price exposure during critical technology transition periods.
 
