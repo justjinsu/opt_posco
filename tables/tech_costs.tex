@@ -1,0 +1,24 @@
+\begin{table}[ht]
+  \centering
+  \caption{Technology cost and capacity assumptions}
+  \label{tab:tech-costs}
+  \begin{threeparttable}
+  \begin{tabular}{@{}lccc@{}}
+    \toprule
+    Route & Unit capacity (Mt/y) & CAPEX (USD/tpy) & Fixed OPEX (USD/tpy) \\
+    \midrule
+    BF--BOF & 5.0 & 1{,}000 & 100 \\
+    BF--BOF+CCUS & 5.0 & 1{,}400 & 150 \\
+    FINEX--BOF & 3.0 & 1{,}200 & 120 \\
+    Scrap--EAF & 2.0 & 800 & 80 \\
+    NG--DRI--EAF & 2.5 & 1{,}800 & 180 \\
+    H$_2$--DRI--EAF & 2.0 & 2{,}500 & 200 \\
+    HyREX & 1.5 & 3{,}000 & 250 \\
+    \bottomrule
+  \end{tabular}
+  \begin{tablenotes}
+    \footnotesize
+    \item Notes: CAPEX and fixed OPEX parameters sourced from the \texttt{tech\_routes} sheet in \texttt{data/posco\_parameters\_consolidated.xlsx}. Values are expressed in real 2024 USD. Unit capacities represent the discrete module size used for capacity build decisions.
+  \end{tablenotes}
+  \end{threeparttable}
+\end{table}

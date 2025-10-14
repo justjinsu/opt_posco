@@ -331,17 +331,9 @@ Process intensities reflect best-available technology performance: BF-BOF requir
 
 Capital expenditure reflects greenfield investment costs for new capacity, calibrated using industry benchmarks and engineering estimates:
 
-\textbf{BF-BOF:} \$1,200/tpy reflecting integrated steelworks complexity including coke ovens, blast furnaces, and BOF converters.
+Capital costs differ markedly across technologies; Table~\ref{tab:tech-costs} summarises the unit module size, CAPEX, and fixed OPEX assumptions that feed the optimisation model. These parameters are drawn from engineering studies and internal POSCO benchmarks captured in \texttt{data/posco\_parameters\_consolidated.xlsx}. Fixed operating costs span \$80--250/tpy/y, reflecting higher maintenance and reagent requirements for CCUS and hydrogen-based routes. Variable costs follow the commodity intensity data described below.
 
-\textbf{BF-BOF+CCUS:} \$1,980/tpy including 65\% retrofit premium for CO$_2$ capture, compression, and transport infrastructure.
-
-\textbf{Scrap-EAF:} \$600/tpy for electric arc furnace and supporting equipment, reflecting modular design and shorter construction timelines.
-
-\textbf{NG-DRI-EAF:} \$900/tpy combining direct reduction and electric melting units with gas handling systems.
-
-\textbf{H$_2$-DRI-EAF:} \$1,100/tpy including hydrogen storage and handling equipment, reflecting early deployment costs declining 15\% by 2035.
-
-Fixed operating costs range from \$25/tpy/y (Scrap-EAF) to \$65/tpy/y (BF-BOF+CCUS), encompassing maintenance, labor, and overhead expenses. Variable costs follow detailed input intensity specifications with commodity price linkages.
+\input{tables/tech_costs}
 
 
 % ===== 4. Results =====
@@ -362,7 +354,7 @@ Figure~\ref{fig:scope1-by-scenario} plots annual Scope~1 emissions from the opti
 
 \subsection{Scrap-based electrification, not hydrogen, delivers near-term abatement}
 
-The technology pathway analysis (Figure~\ref{fig:technology-transition}) shows that high carbon prices primarily accelerate a shift from blast furnace--basic oxygen furnace (BF--BOF) units to scrap-based electric arc furnaces (EAF). Under Net Zero pricing, scrap-EAF expands from 4.5\% of output in 2025 to 45.7\% by 2030 and 86.7\% by 2050, displacing BF--BOF capacity to a 13.3\% share. The Below~2°C scenario delivers a similar portfolio by 2050, but the transition is delayed by almost a decade because carbon prices only cross \$160/tCO$_2$ after 2040. The NDC trajectory barely moves the needle: BF--BOF units still supply 95\% of production in 2035 and 94.9\% in 2050. Table~\ref{tab:technology-thresholds} summarises the scrap tipping points and associated carbon price levels.
+The technology pathway analysis (Figure~\ref{fig:technology-transition}) shows that high carbon prices primarily accelerate a shift from blast furnace--basic oxygen furnace (BF--BOF) units to scrap-based electric arc furnaces (EAF). Under Net Zero pricing, scrap-EAF expands from 4.5\% of output in 2025 to 45.7\% by 2030 and 86.7\% by 2050, displacing BF--BOF capacity to a 13.3\% share. The Below~2°C scenario delivers a similar portfolio by 2050, but the transition is delayed by almost a decade because carbon prices only cross \$160/tCO$_2$ after 2040. The NDC trajectory barely moves the needle: BF--BOF units still supply 95\% of production in 2035 and 94.9\% in 2050. Figure~\ref{fig:production-mix} provides the full production mix evolution for all routes, while Table~\ref{tab:technology-thresholds} summarises the scrap tipping points and associated carbon price levels.
 
 Hydrogen-based direct reduction, FINEX, and CCUS retrofits do not enter the cost-minimizing portfolios in any scenario because the assumed hydrogen costs (\$4.5/kg in 2030) and retrofit premiums keep levelized costs above the scrap alternative. This confirms techno-economic expectations from \citet{MaterialEconomics2019} and \citet{demailly2018european} that an abundant scrap supply and cheaper electricity can outcompete first-wave hydrogen routes until hydrogen prices fall below roughly \$2.5/kg.
 
@@ -373,9 +365,25 @@ Hydrogen-based direct reduction, FINEX, and CCUS retrofits do not enter the cost
   \label{fig:technology-transition}
 \end{figure}
 
+\begin{figure}[!t]
+  \centering
+  \includegraphics[width=0.8\linewidth]{production_mix_evolution}
+  \caption{Scenario-specific production mix by technology route (2025--2050).}
+  \label{fig:production-mix}
+\end{figure}
+
 \subsection{Carbon budget compliance still fails without stronger prices}
 
 Integrating annual emissions produces cumulative totals of 1{,}154~MtCO$_2$ (Net Zero), 1{,}365~MtCO$_2$ (Below~2°C), and 1{,}981~MtCO$_2$ (NDCs) over 2025--2050. Compared with POSCO's 1{,}110~MtCO$_2$ allocation, the Net Zero scenario still overshoots by 44~MtCO$_2$ (4\%), while Below~2°C exceeds the budget by 255~MtCO$_2$ (+23\%) and the NDC trajectory by 871~MtCO$_2$ (+78\%). These gaps reflect prolonged free allocation coverage: allowances still offset 37.5~MtCO$_2$ in 2040, dampening the effective price signal. Closing the residual 44~MtCO$_2$ gap under Net Zero requires raising the late-period carbon price floor by roughly \$15--\$20/tCO$_2$ or tightening allocation faster so that firms internalize ETS liabilities before the 2040s. Detailed calculations are provided in the \texttt{outputs/analysis/carbon\_budget\_compliance.csv} dataset accompanying this paper.
+
+\begin{figure}[!t]
+  \centering
+  \includegraphics[width=0.85\linewidth]{emissions_pathways}
+  \caption{Emissions, free allocation, and ETS-liable tonnes by scenario.}
+  \label{fig:emissions-pathways}
+\end{figure}
+
+Figure~\ref{fig:emissions-pathways} highlights how generous free allocation keeps net ETS exposure close to zero in the high-price scenarios despite large gross emissions reductions.
 
 \subsection{Cost structure shifts from compliance spending to capital turnover}
 
