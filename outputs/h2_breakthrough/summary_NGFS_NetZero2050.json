@@ -1,0 +1,47 @@
+{
+  "scenario": "NGFS_NetZero2050",
+  "model_parameters": {
+    "discount_rate": 0.05,
+    "utilization": 0.9,
+    "hydrogen_case": "breakthrough",
+    "grid_case": "base"
+  },
+  "solver": {
+    "name": "highs",
+    "status": "optimal"
+  },
+  "objective": {
+    "npv_total_USD": 424194139616.35724,
+    "npv_total_billion_USD": 424.19413961635723
+  },
+  "cost_breakdown_undiscounted_USD": {
+    "capex_USD": 0,
+    "fixed_om_USD": 0,
+    "variable_opex_USD": 0,
+    "ets_cost_USD": 9899653428.908476
+  },
+  "cost_breakdown_discounted_USD": {
+    "capex_npv_USD": 0,
+    "fixed_om_npv_USD": 0,
+    "variable_opex_npv_USD": 0,
+    "ets_cost_npv_USD": 7031219783.903577
+  },
+  "emissions_and_production": {
+    "total_production_2025_Mt": 40.0,
+    "total_production_2050_Mt": 35.28880971795205,
+    "scope1_emissions_2025_MtCO2": 81.03000000000002,
+    "scope1_emissions_2050_MtCO2": 24.696500407699745,
+    "cumulative_emissions_MtCO2": 1189.8485156249615,
+    "cumulative_ets_cost_undiscounted_USD": 9899653428.908476,
+    "cumulative_ets_cost_npv_USD": 7031219783.903577
+  },
+  "route_mix_2050": {
+    "BF-BOF_share_2050": 0.15837342666474769,
+    "BF-BOF+CCUS_share_2050": 0.3825575333342017,
+    "FINEX-BOF_share_2050": 0.0,
+    "Scrap-EAF_share_2050": 0.4590690400010506,
+    "NG-DRI-EAF_share_2050": 0.0,
+    "H2-DRI-EAF_share_2050": 0.0,
+    "HyREX_share_2050": 0.0
+  }
+}

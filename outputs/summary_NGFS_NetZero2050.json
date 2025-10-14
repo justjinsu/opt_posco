@@ -1,28 +1,47 @@
 {
-  "model_info": {
-    "scenario": "NGFS_NetZero2050",
-    "h2_case": "baseline",
+  "scenario": "NGFS_NetZero2050",
+  "model_parameters": {
     "discount_rate": 0.05,
     "utilization": 0.9,
-    "solver_status": "optimal"
+    "hydrogen_case": "baseline",
+    "grid_case": "base"
+  },
+  "solver": {
+    "name": "highs",
+    "status": "optimal"
   },
   "objective": {
-    "npv_total_USD": 185927335907.08966,
-    "npv_total_billion_USD": 185.92733590708966
+    "npv_total_USD": 425578522580.77905,
+    "npv_total_billion_USD": 425.57852258077907
   },
-  "production_summary": {
-    "hotmetal_production_2025_Mt": 23.8,
-    "hotmetal_production_2050_Mt": 11.6,
-    "eaf_production_2025_Mt": 16.2,
-    "eaf_production_2050_Mt": 23.4,
+  "cost_breakdown_undiscounted_USD": {
+    "capex_USD": 0,
+    "fixed_om_USD": 0,
+    "variable_opex_USD": 0,
+    "ets_cost_USD": 9341220846.289026
+  },
+  "cost_breakdown_discounted_USD": {
+    "capex_npv_USD": 0,
+    "fixed_om_npv_USD": 0,
+    "variable_opex_npv_USD": 0,
+    "ets_cost_npv_USD": 7015277041.653692
+  },
+  "emissions_and_production": {
     "total_production_2025_Mt": 40.0,
-    "total_production_2050_Mt": 35.0
+    "total_production_2050_Mt": 35.28880971795205,
+    "scope1_emissions_2025_MtCO2": 81.03000000000002,
+    "scope1_emissions_2050_MtCO2": 23.076500407698965,
+    "cumulative_emissions_MtCO2": 1189.6190560362747,
+    "cumulative_ets_cost_undiscounted_USD": 9341220846.289026,
+    "cumulative_ets_cost_npv_USD": 7015277041.653692
   },
-  "emissions_summary": {
-    "scope1_emissions_2025_MtCO2": 49.980000000000004,
-    "scope1_emissions_2050_MtCO2": 24.36,
-    "emissions_reduction_percent": 51.26050420168068,
-    "cumulative_emissions_MtCO2": 613.62,
-    "cumulative_ets_cost_USD": 2778750000.0
+  "route_mix_2050": {
+    "BF-BOF_share_2050": 0.13286959110912044,
+    "BF-BOF+CCUS_share_2050": 0.5100767111122787,
+    "FINEX-BOF_share_2050": 0.0,
+    "Scrap-EAF_share_2050": 0.35705369777860085,
+    "NG-DRI-EAF_share_2050": 0.0,
+    "H2-DRI-EAF_share_2050": 0.0,
+    "HyREX_share_2050": 0.0
   }
 }
