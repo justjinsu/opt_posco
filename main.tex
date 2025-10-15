@@ -47,9 +47,9 @@
   \item \textbf{Integrated policy assessment}: We couple a mixed-integer optimisation model with NGFS carbon-price pathways to test K-ETS adequacy against POSCO's 1,110~MtCO$_2$ sectoral budget (2025--2050).
   \item \textbf{Updated NGFS pricing}: Net Zero 2050 reaches \$150/tCO$_2$ by 2030 and \$450/tCO$_2$ by 2050; Below~2$^\circ$C attains \$80/tCO$_2$ and \$240/tCO$_2$; the NDC case plateaus at \$40/tCO$_2$ and \$100/tCO$_2$.
   \item \textbf{Persistent budget overshoot}: Even under Net Zero 2050, cumulative emissions reach 1,190~MtCO$_2$ (+7\%), revealing that current trajectories remain insufficient without complementary reforms.
-  \item \textbf{CCUS plus scrap required}: High prices trigger CCUS retrofits (51\% of 2050 output) alongside scrap-EAF growth capped at 36\%, underscoring infrastructure needs for both routes.
+  \item \textbf{CCUS plus scrap required}: Only once the ETS price exceeds \$110/tCO$_2$ do scrap-EAF shares climb, and prices above \$165/tCO$_2$ unlock CCUS retrofits that supply 51\% of 2050 output—highlighting infrastructure gaps on both routes.
   \item \textbf{No-CCUS sensitivity}: Disabling capture under Net Zero pushes cumulative emissions to 1,324~MtCO$_2$ (+19\%) and shifts 36\% of output to hydrogen DRI while quadrupling ETS liabilities.
-  \item \textbf{Policy focus}: Budget alignment demands higher price floors, accelerated free-allocation phase-out, and targeted support for scrap logistics and CO$_2$ transport and storage.
+  \item \textbf{Policy focus}: Budget alignment demands price floors rising toward \$500/tCO$_2$, accelerated free-allocation phase-out, and targeted support for scrap logistics plus CO$_2$ transport and storage.
 \end{itemize}
 
 % ===== Abstract =====
@@ -270,6 +270,8 @@ This section details the data sources, scenario construction, and parameter cali
 
 Our analysis focuses on POSCO's Scope 1 emissions from integrated steel production, covering approximately 37.5 Mt/y of crude steel capacity across major facilities including Pohang and Gwangyang works. The system boundary encompasses iron ore reduction, steelmaking, and energy-related combustion but excludes upstream supply chain emissions (Scope 3) and downstream processing activities.
 
+This asset base is overwhelmingly blast-furnace driven. POSCO mothballed its last carbon-steel EAF line in 2014 and now operates nine blast furnaces (five at Pohang, four at Gwangyang) that account for virtually all flat product output. The only residual EAF capacity (around 1.7~Mt/y) sits in specialty subsidiaries producing stainless and tool steels, which are unsuitable for replacing automotive-grade slab and plate production \citep{POSCO2023SR,KOSA2024Yearbook}. Consequently, any scrap route expansion in the optimisation must finance greenfield EAF modules and the supporting scrap logistics from scratch—a structural hurdle largely absent in scrap-rich markets such as the United States.
+
 This boundary choice reflects K-ETS coverage, which applies carbon pricing only to direct emissions from steel production. However, we conduct sensitivity analysis incorporating Scope 2 emissions using Korea's grid decarbonization trajectory to assess broader climate impacts of electricity-intensive routes.
 
 POSCO represents an ideal case study for several reasons: (i) market dominance (60\% of Korean steel production) enabling sector-level policy insights; (ii) technology diversity across integrated steelmaking, scrap processing, and emerging hydrogen-DRI development; and (iii) comprehensive emissions reporting under K-ETS since 2015, providing robust calibration data.
@@ -354,11 +356,13 @@ Figure~\ref{fig:scope1-by-scenario} plots annual Scope~1 emissions from the opti
   \label{fig:scope1-by-scenario}
 \end{figure}
 
-\subsection{CCUS retrofits do the heavy lifting while scrap growth plateaus}
+\subsection{High carbon prices are the only trigger for low-carbon technologies}
 
-The technology pathway analysis (Figure~\ref{fig:technology-transition}) shows that high carbon prices now favour a hybrid strategy: rapid deployment of blast furnace carbon capture and a more modest expansion of scrap-based electric arc furnaces (EAF). Under Net Zero pricing, scrap-EAF output jumps from 4.5\% of production in 2025 to 22.9\% by 2028 as the model front-loads electrification, but scrap availability constraints cap the share at 35.7\% by 2050. To close the remaining gap, POSCO retrofits its core BF--BOF fleet with carbon capture starting in 2031; CCUS-equipped furnaces supply 51\% of steel by mid-century, trimming the unabated blast furnace share to just 13\%. The Below~2$^\circ$C pathway relies on the same scrap build-out yet never finds CCUS cost-effective at carbon prices that only reach \$240/tCO$_2$, so 64\% of 2050 output remains unabated hot metal. The NDC trajectory barely nudges the system: scrap holds at 5\% and conventional blast furnaces still deliver 95\% of production in 2050. Figure~\ref{fig:production-mix} and Table~\ref{tab:technology-thresholds} document how these saturation effects prevent scrap shares from clearing 40\%.
+The annual production mix in Table~\ref{tab:annual-shares-ngfs_netzero2050} and Figure~\ref{fig:technology-transition} shows that technology switching is tightly coupled to discrete carbon-price thresholds. Scrap-based EAF deployment remains frozen at 4.5\% of output while allowance prices stay below \$100/tCO$_2$, then leaps to 22.8\% in 2028 once the Net Zero pathway clears \$110/tCO$_2$. That jump reflects a single 9~Mt capacity tranche because POSCO must construct entirely new EAF modules—its present operations are almost exclusively blast-furnace based, with only niche stainless EAF assets totalling 1.7~Mt/y that cannot substitute for automotive-grade flat products \citep{POSCO2023SR}. Scrap availability then caps electrification at 35.7\% even under the most aggressive prices.
 
-Hydrogen-based direct reduction, FINEX, and natural-gas DRI are absent in every scenario because the assumed hydrogen costs (\$4.5/kg in 2030) and retrofit premiums keep levelized costs above the combined CCUS-plus-scrap alternative. This is consistent with techno-economic benchmarks from \citet{MaterialEconomics2019} and \citet{demailly2018european} that place the first-wave hydrogen breakeven below \$2.5/kg.
+Carbon capture enters only after prices reach \$165/tCO$_2$ in 2031. At that point the model retrofits one 9~Mt module, and subsequent price rises to \$225 and \$255/tCO$_2$ trigger further retrofits until CCUS-equipped furnaces supply 51\% of 2050 production. Lower trajectories never activate capture: Below~2$^\circ$C pricing stalls at \$240/tCO$_2$ and therefore leaves 64\% of output unabated blast furnaces, while the NDC-consistent ceiling of \$100/tCO$_2$ fails to justify any structural change and keeps the BF--BOF share above 95\% throughout (see Tables~\ref{tab:annual-shares-ngfs_below2c} and \ref{tab:annual-shares-ngfs_ndcs}). In other words, only sustained prices well above \$150/tCO$_2$ unlock capital-intensive decarbonisation routes.
+
+Hydrogen-based direct reduction, FINEX, and natural-gas DRI remain dormant across scenarios because levelised costs stay higher than the CCUS-plus-scrap blend even at \$450/tCO$_2$. Our assumed hydrogen costs (\$4.5/kg in 2030, falling to \$2.5/kg by 2050) align with techno-economic reviews \citep{MaterialEconomics2019,demailly2018european} that place the breakeven for early hydrogen steel below \$2.0--\$2.5/kg. Without such cost breakthroughs, carbon pricing alone cannot make hydrogen competitive within the 2025--2050 horizon.
 
 \begin{figure}[!t]
   \centering
@@ -376,7 +380,7 @@ Hydrogen-based direct reduction, FINEX, and natural-gas DRI are absent in every 
 
 \subsection{Carbon budget compliance still fails without stronger prices}
 
-Integrating annual emissions produces cumulative totals of 1{,}190~MtCO$_2$ (Net Zero), 1{,}713~MtCO$_2$ (Below~2$^\circ$C), and 1{,}981~MtCO$_2$ (NDCs) over 2025--2050. Compared with POSCO's 1{,}110~MtCO$_2$ allocation, the Net Zero scenario still overshoots by 79.6~MtCO$_2$ (+7.2\%), while Below~2$^\circ$C exceeds the budget by 603~MtCO$_2$ (+54\%) and the NDC trajectory by 871~MtCO$_2$ (+78\%). Persistent free-allocation coverage explains the gap: even under Net Zero, only 72~MtCO$_2$ of cumulative emissions are ETS-liable, and the Below~2$^\circ$C path pays for just 596~MtCO$_2$ out of 1,713~MtCO$_2$ emitted. Closing the residual 80~MtCO$_2$ gap under Net Zero therefore requires either a sharper price floor escalation after 2040 or a faster phase-down of free allocation so that firms internalise carbon costs before the next blast-furnace relining cycle. Detailed calculations are provided in \texttt{outputs/analysis/carbon\_budget\_compliance.csv}.
+Integrating annual emissions produces cumulative totals of 1{,}190~MtCO$_2$ (Net Zero), 1{,}713~MtCO$_2$ (Below~2$^\circ$C), and 1{,}981~MtCO$_2$ (NDCs) over 2025--2050. Compared with POSCO's 1{,}110~MtCO$_2$ allocation, the Net Zero scenario still overshoots by 79.6~MtCO$_2$ (+7.2\%), while Below~2$^\circ$C exceeds the budget by 603~MtCO$_2$ (+54\%) and the NDC trajectory by 871~MtCO$_2$ (+78\%). The cumulative gap therefore maps directly into a carbon-price gap: the difference between the NDC ceiling (\$100/tCO$_2$) and the Net Zero peak (\$450/tCO$_2$) yields a 791~MtCO$_2$ reduction, implying that the residual 80~MtCO$_2$ shortfall would require prices rising well above \$450/tCO$_2$ absent new constraints on production. Persistent free-allocation coverage exacerbates the problem: even under Net Zero, only 72~MtCO$_2$ of cumulative emissions are ETS-liable, and the Below~2$^\circ$C path pays for just 596~MtCO$_2$ out of 1,713~MtCO$_2$ emitted. Closing the residual gap under Net Zero therefore requires either a sharper price floor escalation after 2040 or a faster phase-down of free allocation so that firms internalise carbon costs before the next blast-furnace relining cycle. Detailed calculations are provided in \texttt{outputs/analysis/carbon\_budget\_compliance.csv}.
 
 \begin{figure}[!t]
   \centering
@@ -442,7 +446,7 @@ Three empirical results stand out. First, carbon pricing reduces emissions sharp
 
 \subsection{Policy implications}
 
-These findings call for a step change in the design of the Korean Emissions Trading System. Raising the allowance price ceiling alone will not deliver budget compliance if allowances continue to be distributed for free. Policy priorities should therefore include: (i) a binding price floor that exceeds the NGFS Net Zero trajectory after 2040; (ii) an accelerated phase-out of free allocation so that steel producers face full marginal carbon costs before the next blast-furnace relining cycle; and (iii) industrial policies that de-risk large-scale scrap collection, CO$_2$ transport and storage, and low-cost electricity supply for both EAFs and capture units. In parallel, hydrogen and CCUS support should be tied to transparent cost benchmarks to avoid subsidising technologies that remain outcompeted by circular production routes.
+These findings call for a step change in the design of the Korean Emissions Trading System. Raising the allowance price ceiling alone will not deliver budget compliance if allowances continue to be distributed for free. Policy priorities should therefore include: (i) a binding price floor that overtly targets \emph{at least} \$500/tCO$_2$ by the mid-2040s—above the NGFS Net Zero trajectory—to activate the final CCUS tranche identified in Table~\ref{tab:annual-shares-ngfs_netzero2050}; (ii) an accelerated phase-out of free allocation so that steel producers face full marginal carbon costs before the next blast-furnace relining cycle; and (iii) industrial policies that de-risk large-scale scrap collection, CO$_2$ transport and storage, and low-cost electricity supply for both EAFs and capture units. In parallel, hydrogen and CCUS support should be tied to transparent cost benchmarks to avoid subsidising technologies that remain outcompeted by circular production routes.
 
 \subsection{Broader implications}
 
@@ -452,6 +456,7 @@ The Korean steel sector illustrates a wider lesson for industrial decarbonisatio
 \input{tables/assumptions}
 \input{tables/scenario_comparison}
 \input{tables/technology_thresholds}
+\input{tables/annual_technology_shares}
 \input{tables/cost_abatement}
 \input{tables/policy_matrix}
 
