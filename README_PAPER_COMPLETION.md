@@ -131,6 +131,7 @@ Please complete the Results and Discussion sections as specified.
 - **Key finding:** Even NZ2050 overshoots the 1,110 MtCO₂ budget (1,189.6 MtCO₂; +7\%), highlighting the need for complementary reforms.
 - **Policy gap:** NDCs scenario overshoots by 78\% (+870 MtCO₂) and Below2C by 54\% (+603 MtCO₂).
 - **Technology mix:** Net Zero relies on 51\% BF--BOF+CCUS and 36\% scrap-EAF in 2050; hydrogen does not enter at baseline costs.
+- **No-CCUS sensitivity:** Turning off capture under NZ2050 pushes cumulative emissions to 1,323.9 MtCO₂ (+19\%), lifts hydrogen DRI to a 36\% share, and raises cumulative ETS payments to \$43B.
 
 ### ✅ Visualizations
 - 8 high-quality publication-ready figures
@@ -141,7 +142,7 @@ Please complete the Results and Discussion sections as specified.
 
 ## 🎓 Current status of writing
 
-Section 4 (Results) now explains the CCUS-plus-scrap transition, quantifies the overshoot, and incorporates a hydrogen cost sensitivity (Section 4.4). Use the updated manuscript to polish narrative flow, tighten citations, and prepare for co-author review.
+Section 4 (Results) now explains the CCUS-plus-scrap transition, quantifies the overshoot, and incorporates hydrogen-cost and no-CCUS sensitivities (Section 4.4). Use the updated manuscript to polish narrative flow, tighten citations, and prepare for co-author review.
 
 ---
 

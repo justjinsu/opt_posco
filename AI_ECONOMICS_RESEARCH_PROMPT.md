@@ -27,6 +27,7 @@ You are tasked with completing a high-impact academic paper for submission to **
 1. **NDC Scenario:** OVERSHOOTS budget by 78% (+871 MtCO₂)
 2. **Below 2°C Scenario:** OVERSHOOTS budget by 54% (+603 MtCO₂)
 3. **Net Zero 2050 Scenario:** STILL OVERSHOOTS budget by 7% (+80 MtCO₂) despite higher prices and extensive CCUS deployment
+4. **Net Zero 2050 (No CCUS) Sensitivity:** OVERSHOOTS budget by 19% (+214 MtCO₂); hydrogen DRI reaches 36% share but ETS liabilities rise to \$43B
 
 ### Policy Implication
 Current Korean ETS carbon price trajectories are **systematically inadequate** for achieving climate targets in energy-intensive industries.
@@ -50,6 +51,7 @@ emissions_reduction_percent, cumulative_emissions_MtCO2, runtime_seconds
 
 Example values (baseline run):
 - NGFS_NetZero2050: NPV = \$425.6B, Cumulative = 1,189.6 MtCO₂
+- NGFS_NetZero2050_NoCCUS: NPV = \$443.5B, Cumulative = 1,323.9 MtCO₂
 - NGFS_Below2C: NPV = \$414.2B, Cumulative = 1,713.1 MtCO₂
 - NGFS_NDCs: NPV = \$381.6B, Cumulative = 1,980.5 MtCO₂
 
@@ -239,7 +241,7 @@ Annual data:
 1. **Discount rate sensitivity:** How do results change at 3% vs. 7% discount rate?
 2. **Hydrogen cost uncertainty:** What if H₂ costs remain at $6/kg vs. fall to $2/kg?
 3. **Scrap availability:** Limited scrap constrains EAF growth—what if more available?
-4. **Carbon capture costs:** Why isn't CCUS selected? At what capture cost would it be?
+4. **CCUS availability:** Compare baseline Net Zero to the no-CCUS run (capture rate = 0); what does this imply about hydrogen uptake and ETS exposure?
 
 **Expected Output:**
 - 2 paragraphs discussing robustness

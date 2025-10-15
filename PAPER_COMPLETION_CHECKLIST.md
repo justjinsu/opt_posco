@@ -33,6 +33,7 @@
 - [x] Section 4 updated with current data (technology pathways, budget, cost, sensitivity)
 - [x] Section 5 discussion revised for CCUS-heavy portfolio
 - [x] Section 6 conclusion refreshed with new quantitative findings
+- [x] Added Net Zero (No CCUS) sensitivity covering hydrogen uptake and ETS exposure (Section 4.4)
 
 ---
 
@@ -125,6 +126,11 @@ NGFS_NDCs:
   - Cumulative emissions = 1,980.5 MtCO₂
   - NPV total cost = $381.6B
   - Emissions reduction = 14.6%
+
+NGFS_NetZero2050_NoCCUS:
+  - Cumulative emissions = 1,323.9 MtCO₂
+  - NPV total cost = $443.5B
+  - Emissions reduction = 64.2%
 ```
 
 ### Carbon Budget:
@@ -132,6 +138,7 @@ NGFS_NDCs:
 POSCO allocation (2025-2050): 1,110 MtCO₂
 Overshoot:
   - NZ2050: +7% (partial overshoot)
+  - NZ2050 (No CCUS): +19% (overshoot)
   - Below2C: +54% (overshoot)
   - NDCs: +78% (severe overshoot)
 ```

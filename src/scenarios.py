@@ -9,14 +9,15 @@ hydrogen case. Aggregates results to outputs/series_all_scenarios.csv and calls 
 import logging
 import pandas as pd
 import argparse
+import json
 from pathlib import Path
 from typing import Dict, Any, List
 import time
 
-from io_v2 import load_parameters
-from model_v2 import build_model, solve_model, extract_solution
-from export_v2 import export_detailed_results, create_summary_report, save_summary_json
-from sanity_v2 import validate_solution, print_solution_summary
+from .io import load_parameters
+from .model import build_model, solve_model, extract_solution
+from .export import export_time_series, create_summary
+from .sanity import validate_solution, print_solution_summary
 
 logger = logging.getLogger(__name__)
 
@@ -27,7 +28,8 @@ def run_single_scenario(
     discount_rate: float = 0.05,
     utilization: float = 0.90,
     output_dir: str = 'outputs',
-    solver: str = 'highs'
+    solver: str = 'highs',
+    ccus_capture_rate: float = 0.80
 ) -> Dict[str, Any]:
     """
     Run optimization for a single carbon scenario.
@@ -53,7 +55,7 @@ def run_single_scenario(
     
     # Load parameters
     try:
-        params = load_parameters(data_path, carbon_scenario, h2_case)
+        params = load_parameters(data_path, carbon_scenario, grid_case='base', hydrogen_case=h2_case)
         logger.info(f"Loaded parameters for {carbon_scenario}")
     except Exception as e:
         logger.error(f"Parameter loading failed for {carbon_scenario}: {e}")
@@ -66,7 +68,7 @@ def run_single_scenario(
     
     # Build and solve model
     try:
-        model = build_model(params, discount_rate, utilization)
+        model = build_model(params, discount_rate, utilization, ccus_capture_rate=ccus_capture_rate)
         solver_status, objective_value = solve_model(model, solver)
         
         if solver_status != 'optimal':
@@ -124,13 +126,14 @@ def run_single_scenario(
     
     # Export detailed results
     try:
-        csv_path = output_path / f"detailed_results_{carbon_scenario}.csv"
-        export_detailed_results(solution, params, mock_args, solver_status, objective_value, str(csv_path))
+        csv_path = output_path / f"series_{carbon_scenario}.csv"
+        export_time_series(solution, params, str(csv_path))
         
         # Create summary report
-        summary = create_summary_report(solution, params, mock_args, solver_status, objective_value)
+        summary = create_summary(solution, params, mock_args, solver_status, objective_value)
         json_path = output_path / f"summary_{carbon_scenario}.json"
-        save_summary_json(summary, str(json_path))
+        with open(json_path, 'w') as f:
+            json.dump(summary, f, indent=2)
         
         logger.info(f"Results exported for {carbon_scenario}")
         
@@ -155,6 +158,7 @@ def run_single_scenario(
         'solution': solution,
         'summary': summary,
         'runtime_seconds': runtime,
+        'ccus_capture_rate': ccus_capture_rate,
         'files': {
             'detailed_csv': str(csv_path),
             'summary_json': str(json_path)
@@ -167,7 +171,8 @@ def run_all_scenarios(
     discount_rate: float = 0.05,
     utilization: float = 0.90,
     output_dir: str = 'outputs',
-    solver: str = 'highs'
+    solver: str = 'highs',
+    ccus_capture_rate: float = 0.80
 ) -> Dict[str, Any]:
     """
     Run optimization for all three carbon scenarios.
@@ -184,7 +189,7 @@ def run_all_scenarios(
     """
     
     logger.info("Starting multi-scenario optimization run")
-    logger.info(f"H2 case: {h2_case}, Discount rate: {discount_rate:.1%}, Utilization: {utilization:.1%}")
+    logger.info(f"H2 case: {h2_case}, Discount rate: {discount_rate:.1%}, Utilization: {utilization:.1%}, CCUS capture: {ccus_capture_rate:.1%}")
     
     # Define scenarios to run
     scenarios = ['NGFS_NetZero2050', 'NGFS_Below2C', 'NGFS_NDCs']
@@ -202,7 +207,8 @@ def run_all_scenarios(
                 discount_rate=discount_rate,
                 utilization=utilization,
                 output_dir=output_dir,
-                solver=solver
+                solver=solver,
+                ccus_capture_rate=ccus_capture_rate
             )
             scenario_results[scenario] = result
             
@@ -240,7 +246,8 @@ def run_all_scenarios(
             'failed_scenarios': len(scenarios) - len(successful_scenarios),
             'h2_case': h2_case,
             'discount_rate': discount_rate,
-            'utilization': utilization
+            'utilization': utilization,
+            'ccus_capture_rate': ccus_capture_rate
         },
         'scenario_results': scenario_results,
         'comparison_report': comparison_report
@@ -392,6 +399,10 @@ def main():
     parser.add_argument('--util', type=float, default=0.90, help='Max utilization (default: 0.90)')
     parser.add_argument('--output', type=str, default='outputs', help='Output directory (default: outputs)')
     parser.add_argument('--viz', action='store_true', help='Generate visualization plots')
+    parser.add_argument('--ccus-capture', type=float, default=0.80,
+                        help='CCUS capture rate (0.80 = 80%% capture, 0 disables CCUS)')
+    parser.add_argument('--scenario', type=str,
+                        help='Run a single carbon scenario (e.g., NGFS_NetZero2050) instead of the full set')
     
     args = parser.parse_args()
     
@@ -408,15 +419,43 @@ def main():
         logger.error(f"Invalid utilization: {args.util}")
         return 1
     
-    # Run all scenarios
+    if not (0 <= args.ccus_capture <= 1):
+        logger.error(f"Invalid CCUS capture rate: {args.ccus_capture}")
+        return 1
+    
+    # Run scenarios
     try:
-        results = run_all_scenarios(
-            data_path=args.data,
-            h2_case=args.h2_case,
-            discount_rate=args.discount,
-            utilization=args.util,
-            output_dir=args.output
-        )
+        if args.scenario:
+            result = run_single_scenario(
+                data_path=args.data,
+                carbon_scenario=args.scenario,
+                h2_case=args.h2_case,
+                discount_rate=args.discount,
+                utilization=args.util,
+                output_dir=args.output,
+                ccus_capture_rate=args.ccus_capture
+            )
+            results = {
+                'run_summary': {
+                    'total_scenarios': 1,
+                    'successful_scenarios': 1 if result['status'] == 'SUCCESS' else 0,
+                    'failed_scenarios': 0 if result['status'] == 'SUCCESS' else 1,
+                    'h2_case': args.h2_case,
+                    'discount_rate': args.discount,
+                    'utilization': args.util,
+                    'ccus_capture_rate': args.ccus_capture
+                },
+                'scenario_results': {args.scenario: result}
+            }
+        else:
+            results = run_all_scenarios(
+                data_path=args.data,
+                h2_case=args.h2_case,
+                discount_rate=args.discount,
+                utilization=args.util,
+                output_dir=args.output,
+                ccus_capture_rate=args.ccus_capture
+            )
         
         # Print summary
         print("\n" + "="*80)
@@ -428,6 +467,7 @@ def main():
         print(f"H2 case: {run_summary['h2_case']}")
         print(f"Discount rate: {run_summary['discount_rate']:.1%}")
         print(f"Utilization: {run_summary['utilization']:.1%}")
+        print(f"CCUS capture rate: {run_summary.get('ccus_capture_rate', args.ccus_capture):.1%}")
         
         # Print scenario results
         for scenario, result in results['scenario_results'].items():

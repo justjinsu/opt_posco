@@ -1,0 +1,2 @@
+scenario,status,npv_total_billion_usd,ets_cost_total_billion_usd,cumulative_emissions_MtCO2,scope1_emissions_2025_MtCO2,scope1_emissions_2050_MtCO2
+NGFS_NetZero2050_NoCCUS,SUCCESS,443.5472260993634,43.13479735603524,1323.883626944485,81.03000000000002,28.970346306080433

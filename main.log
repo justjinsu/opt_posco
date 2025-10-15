@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.5.5)  14 OCT 2025 23:10
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.5.5)  15 OCT 2025 09:53
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1065,10 +1065,15 @@ LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 4
 (/usr/local/texlive/2023/texmf-dist/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
+Overfull \hbox (8.3692pt too wide) in paragraph at lines 51--52
+[]\T1/lmr/bx/n/10 No-CCUS sen-si-tiv-ity\T1/lmr/m/n/10 : Dis-abling cap-ture un
+-der Net Zero pushes cu-mu-la-tive emis-sions to 1,324 MtCO$[]$
+ []
+
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 63.
+(Font)              <8> on input line 64.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 63.
+(Font)              <6> on input line 64.
 
 Overfull \hbox (2.22221pt too wide) has occurred while \output is active
 [] 
@@ -1083,14 +1088,14 @@ fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvip
 s/lm/lm-mathsy.enc}] [2] [3] [4{/usr/local/texlive/2023/texmf-dist/fonts/enc/dv
 ips/lm/lm-mathit.enc}] [5{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/lm
 /lm-mathex.enc}]
-Overfull \hbox (33.0733pt too wide) in paragraph at lines 244--245
+Overfull \hbox (33.0733pt too wide) in paragraph at lines 245--246
 []\T1/lmr/m/n/10 We im-ple-ment three NGFS-based car-bon price tra-jec-to-ries^
 ^VNet Zero 2050, Be-low 2\TS1/lmr/m/n/10 °\T1/lmr/m/n/10 C, and NDCs^^Vexpresse
 d
  []
 
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 2
-54.
+55.
 (/usr/local/texlive/2023/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 ) [6] [7] (./tables/tech_costs.tex
@@ -1114,42 +1119,52 @@ Overfull \hbox (23.50648pt too wide) in paragraph at lines 6--27
 File: figures//scope1_by_scenario.png Graphic file (type png)
 <use figures//scope1_by_scenario.png>
 Package pdftex.def Info: figures//scope1_by_scenario.png  used on input line 35
-1.
+2.
 (pdftex.def)             Requested size: 362.37569pt x 215.35106pt.
 <figures//technology_transition.png, id=388, 1065.7416pt x 711.8595pt>
 File: figures//technology_transition.png Graphic file (type png)
 <use figures//technology_transition.png>
 Package pdftex.def Info: figures//technology_transition.png  used on input line
- 364.
+ 365.
 (pdftex.def)             Requested size: 362.37569pt x 242.05075pt.
 <figures//production_mix_evolution.png, id=389, 1073.9322pt x 445.1832pt>
 File: figures//production_mix_evolution.png Graphic file (type png)
 <use figures//production_mix_evolution.png>
 Package pdftex.def Info: figures//production_mix_evolution.png  used on input l
-ine 371.
+ine 372.
 (pdftex.def)             Requested size: 362.37569pt x 150.21907pt.
 [9]
 <figures//emissions_pathways.png, id=405, 1076.5821pt x 425.9112pt>
 File: figures//emissions_pathways.png Graphic file (type png)
 <use figures//emissions_pathways.png>
 Package pdftex.def Info: figures//emissions_pathways.png  used on input line 38
-2.
+3.
 (pdftex.def)             Requested size: 385.02547pt x 152.32057pt.
 [10 <./figures//scope1_by_scenario.png> <./figures//technology_transition.png>]
 <figures//ets_cost_by_scenario.png, id=418, 715.473pt x 425.1885pt>
 File: figures//ets_cost_by_scenario.png Graphic file (type png)
 <use figures//ets_cost_by_scenario.png>
 Package pdftex.def Info: figures//ets_cost_by_scenario.png  used on input line 
-395.
+396.
 (pdftex.def)             Requested size: 362.37569pt x 215.35106pt.
 [11 <./figures//production_mix_evolution.png> <./figures//emissions_pathways.pn
 g>] [12 <./figures//ets_cost_by_scenario.png>] [13] (./tables/assumptions.tex) 
-(./tables/scenario_comparison.tex) (./tables/technology_thresholds.tex
+(./tables/scenario_comparison.tex
+Overfull \hbox (40.6846pt too wide) in paragraph at lines 6--43
+ [] 
+ []
+
+) (./tables/technology_thresholds.tex
 Overfull \hbox (12.51842pt too wide) in paragraph at lines 6--20
  [] 
  []
 
-) (./tables/cost_abatement.tex) (./tables/policy_matrix.tex
+) (./tables/cost_abatement.tex
+Overfull \hbox (22.11502pt too wide) in paragraph at lines 6--20
+ [] 
+ []
+
+) (./tables/policy_matrix.tex
 Underfull \hbox (badness 3557) in paragraph at lines 10--10
 []|\T1/lmr/m/n/10 Carbon price floor
  []
@@ -1259,18 +1274,18 @@ Underfull \hbox (badness 3525) in paragraph at lines 16--16
 []|\T1/lmr/m/n/10 Ministry of Trade,
  []
 
-) [14] [15] [16] [17] (./main.aux)
+) [14] [15] [16] [17] [18] (./main.aux)
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 25EA5352DC1BA6E579EFE7F8D2C921EB;9536.
+(rerunfilecheck)             Checksum: 9EDF995B5519122D17B777C44F5B86D8;9483.
  ) 
 Here is how much of TeX's memory you used:
- 39124 strings out of 476025
- 938053 string characters out of 5790018
- 1881388 words of memory out of 5000000
+ 39125 strings out of 476025
+ 938060 string characters out of 5790018
+ 1887388 words of memory out of 5000000
  58798 multiletter control sequences out of 15000+600000
  568807 words of font info for 74 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 109i,15n,108p,1273b,1094s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 109i,15n,108p,1463b,1102s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></usr/lo
 cal/texlive/2023/texmf-dist/fonts/type1/public/lm/lmex10.pfb></usr/local/texliv
 e/2023/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></usr/local/texlive/2023/tex
@@ -1288,10 +1303,10 @@ r/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmsy7.pfb></usr/local/tex
 live/2023/texmf-dist/fonts/type1/public/lm/lmtt10.pfb></usr/local/texlive/2023/
 texmf-dist/fonts/type1/public/lm/lmtt8.pfb></usr/local/texlive/2023/texmf-dist/
 fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (17 pages, 1381922 bytes).
+Output written on main.pdf (18 pages, 1383835 bytes).
 PDF statistics:
- 621 PDF objects out of 1000 (max. 8388607)
- 542 compressed objects within 6 object streams
- 140 named destinations out of 1000 (max. 500000)
+ 626 PDF objects out of 1000 (max. 8388607)
+ 546 compressed objects within 6 object streams
+ 141 named destinations out of 1000 (max. 500000)
  358 words of extra memory for PDF output out of 10000 (max. 10000000)
 
