@@ -347,18 +347,18 @@ Carbon price trajectories reshape POSCO's emissions, production mix, and complia
 
 \subsection{Emission trajectories remain sensitive to price signals}
 
-Figure~\ref{fig:scope1-by-scenario} plots annual Scope~1 emissions from the optimization. Stronger price paths still drive materially faster mitigation: the NGFS Net Zero 2050 trajectory cuts emissions from 81~MtCO$_2$ in 2025 to 23.1~MtCO$_2$ by 2050, whereas the Below~2$^\circ$C pathway only reaches 53.3~MtCO$_2$ and the NDC-consistent path plateaus at 71.1~MtCO$_2$. Net Zero pricing pushes emissions below 40~MtCO$_2$ by 2040—while Below~2$^\circ$C remains near 60~MtCO$_2$ and NDCs hover around 75~MtCO$_2$—because firms respond to expected allowance prices of \$225/tCO$_2$ in 2035 and \$300/tCO$_2$ in 2040. The muted NDC schedule (capped at \$100/tCO$_2$ in 2050) keeps emissions high even as legacy assets depreciate.
+Figure~\ref{fig:scope1-by-scenario} contrasts the three NGFS carbon-price pathways with a Net Zero 2050 variant in which CCUS is disabled (highlighted in bold). Stronger price paths still drive materially faster mitigation: with capture operating, the NGFS Net Zero trajectory cuts emissions from 81~MtCO$_2$ in 2025 to 23.1~MtCO$_2$ by 2050, whereas the Below~2$^\circ$C pathway only reaches 53.3~MtCO$_2$ and the NDC-consistent path plateaus at 71.1~MtCO$_2$. Removing CCUS while keeping the same price path leaves emissions stuck above 45~MtCO$_2$ through the 2030s and still at 29~MtCO$_2$ in 2050, underscoring how capture retrofits drive the late-stage decline. The muted NDC schedule (capped at \$100/tCO$_2$ in 2050) keeps emissions high even as legacy assets depreciate.
 
 \begin{figure}[!t]
   \centering
   \includegraphics[width=0.8\linewidth]{scope1_by_scenario}
-  \caption{Scope~1 emissions by carbon price scenario, 2025--2050.}
+  \caption{Scope~1 emissions by scenario, including the Net Zero 2050 pathway with CCUS disabled (2025--2050).}
   \label{fig:scope1-by-scenario}
 \end{figure}
 
 \subsection{High carbon prices are the only trigger for low-carbon technologies}
 
-The annual production mix in Table~\ref{tab:annual-shares-ngfs_netzero2050} and Figure~\ref{fig:technology-transition} shows that technology switching is tightly coupled to discrete carbon-price thresholds. Scrap-based EAF deployment remains frozen at 4.5\% of output while allowance prices stay below \$100/tCO$_2$, then leaps to 22.8\% in 2028 once the Net Zero pathway clears \$110/tCO$_2$. That jump reflects a single 9~Mt capacity tranche because POSCO must construct entirely new EAF modules—its present operations are almost exclusively blast-furnace based, with only niche stainless EAF assets totalling 1.7~Mt/y that cannot substitute for automotive-grade flat products \citep{POSCO2023SR}. Scrap availability then caps electrification at 35.7\% even under the most aggressive prices.
+The annual production mix in Table~\ref{tab:annual-shares-ngfs_netzero2050} and Figure~\ref{fig:technology-transition} shows that technology switching is tightly coupled to discrete carbon-price thresholds. Scrap-based EAF deployment remains frozen at 4.5\% of output while allowance prices stay below \$100/tCO$_2$, then leaps to 22.8\% in 2028 once the Net Zero pathway clears \$110/tCO$_2$. That jump reflects a single 9~Mt capacity tranche because POSCO must construct entirely new EAF modules—its present operations are almost exclusively blast-furnace based, with only niche stainless EAF assets totalling 1.7~Mt/y that cannot substitute for automotive-grade flat products \citep{POSCO2023SR}. Scrap availability then caps electrification at 35.7\% even under the most aggressive prices. The stacked panels in Figure~\ref{fig:technology-transition} translate the long tables into time-series shares, with the top frame emphasising the Net Zero 2050 (No CCUS) sensitivity.
 
 Carbon capture enters only after prices reach \$165/tCO$_2$ in 2031. At that point the model retrofits one 9~Mt module, and subsequent price rises to \$225 and \$255/tCO$_2$ trigger further retrofits until CCUS-equipped furnaces supply 51\% of 2050 production. Lower trajectories never activate capture: Below~2$^\circ$C pricing stalls at \$240/tCO$_2$ and therefore leaves 64\% of output unabated blast furnaces, while the NDC-consistent ceiling of \$100/tCO$_2$ fails to justify any structural change and keeps the BF--BOF share above 95\% throughout (see Tables~\ref{tab:annual-shares-ngfs_below2c} and \ref{tab:annual-shares-ngfs_ndcs}). In other words, only sustained prices well above \$150/tCO$_2$ unlock capital-intensive decarbonisation routes.
 
@@ -367,14 +367,14 @@ Hydrogen-based direct reduction, FINEX, and natural-gas DRI remain dormant acros
 \begin{figure}[!t]
   \centering
   \includegraphics[width=0.8\linewidth]{technology_transition}
-  \caption{Evolution of technology shares (BF--BOF vs. scrap-EAF) under alternative carbon price schedules.}
+  \caption{Technology shares by scenario. The top panel emphasises the Net Zero 2050 pathway with CCUS disabled; lower panels show the NGFS Net Zero, Below~2$^\circ$C, and NDC trajectories.}
   \label{fig:technology-transition}
 \end{figure}
 
 \begin{figure}[!t]
   \centering
   \includegraphics[width=0.8\linewidth]{production_mix_evolution}
-  \caption{Scenario-specific production mix by technology route (2025--2050).}
+  \caption{Production mix by technology route (Mt/year). Panels mirror Figure~\ref{fig:technology-transition}, with the Net Zero 2050 (No CCUS) case highlighted.}
   \label{fig:production-mix}
 \end{figure}
 
@@ -385,22 +385,31 @@ Integrating annual emissions produces cumulative totals of 1{,}190~MtCO$_2$ (Net
 \begin{figure}[!t]
   \centering
   \includegraphics[width=0.85\linewidth]{emissions_pathways}
-  \caption{Emissions, free allocation, and ETS-liable tonnes by scenario.}
+  \caption{Annual Scope~1 emissions (left) and emissions intensity (right) by scenario.}
   \label{fig:emissions-pathways}
 \end{figure}
 
-Figure~\ref{fig:emissions-pathways} highlights how generous free allocation keeps net ETS exposure close to zero in the high-price scenarios despite large gross emissions reductions.
+Figure~\ref{fig:emissions-pathways} shows that only the NGFS Net Zero pathways materially shift emissions intensity; the no-CCUS sensitivity keeps intensity above 0.8~tCO$_2$/t even in 2050, reflecting the residual reliance on hydrogen-fed DRI and unabated blast furnaces.
 
 \subsection{Cost structure shifts from compliance spending to capital turnover}
 
-Summing undiscounted expenditure over 2025--2050 shows that the Net Zero pathway still delivers the lowest lifetime system cost: \$791~billion versus \$871~billion (Below~2$^\circ$C) and \$842~billion (NDCs). Dividing by cumulative steel output (978~Mt) yields average costs of \$810/t under Net Zero, \$891/t under Below~2$^\circ$C, and \$861/t in the compliance-heavy NDC case. The divergence is driven by ETS exposure. NDC pricing leaves 863~MtCO$_2$ of net ETS-liable emissions and \$59.7~billion in compliance payments (7.1\% of lifetime outlays). Net Zero pricing still emits 1,190~MtCO$_2$, but only 72~MtCO$_2$ is ETS-liable, trimming payments to \$9.3~billion (1.2\% of cost) and redirecting cashflow toward CCUS retrofits and electrification upgrades (Figure~\ref{fig:ets-costs}). Table~\ref{tab:cost-abatement} shows that ambition beyond the NDC baseline is cost saving in the Net Zero case (minus \$64/tCO$_2$) but requires positive \$108/tCO$_2$ support for the intermediate Below~2$^\circ$C pathway. Ambitious pricing therefore swaps recurring ETS fees for front-loaded low-carbon investment, consistent with the investment-switching logic in \citet{fowlie2016carbon}.
+Summing undiscounted expenditure over 2025--2050 shows that the Net Zero pathway still delivers the lowest lifetime system cost: \$791~billion versus \$871~billion (Below~2$^\circ$C) and \$842~billion (NDCs). Dividing by cumulative steel output (978~Mt) yields average costs of \$810/t under Net Zero, \$891/t under Below~2$^\circ$C, and \$861/t in the compliance-heavy NDC case. The divergence is driven by ETS exposure. NDC pricing leaves 863~MtCO$_2$ of net ETS-liable emissions and \$59.7~billion in compliance payments (7.1\% of lifetime outlays). Net Zero pricing still emits 1,190~MtCO$_2$, but only 72~MtCO$_2$ is ETS-liable, trimming payments to \$9.3~billion (1.2\% of cost) and redirecting cashflow toward CCUS retrofits and electrification upgrades, whereas disabling capture under the same price path lifts liabilities to 206~Mt and payments to \$43~billion (Figure~\ref{fig:ets-costs}). Table~\ref{tab:cost-abatement} shows that ambition beyond the NDC baseline is cost saving in the Net Zero case (minus \$64/tCO$_2$) but requires positive \$108/tCO$_2$ support for the intermediate Below~2$^\circ$C pathway. Ambitious pricing therefore swaps recurring ETS fees for front-loaded low-carbon investment, consistent with the investment-switching logic in \citet{fowlie2016carbon}.
 
 \begin{figure}[!t]
   \centering
   \includegraphics[width=0.8\linewidth]{ets_cost_by_scenario}
-  \caption{Annual ETS compliance costs across the three NGFS carbon price trajectories.}
+  \caption{Annual ETS compliance costs across the NGFS price trajectories plus the Net Zero 2050 (No CCUS) sensitivity.}
   \label{fig:ets-costs}
 \end{figure}
+
+\begin{figure}[!t]
+  \centering
+  \includegraphics[width=0.85\linewidth]{ets_cost_logic}
+  \caption{ETS cost mechanics for the Net Zero 2050 (No CCUS) pathway. The top panel contrasts gross emissions, free allocation, and allowance prices; the lower panel shows net ETS liabilities and resulting payments.}
+  \label{fig:ets-logic}
+\end{figure}
+
+Figure~\ref{fig:ets-logic} clarifies how the compliance bill escalates once capture is unavailable. The free-allocation schedule falls faster than gross emissions after 2030, reopening a liability window that widens as allowance prices cross \$150/tCO$_2$. By the mid-2030s the liability volumes exceed 5~MtCO$_2$/year and, combined with \$200--\$300/tCO$_2$ prices, generate multi-billion-dollar payments that mirror the quadrupling reported above.
 
 \subsection{Implications for competitiveness}
 
