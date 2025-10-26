@@ -1,0 +1,223 @@
+\section{Methodology}
+
+Our analytical approach combines engineering-economic optimization with climate policy evaluation to test a straightforward but consequential question: can carbon pricing alone drive industrial transformation at the pace required to meet climate targets? We answer this by building a detailed model of POSCO's technology investment decisions under different carbon price scenarios, then comparing the resulting emission pathways against sectoral carbon budgets derived from Korea's climate commitments. This section first outlines our conceptual framework, then develops the optimization model in detail, and finally describes how we assess policy-performance gaps.
+
+\subsection{Conceptual framework and model overview}
+
+Our analysis proceeds across three integrated levels, each addressing a distinct analytical question:
+
+\textbf{Level 1: Technology Portfolio Optimization.} What technology mix would a cost-minimizing steel producer choose under different carbon price scenarios? We use a mixed-integer linear programming (MILP) model to determine POSCO's least-cost technology adoption pathway from 2025 to 2050. The model explicitly captures three features critical for industrial decarbonization: lumpy investment decisions (you cannot build half a blast furnace), long-lived assets (plants operate for 25-40 years), and operational constraints (capacity utilization limits, feedstock availability, product quality requirements). By solving this optimization problem under alternative carbon price trajectories, we can trace out how investment behavior responds to policy signals.
+
+\textbf{Level 2: Carbon Budget Derivation.} What emission pathway is consistent with Korea's climate commitments? We derive a sectoral carbon budget for steel production using proportional allocation based on the sector's current emissions share and Korea's nationally determined contribution (NDC) reduction targets for 2030 and 2050 carbon neutrality goals. This budget represents the cumulative emissions envelope that the steel sector can occupy while remaining consistent with national climate targets. By allocating this sectoral budget proportionally to POSCO based on market share, we establish a firm-level carbon constraint against which to evaluate technology pathways.
+
+\textbf{Level 3: Policy-Performance Gap Assessment.} Does profit-maximizing investment behavior stay within climate-consistent carbon budgets? We compare the optimized emission pathways from Level 1 against the carbon budget constraints from Level 2. The difference—what we term the "policy-performance gap"—quantifies whether carbon pricing trajectories are adequate for climate target compliance. Positive gaps indicate systematic overshooting where current policies fall short; zero or negative gaps would indicate budget compliance.
+
+This multi-level framework enables rigorous testing of our central hypothesis: that current carbon pricing trajectories, even ambitious ones, prove inadequate for sectoral carbon budget compliance without complementary policies. The beauty of this approach is its transparency—by separating technology optimization from budget evaluation, we can clearly identify where policy-performance gaps emerge and what would be required to close them.
+
+\subsection{Optimization model formulation}
+
+The core of our analysis is an optimization model that determines POSCO's least-cost technology portfolio over a 25-year planning horizon. Think of this as solving the company's long-term investment problem: given projected demand for steel, commodity prices, technology costs, and carbon prices, which production technologies should the firm invest in and when? The model minimizes total system costs—capital expenditure for new facilities, operating costs for production, and carbon compliance costs—subject to realistic constraints on technology deployment, feedstock availability, and operational limits.
+
+What makes this model distinctive is its treatment of investment discreteness. Unlike many energy system models that allow fractional capacity additions, we recognize that steel plants come in discrete lumps—blast furnaces are built as complete units with typical capacities of 4 million tonnes per year, not as smoothly adjustable variables. This matters because it introduces path dependencies: once you build a blast furnace, you are locked into its technology and emission profile for decades. The model captures this reality through integer decision variables that force the optimizer to make discrete yes/no choices about building new capacity.
+
+We now develop the mathematical formulation systematically, starting with notation and building toward the complete optimization problem.
+
+\subsubsection{Sets and indices}
+
+The model operates over discrete time periods and technology alternatives:
+
+\begin{itemize}[leftmargin=*]
+    \item $t \in \mathcal{T}$: years, $t = 2025, \dots, 2050$. We use annual time steps to balance computational tractability with sufficient granularity to capture investment timing.
+    \item $r \in \mathcal{R}$: production routes, including BF--BOF (conventional blast furnace), BF--BOF+CCUS (with carbon capture), Scrap-EAF (electric arc furnace using scrap), NG-DRI--EAF (natural gas direct reduction), and H$_2$-DRI--EAF (hydrogen direct reduction). These five routes span the full spectrum of steel decarbonization options from incumbent technologies to emerging alternatives.
+    \item $\mathcal{R}^{CCUS} \subseteq \mathcal{R}$: subset of routes equipped with CCUS technology, enabling the model to distinguish carbon management options.
+    \item $\mathcal{R}^{H_2} \subseteq \mathcal{R}$: subset of hydrogen-based routes, allowing us to impose technology readiness constraints on emerging pathways.
+\end{itemize}
+
+\subsubsection{Decision variables}
+
+The model determines four types of decisions:
+
+\begin{itemize}[leftmargin=*]
+    \item $B_{r,t} \in \mathbb{Z}_{\ge 0}$: number of units of production route $r$ built in year $t$. The integer constraint reflects investment lumpiness—you build whole plants, not fractions of plants.
+    \item $K_{r,t} \in \mathbb{R}_{\ge 0}$: available production capacity of route $r$ in year $t$ (Mt/y). This evolves based on investment decisions and reflects the cumulative build-out of each technology.
+    \item $Q_{r,t} \in \mathbb{R}_{\ge 0}$: annual production from route $r$ in year $t$ (Mt). The model can operate facilities below full capacity to minimize costs, subject to utilization constraints.
+    \item $ETS_{t}^{+} \in \mathbb{R}_{\ge 0}$: net emissions trading system liability in year $t$ (Mt CO$_2$), representing the carbon allowances the firm must purchase after accounting for free allocation.
+\end{itemize}
+
+Together, these variables let the model choose not just what technologies to deploy, but when to deploy them and how intensively to operate them—all in response to evolving carbon prices and input costs.
+
+\subsubsection{Objective function}
+
+The optimization minimizes the net present value of total system costs over the planning horizon:
+
+\begin{align}
+\min_{B,K,Q,ETS^+} \; & \sum_{t \in \mathcal{T}} \delta_t \left[ C^{CAPEX}_t + C^{FixedOM}_t + C^{VarOPEX}_t + C^{ETS}_t \right],
+\end{align}
+
+where $\delta_t = (1+\rho)^{-(t-t_0)}$ is the discount factor with real discount rate $\rho = 0.05$ and base year $t_0 = 2025$. The 5\% discount rate reflects typical corporate hurdle rates for long-term industrial investments and is consistent with IEA energy system modeling practice.
+
+Each cost component captures a distinct economic consideration:
+
+\textit{Capital expenditure} reflects upfront investment costs for new production capacity:
+\begin{align}
+C^{CAPEX}_t &= \sum_{r \in \mathcal{R}} B_{r,t} \cdot \kappa_r \cdot c^{capex}_r \cdot 10^6, \label{eq:capex}
+\end{align}
+where $\kappa_r$ denotes unit capacity (Mt/y) for route $r$, and $c^{capex}_r$ represents technology-specific capital costs (USD/tpy). The discrete nature of $B_{r,t}$ means CAPEX comes in lumps rather than smoothly—a key feature distinguishing our model from continuous approaches.
+
+\textit{Fixed operating costs} cover capacity-related expenses independent of utilization:
+\begin{align}
+C^{FixedOM}_t &= \sum_{r \in \mathcal{R}} K_{r,t} \cdot c^{fixom}_r \cdot 10^6, \label{eq:fixom}
+\end{align}
+where $c^{fixom}_r$ denotes fixed O\&M costs (USD/tpy/y). These capture maintenance, labor, and overhead expenses that must be paid regardless of production levels.
+
+\textit{Variable operating costs} reflect input commodity expenses that scale with production:
+\begin{align}
+C^{VarOPEX}_t &= \sum_{r \in \mathcal{R}} Q_{r,t} \cdot \left( \sum_{i \in \mathcal{I}} \alpha_{r,i} \cdot p_{i,t} \right) \cdot 10^6, \label{eq:varopex}
+\end{align}
+where $\alpha_{r,i}$ represents input intensity of commodity $i$ for route $r$ (physical units per tonne steel), and $p_{i,t}$ denotes commodity prices (USD per physical unit). The commodity set includes $\mathcal{I} = \{$iron ore, coking coal, scrap steel, natural gas, electricity, hydrogen, fluxes, alloys$\}$. This detailed representation allows the model to capture feedstock substitution across routes—for instance, hydrogen replacing coking coal in DRI processes.
+
+\textit{Carbon compliance costs} reflect emissions trading system obligations:
+\begin{align}
+C^{ETS}_t &= P^{CO_2}_t \cdot ETS_t^+ \cdot 10^6, \label{eq:ets}
+\end{align}
+where $P^{CO_2}_t$ is the carbon price (USD/tCO$_2$) following NGFS scenario trajectories. This cost only applies to net emissions after free allocation, capturing the partial cost exposure under current K-ETS design.
+
+The objective function thus balances multiple economic considerations: avoiding large upfront capital costs, minimizing ongoing operating expenses, and managing carbon compliance liabilities. The model's cost-minimizing logic reflects how rational firms would respond to price signals, making it a useful tool for assessing policy effectiveness.
+
+\subsubsection{Constraints: Ensuring realistic technology transitions}
+
+The optimization is subject to multiple constraint sets that ensure the solution reflects engineering realities and policy boundaries. We organize these into three categories: material balance and production constraints, emissions and carbon pricing rules, and technology deployment constraints.
+
+\textbf{Material balance and production constraints} ensure the model produces enough steel while respecting capacity limits:
+
+\textit{Demand satisfaction:} Total production must meet exogenous steel demand in each period:
+\begin{align}
+\sum_{r \in \mathcal{R}} Q_{r,t} &= D_t, \quad \forall t \in \mathcal{T}, \label{eq:demand}
+\end{align}
+where $D_t$ denotes steel demand (Mt/y) following the trajectory described in Section~4.4. This constraint abstracts from competitive dynamics to focus on technology transition incentives, assuming POSCO maintains market share.
+
+\textit{Capacity utilization:} Production from each route cannot exceed available capacity times a maximum utilization factor:
+\begin{align}
+Q_{r,t} &\le \mu \cdot K_{r,t}, \quad \forall r \in \mathcal{R}, t \in \mathcal{T}, \label{eq:utilization}
+\end{align}
+where $\mu = 0.90$ represents realistic capacity utilization accounting for maintenance schedules, operational flexibility, and quality considerations. This prevents the model from assuming 100\% utilization, which would be operationally infeasible.
+
+\textit{Capacity evolution:} Available capacity evolves based on investment decisions and retirements:
+\begin{align}
+K_{r,t} &= K_{r,t-1} + \kappa_r \cdot B_{r,t} - R_{r,t}, \quad \forall r \in \mathcal{R}, t \in \mathcal{T} \setminus \{t_0\}, \label{eq:capacity}
+\end{align}
+where $R_{r,t}$ represents capacity retirements based on assumed 40-year asset lifetimes for blast furnaces and 30-year lifetimes for other routes. Initial conditions are set to match POSCO's current capacity configuration:
+\begin{align}
+K_{r,t_0} &= K_r^{initial}, \quad \forall r \in \mathcal{R}. \label{eq:initial}
+\end{align}
+
+\textbf{Emissions and carbon pricing constraints} translate production decisions into carbon costs:
+
+\textit{ETS liability:} The model calculates net carbon liabilities after accounting for free allocation:
+\begin{align}
+ETS_t^+ &\ge \sum_{r \in \mathcal{R}} ef_r^{net} \cdot Q_{r,t} - A_t^{free}, \quad \forall t \in \mathcal{T}, \label{eq:ets_balance}
+\end{align}
+where $ef_r^{net}$ denotes net emission factors (tCO$_2$/t steel) and $A_t^{free}$ specifies free allocation under K-ETS declining schedules. The inequality formulation allows $ETS_t^+ = 0$ when free allocation exceeds emissions, but prevents negative values (no allowance banking).
+
+\textit{CCUS emission reduction:} For routes equipped with carbon capture, net emissions are reduced by the capture efficiency:
+\begin{align}
+ef_r^{net} &= ef_r^{gross} \cdot (1 - \eta^{CCUS}), \quad \forall r \in \mathcal{R}^{CCUS}, \label{eq:ccus_factor}
+\end{align}
+where $\eta^{CCUS} = 0.80$ represents capture efficiency based on current post-combustion technology performance. For routes without CCUS, net emissions equal gross emissions:
+\begin{align}
+ef_r^{net} &= ef_r^{gross}, \quad \forall r \in \mathcal{R} \setminus \mathcal{R}^{CCUS}. \label{eq:no_ccus}
+\end{align}
+
+\textbf{Technology deployment constraints} enforce realistic timing and discrete investment:
+
+\textit{Technology readiness:} Emerging technologies cannot be deployed before reaching commercial readiness:
+\begin{align}
+B_{r,t} &= 0, \quad \forall r \in \mathcal{R}^{H_2}, t < 2030, \label{eq:h2_timing}\\
+\sum_{r \in \mathcal{R}^{CCUS}} B_{r,t} &= 0, \quad \forall t < 2027, \label{eq:ccus_timing}
+\end{align}
+reflecting POSCO's stated demonstration timelines: CCUS pilot completion by 2027 and hydrogen DRI commercial deployment from 2030. These constraints prevent the model from prematurely adopting unproven technologies.
+
+\textit{Investment discreteness:} Capacity additions must be integer multiples of standardized plant sizes:
+\begin{align}
+B_{r,t} &\in \mathbb{Z}_{\ge 0}, \quad \forall r \in \mathcal{R}, t \in \mathcal{T}. \label{eq:integer}
+\end{align}
+This constraint captures the lumpy nature of steel industry investment and creates path dependencies absent in continuous models.
+
+Together, these constraints ensure the optimization produces realistic technology transitions that respect engineering limits, policy parameters, and commercial readiness—not just theoretically optimal but practically infeasible solutions.
+
+\subsection{Carbon budget framework and policy-performance gap assessment}
+
+Having defined how we model investment behavior, we now describe how we evaluate whether those behaviors align with climate targets. This requires deriving sectoral carbon budgets from national climate commitments and comparing them against optimized emission pathways.
+
+\subsubsection{Deriving sectoral carbon budgets from national targets}
+
+Korea's climate commitments—a 40\% reduction by 2030 relative to 2018 and carbon neutrality by 2050—imply a finite cumulative emission budget for the economy. We translate this national constraint into a steel sector budget using proportional allocation, then derive POSCO's budget based on market share.
+
+The steel sector carbon budget is calculated as:
+\begin{align}
+CB^{steel} &= \sum_{t=2025}^{2050} E^{national}_t \cdot \phi^{steel}, \label{eq:budget_total}
+\end{align}
+where $\phi^{steel} = 0.12$ reflects steel's current share of national emissions. The national emission trajectory follows a two-phase reduction path:
+\begin{align}
+E^{national}_t &= E^{national}_{2018} \cdot (1 - \beta \cdot \min(1, (t-2018)/12)) \cdot (1 - \gamma \cdot \max(0, (t-2030)/20)), \label{eq:national_trajectory}
+\end{align}
+where $\beta = 0.4$ captures the 2030 NDC target (40\% reduction from 2018) and $\gamma = 0.6$ reflects additional reductions needed for 2050 carbon neutrality (60\% further reduction from 2030 levels). This formulation smoothly interpolates between Korea's stated targets.
+
+POSCO's carbon budget follows from its approximately 60\% share of domestic steel production:
+\begin{align}
+CB^{POSCO} = CB^{steel} \cdot \phi^{POSCO} = CB^{steel} \cdot 0.6, \label{eq:posco_budget}
+\end{align}
+yielding $CB^{POSCO} \approx 1{,}110$ MtCO$_2$ over 2025-2050. This represents the cumulative emissions envelope POSCO can occupy while remaining consistent with national climate commitments.
+
+Two methodological notes are important. First, we use proportional allocation rather than more complex equity-based approaches (capability, responsibility) because our focus is policy adequacy testing rather than normative allocation debates. Proportional allocation provides a transparent baseline against which to assess policy-performance gaps. Second, we allocate based on current emissions shares rather than adjusting for sectoral abatement potential, following standard practice in national climate frameworks. This yields a conservative test: if carbon pricing cannot deliver proportional reductions, stronger measures are clearly needed.
+
+\subsubsection{Quantifying policy-performance gaps}
+
+For each carbon price scenario $s$, we define the policy-performance gap as the percentage by which cumulative emissions exceed (positive gap) or fall short of (negative gap) the allocated carbon budget:
+
+\begin{align}
+\text{Gap}_s &= \frac{\sum_{t \in \mathcal{T}} E_{s,t}^{optimal} - CB^{POSCO}}{CB^{POSCO}} \times 100\%, \label{eq:gap}
+\end{align}
+where optimal emissions in each period are calculated from the model's production decisions:
+\begin{align}
+E_{s,t}^{optimal} &= \sum_{r \in \mathcal{R}} ef_r^{net} \cdot Q_{r,t}^*(s). \label{eq:optimal_emissions}
+\end{align}
+
+A positive gap indicates systematic overshooting where profit-maximizing investment behavior fails to stay within climate-consistent budgets. A zero or negative gap would indicate budget compliance, suggesting carbon pricing trajectories are adequate. The magnitude of positive gaps reveals how much additional policy intervention—higher prices, faster free allocation phase-outs, complementary regulations—would be required to close the policy-performance gap.
+
+This metric provides a clear, quantitative test of our central hypothesis: that current carbon pricing trajectories are inadequate for sectoral carbon budget compliance. Unlike vague claims about "insufficient ambition," the gap metric precisely quantifies shortfalls in policy design.
+
+\subsection{Scenario design and sensitivity analysis}
+
+We implement three carbon price trajectories drawn from the Network for Greening the Financial System (NGFS) Phase 5 scenarios, each representing different levels of climate policy ambition:
+
+\textbf{Net Zero 2050 (NZ2050):} Aggressive decarbonization consistent with limiting warming to 1.5°C. Carbon prices rise from \$50/tCO$_2$ in 2025 to \$150/tCO$_2$ in 2030 and \$450/tCO$_2$ by 2050. This trajectory reflects what would be required globally to achieve net-zero emissions by mid-century.
+
+\textbf{Below 2°C (B2C):} Moderate ambition aligned with well-below 2°C temperature outcomes. Prices reach \$30/tCO$_2$ in 2025, \$80/tCO$_2$ in 2030, and \$240/tCO$_2$ in 2050, representing significant but less aggressive policy strengthening.
+
+\textbf{Nationally Determined Contributions (NDCs):} Continuation of pledged but incompletely enforced commitments. Carbon prices remain at \$15/tCO$_2$ in 2025, rise modestly to \$40/tCO$_2$ by 2030, and plateau at \$100/tCO$_2$ in 2050.
+
+Free allocation under K-ETS follows Korea's industrial sector decarbonization timeline, declining from 8.5 MtCO$_2$ (2025) to 4.2 MtCO$_2$ (2030) consistent with NDC targets, then phasing out linearly to 1.0 MtCO$_2$ by 2050. This ensures meaningful carbon price exposure during critical technology transition periods.
+
+To test the robustness of our findings, we conduct several sensitivity analyses:
+\begin{itemize}[leftmargin=*]
+  \item \textbf{CCUS availability:} We solve the Net Zero scenario with CCUS deployment disabled to assess reliance on carbon capture for budget compliance.
+  \item \textbf{Hydrogen costs:} We test an optimistic case with hydrogen costs 20\% below baseline to examine price thresholds for hydrogen adoption.
+  \item \textbf{Scrap constraints:} We vary scrap availability limits to assess circularity pathway contributions.
+  \item \textbf{Discount rates:} We test alternative rates (3\% and 7\%) to assess sensitivity to time preference.
+\end{itemize}
+
+\subsection{Solution method and implementation}
+
+The mixed-integer linear program is implemented in Python using the \texttt{Pyomo} optimization modeling framework and solved using the open-source \texttt{HiGHS} solver. The model comprises approximately 2,500 decision variables (including 650 integer variables) and 3,000 constraints, solving to optimality in under 60 seconds on standard hardware.
+
+Key model outputs include:
+\begin{itemize}[leftmargin=*]
+  \item Annual production mix by technology route ($Q_{r,t}$) and capacity evolution ($K_{r,t}$)
+  \item Investment timing and sequencing decisions ($B_{r,t}$)
+  \item Cumulative and annual Scope 1 emissions trajectories
+  \item ETS compliance costs and total system cost decomposition
+  \item Hydrogen, electricity, and feedstock demand projections
+\end{itemize}
+
+All code and data are available in the supplementary materials to ensure reproducibility.
