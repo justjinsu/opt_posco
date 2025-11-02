@@ -1,0 +1,364 @@
+13:17:20 - ================================================================================
+13:17:20 - SCENARIO: Net Zero 2050 ($383 in 2030, $638 in 2050)
+13:17:20 - ================================================================================
+13:17:20 - Loading parameters from data/posco_parameters_consolidated.xlsx
+13:17:20 - Carbon scenario: NGFS_NetZero2050, Grid: base, H2: baseline
+13:17:20 - Loading technology routes
+13:17:20 - Loading process intensities
+13:17:20 - Loading emission factors
+13:17:20 - Loading fuel prices
+13:17:20 - Loading grid carbon intensity
+13:17:20 - Loading carbon price
+13:17:20 - Loading demand path
+13:17:20 - Loading scrap availability from workbook
+13:17:20 - Loading free allocation parameters
+13:17:20 - Building industry cap from anchors
+13:17:20 - Loading product shares
+13:17:20 - Parameter validation passed
+13:17:20 - Loaded parameters: 7 routes, 26 years
+13:17:20 - Years: 2025-2050
+13:17:20 - Routes: ['BF-BOF', 'BF-BOF+CCUS', 'FINEX-BOF', 'Scrap-EAF', 'NG-DRI-EAF', 'H2-DRI-EAF', 'HyREX']
+13:17:20 - Free allocation 2025: 75.000 MtCO2
+13:17:20 - Scrap availability 2025: 12.000 Mt
+13:17:20 - ✓ Parameters loaded
+13:17:20 - Building optimization model with corrected ETS logic
+13:17:20 - Discount rate: 5.0%, Utilization: 90.0%
+13:17:20 - CCUS capture rate: 80.0%
+13:17:20 - Routes: 7 total, 1 with CCUS
+13:17:20 - CCUS routes: ['BF-BOF+CCUS']
+13:17:20 - Route BF-BOF+CCUS: EF 2.100 -> 0.420 tCO2/t (CCUS 80.0%)
+13:17:20 - ETS parameters (first/last 3 years):
+13:17:20 -   2025: carbon_price=$0/tCO2, free_alloc=75.0MtCO2
+13:17:20 -   2026: carbon_price=$96/tCO2, free_alloc=70.5MtCO2
+13:17:20 -   2027: carbon_price=$191/tCO2, free_alloc=66.0MtCO2
+13:17:20 -   2048: carbon_price=$597/tCO2, free_alloc=25.5MtCO2
+13:17:20 -   2049: carbon_price=$618/tCO2, free_alloc=24.0MtCO2
+13:17:20 -   2050: carbon_price=$638/tCO2, free_alloc=22.5MtCO2
+13:17:20 - Variables: 572 total
+13:17:20 - Applied timing constraints to H2 routes: ['H2-DRI-EAF', 'HyREX']
+13:17:20 - Model built successfully with corrected ETS logic
+13:17:20 - Constraints: 6
+13:17:20 - Variables: 4
+13:17:20 - ✓ Model built
+13:17:20 - Solving...
+Running HiGHS 1.11.0 (git hash: 364c83a): Copyright (c) 2025 HiGHS under MIT licence terms
+MIP  has 452 rows; 572 cols; 1485 nonzeros; 182 integer variables (0 binary)
+Coefficient ranges:
+  Matrix [1e-01, 5e+00]
+  Cost   [2e-02, 7e+00]
+  Bound  [0e+00, 0e+00]
+  RHS    [1e+01, 8e+01]
+Presolving model
+434 rows, 554 cols, 1441 nonzeros  0s
+316 rows, 436 cols, 1291 nonzeros  0s
+253 rows, 380 cols, 1225 nonzeros  0s
+244 rows, 364 cols, 1175 nonzeros  0s
+
+Solving MIP model with:
+   244 rows
+   364 cols (0 binary, 149 integer, 18 implied int., 197 continuous, 0 domain fixed)
+   1175 nonzeros
+
+Src: B => Branching; C => Central rounding; F => Feasibility pump; J => Feasibility jump;
+     H => Heuristic; L => Sub-MIP; P => Empty MIP; R => Randomized rounding; Z => ZI Round;
+     I => Shifting; S => Solve LP; T => Evaluate node; U => Unbounded; X => User solution;
+     z => Trivial zero; l => Trivial lower; u => Trivial upper; p => Trivial point
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+         0       0         0   0.00%   66.41335609     inf                  inf        0      0      0         0     0.0s
+         0       0         0   0.00%   424.0453051     inf                  inf        0      0      0       238     0.5s
+ R       0       0         0   0.00%   425.7651916     431.9417777        1.43%      318     25      0       294     1.2s
+ L       0       0         0   0.00%   427.2399629     427.6569315        0.10%     1332     84    445       709     2.7s
+ L       0       0         0   0.00%   427.2431466     427.5666453        0.08%     1349     85    445      1417     3.0s
+
+59.7% inactive integer columns, restarting
+Model after restart has 148 rows, 187 cols (11 bin., 49 int., 8 impl., 119 cont., 0 dom.fix.), and 550 nonzeros
+
+         0       0         0   0.00%   427.243767      427.5666453        0.08%       39      0      0      2291     3.0s
+         0       0         0   0.00%   427.243767      427.5666453        0.08%       39     37      0      2407     3.0s
+
+10.0% inactive integer columns, restarting
+Model after restart has 139 rows, 176 cols (9 bin., 45 int., 7 impl., 115 cont., 0 dom.fix.), and 501 nonzeros
+
+         0       0         0   0.00%   427.2981618     427.5666453        0.06%       31      0      0      3267     3.6s
+         0       0         0   0.00%   427.2981618     427.5666453        0.06%       31     31      0      3396     3.6s
+        15       0         3 100.00%   427.5255614     427.5666453        0.01%      534     58     66      9742     4.8s
+
+Solving report
+  Status            Optimal
+  Primal bound      427.566645319
+  Dual bound        427.525561373
+  Gap               0.00961% (tolerance: 0.01%)
+  P-D integral      0.0187188700935
+  Solution status   feasible
+                    427.566645319 (objective)
+                    0 (bound viol.)
+                    5.28355137419e-13 (int. viol.)
+                    0 (row viol.)
+  Timing            4.81 (total)
+                    0.00 (presolve)
+                    0.00 (solve)
+                    0.00 (postsolve)
+  Max sub-MIP depth 6
+  Nodes             15
+  Repair LPs        0 (0 feasible; 0 iterations)
+  LP iterations     9742 (total)
+                    4063 (strong br.)
+                    888 (separation)
+                    3853 (heuristics)
+13:17:25 - ✓ OPTIMAL! NPV: $427.57B
+13:17:25 - Exporting time series to outputs/series_NGFS_NetZero2050.csv
+13:17:25 - Exported 26 years of data
+13:17:25 - ✓ Exported to outputs/series_NGFS_NetZero2050.csv
+13:17:25 - 
+Cumulative emissions: 1146 MtCO2 (+36, +3.2%)
+13:17:25 - 2050 Tech Mix:
+13:17:25 -   BF-BOF: 13.3%
+13:17:25 -   BF-BOF+CCUS: 51.0%
+13:17:25 -   Scrap-EAF: 35.7%
+13:17:25 - 
+13:17:25 - ================================================================================
+13:17:25 - SCENARIO: Below 2°C ($71 in 2030, $166 in 2050)
+13:17:25 - ================================================================================
+13:17:25 - Loading parameters from data/posco_parameters_consolidated.xlsx
+13:17:25 - Carbon scenario: NGFS_Below2C, Grid: base, H2: baseline
+13:17:25 - Loading technology routes
+13:17:25 - Loading process intensities
+13:17:25 - Loading emission factors
+13:17:25 - Loading fuel prices
+13:17:25 - Loading grid carbon intensity
+13:17:25 - Loading carbon price
+13:17:25 - Loading demand path
+13:17:25 - Loading scrap availability from workbook
+13:17:25 - Loading free allocation parameters
+13:17:25 - Building industry cap from anchors
+13:17:25 - Loading product shares
+13:17:25 - Parameter validation passed
+13:17:25 - Loaded parameters: 7 routes, 26 years
+13:17:25 - Years: 2025-2050
+13:17:25 - Routes: ['BF-BOF', 'BF-BOF+CCUS', 'FINEX-BOF', 'Scrap-EAF', 'NG-DRI-EAF', 'H2-DRI-EAF', 'HyREX']
+13:17:25 - Free allocation 2025: 75.000 MtCO2
+13:17:25 - Scrap availability 2025: 12.000 Mt
+13:17:25 - ✓ Parameters loaded
+13:17:25 - Building optimization model with corrected ETS logic
+13:17:25 - Discount rate: 5.0%, Utilization: 90.0%
+13:17:25 - CCUS capture rate: 80.0%
+13:17:25 - Routes: 7 total, 1 with CCUS
+13:17:25 - CCUS routes: ['BF-BOF+CCUS']
+13:17:25 - Route BF-BOF+CCUS: EF 2.100 -> 0.420 tCO2/t (CCUS 80.0%)
+13:17:25 - ETS parameters (first/last 3 years):
+13:17:25 -   2025: carbon_price=$0/tCO2, free_alloc=75.0MtCO2
+13:17:25 -   2026: carbon_price=$18/tCO2, free_alloc=70.5MtCO2
+13:17:25 -   2027: carbon_price=$35/tCO2, free_alloc=66.0MtCO2
+13:17:25 -   2048: carbon_price=$150/tCO2, free_alloc=25.5MtCO2
+13:17:25 -   2049: carbon_price=$158/tCO2, free_alloc=24.0MtCO2
+13:17:25 -   2050: carbon_price=$166/tCO2, free_alloc=22.5MtCO2
+13:17:25 - Variables: 572 total
+13:17:25 - Applied timing constraints to H2 routes: ['H2-DRI-EAF', 'HyREX']
+13:17:25 - Model built successfully with corrected ETS logic
+13:17:25 - Constraints: 6
+13:17:25 - Variables: 4
+13:17:25 - ✓ Model built
+13:17:25 - Solving...
+Running HiGHS 1.11.0 (git hash: 364c83a): Copyright (c) 2025 HiGHS under MIT licence terms
+MIP  has 452 rows; 572 cols; 1485 nonzeros; 182 integer variables (0 binary)
+Coefficient ranges:
+  Matrix [1e-01, 5e+00]
+  Cost   [2e-02, 7e+00]
+  Bound  [0e+00, 0e+00]
+  RHS    [1e+01, 8e+01]
+Presolving model
+434 rows, 554 cols, 1441 nonzeros  0s
+316 rows, 436 cols, 1291 nonzeros  0s
+253 rows, 380 cols, 1225 nonzeros  0s
+244 rows, 364 cols, 1175 nonzeros  0s
+
+Solving MIP model with:
+   244 rows
+   364 cols (0 binary, 149 integer, 18 implied int., 197 continuous, 0 domain fixed)
+   1175 nonzeros
+
+Src: B => Branching; C => Central rounding; F => Feasibility pump; J => Feasibility jump;
+     H => Heuristic; L => Sub-MIP; P => Empty MIP; R => Randomized rounding; Z => ZI Round;
+     I => Shifting; S => Solve LP; T => Evaluate node; U => Unbounded; X => User solution;
+     z => Trivial zero; l => Trivial lower; u => Trivial upper; p => Trivial point
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+         0       0         0   0.00%   66.41335609     inf                  inf        0      0      0         0     0.0s
+         0       0         0   0.00%   393.504149      inf                  inf        0      0      0       190     0.5s
+ R       0       0         0   0.00%   394.4440225     396.4614673        0.51%       14      3      0       194     3.3s
+ T       0       0         0   0.00%   394.4440225     395.2530584        0.20%       14      3      0       195     3.3s
+         1       0         1 100.00%   395.2530584     395.2530584        0.00%       14      3      0       195     3.3s
+
+Solving report
+  Status            Optimal
+  Primal bound      395.253058435
+  Dual bound        395.253058435
+  Gap               0% (tolerance: 0.01%)
+  P-D integral      1.68814706488e-05
+  Solution status   feasible
+                    395.253058435 (objective)
+                    0 (bound viol.)
+                    0 (int. viol.)
+                    0 (row viol.)
+  Timing            3.32 (total)
+                    0.00 (presolve)
+                    0.00 (solve)
+                    0.00 (postsolve)
+  Max sub-MIP depth 0
+  Nodes             1
+  Repair LPs        0 (0 feasible; 0 iterations)
+  LP iterations     195 (total)
+                    0 (strong br.)
+                    4 (separation)
+                    0 (heuristics)
+13:17:29 - ✓ OPTIMAL! NPV: $395.25B
+13:17:29 - Exporting time series to outputs/series_NGFS_Below2C.csv
+13:17:29 - Exported 26 years of data
+13:17:29 - ✓ Exported to outputs/series_NGFS_Below2C.csv
+13:17:29 - 
+Cumulative emissions: 1981 MtCO2 (+871, +78.4%)
+13:17:29 - 2050 Tech Mix:
+13:17:29 -   BF-BOF: 94.9%
+13:17:29 -   Scrap-EAF: 5.1%
+13:17:29 - 
+13:17:29 - ================================================================================
+13:17:29 - SCENARIO: NDCs ($118 in 2030, $130 in 2050)
+13:17:29 - ================================================================================
+13:17:29 - Loading parameters from data/posco_parameters_consolidated.xlsx
+13:17:29 - Carbon scenario: NGFS_NDCs, Grid: base, H2: baseline
+13:17:29 - Loading technology routes
+13:17:29 - Loading process intensities
+13:17:29 - Loading emission factors
+13:17:29 - Loading fuel prices
+13:17:29 - Loading grid carbon intensity
+13:17:29 - Loading carbon price
+13:17:29 - Loading demand path
+13:17:29 - Loading scrap availability from workbook
+13:17:29 - Loading free allocation parameters
+13:17:29 - Building industry cap from anchors
+13:17:29 - Loading product shares
+13:17:29 - Parameter validation passed
+13:17:29 - Loaded parameters: 7 routes, 26 years
+13:17:29 - Years: 2025-2050
+13:17:29 - Routes: ['BF-BOF', 'BF-BOF+CCUS', 'FINEX-BOF', 'Scrap-EAF', 'NG-DRI-EAF', 'H2-DRI-EAF', 'HyREX']
+13:17:29 - Free allocation 2025: 75.000 MtCO2
+13:17:29 - Scrap availability 2025: 12.000 Mt
+13:17:29 - ✓ Parameters loaded
+13:17:29 - Building optimization model with corrected ETS logic
+13:17:29 - Discount rate: 5.0%, Utilization: 90.0%
+13:17:29 - CCUS capture rate: 80.0%
+13:17:29 - Routes: 7 total, 1 with CCUS
+13:17:29 - CCUS routes: ['BF-BOF+CCUS']
+13:17:29 - Route BF-BOF+CCUS: EF 2.100 -> 0.420 tCO2/t (CCUS 80.0%)
+13:17:29 - ETS parameters (first/last 3 years):
+13:17:29 -   2025: carbon_price=$0/tCO2, free_alloc=75.0MtCO2
+13:17:29 -   2026: carbon_price=$30/tCO2, free_alloc=70.5MtCO2
+13:17:29 -   2027: carbon_price=$59/tCO2, free_alloc=66.0MtCO2
+13:17:29 -   2048: carbon_price=$129/tCO2, free_alloc=25.5MtCO2
+13:17:29 -   2049: carbon_price=$129/tCO2, free_alloc=24.0MtCO2
+13:17:29 -   2050: carbon_price=$130/tCO2, free_alloc=22.5MtCO2
+13:17:29 - Variables: 572 total
+13:17:29 - Applied timing constraints to H2 routes: ['H2-DRI-EAF', 'HyREX']
+13:17:29 - Model built successfully with corrected ETS logic
+13:17:29 - Constraints: 6
+13:17:29 - Variables: 4
+13:17:29 - ✓ Model built
+13:17:29 - Solving...
+Running HiGHS 1.11.0 (git hash: 364c83a): Copyright (c) 2025 HiGHS under MIT licence terms
+MIP  has 452 rows; 572 cols; 1485 nonzeros; 182 integer variables (0 binary)
+Coefficient ranges:
+  Matrix [1e-01, 5e+00]
+  Cost   [2e-02, 7e+00]
+  Bound  [0e+00, 0e+00]
+  RHS    [1e+01, 8e+01]
+Presolving model
+434 rows, 554 cols, 1441 nonzeros  0s
+316 rows, 436 cols, 1291 nonzeros  0s
+253 rows, 380 cols, 1225 nonzeros  0s
+244 rows, 364 cols, 1175 nonzeros  0s
+
+Solving MIP model with:
+   244 rows
+   364 cols (0 binary, 149 integer, 18 implied int., 197 continuous, 0 domain fixed)
+   1175 nonzeros
+
+Src: B => Branching; C => Central rounding; F => Feasibility pump; J => Feasibility jump;
+     H => Heuristic; L => Sub-MIP; P => Empty MIP; R => Randomized rounding; Z => ZI Round;
+     I => Shifting; S => Solve LP; T => Evaluate node; U => Unbounded; X => User solution;
+     z => Trivial zero; l => Trivial lower; u => Trivial upper; p => Trivial point
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+         0       0         0   0.00%   66.41335609     inf                  inf        0      0      0         0     0.0s
+         0       0         0   0.00%   404.1094735     inf                  inf        0      0      0       202     0.5s
+ R       0       0         0   0.00%   405.0129933     405.0129933        0.00%       23      3      0       208     1.7s
+         1       0         1 100.00%   405.0129933     405.0129933        0.00%       23      3      0       208     1.7s
+
+Solving report
+  Status            Optimal
+  Primal bound      405.012993294
+  Dual bound        405.012993294
+  Gap               0% (tolerance: 0.01%)
+  P-D integral      0
+  Solution status   feasible
+                    405.012993294 (objective)
+                    0 (bound viol.)
+                    0 (int. viol.)
+                    0 (row viol.)
+  Timing            1.71 (total)
+                    0.00 (presolve)
+                    0.00 (solve)
+                    0.00 (postsolve)
+  Max sub-MIP depth 0
+  Nodes             1
+  Repair LPs        0 (0 feasible; 0 iterations)
+  LP iterations     208 (total)
+                    0 (strong br.)
+                    6 (separation)
+                    0 (heuristics)
+13:17:31 - ✓ OPTIMAL! NPV: $405.01B
+13:17:31 - Exporting time series to outputs/series_NGFS_NDCs.csv
+13:17:31 - Exported 26 years of data
+13:17:31 - ✓ Exported to outputs/series_NGFS_NDCs.csv
+13:17:31 - 
+Cumulative emissions: 1978 MtCO2 (+868, +78.2%)
+13:17:31 - 2050 Tech Mix:
+13:17:31 -   BF-BOF: 94.9%
+13:17:31 -   Scrap-EAF: 5.1%
+13:17:31 - 
+13:17:31 - 
+================================================================================
+13:17:31 - FINAL SUMMARY - NGFS Phase V Results
+13:17:31 - ================================================================================
+13:17:31 - 
+Net Zero 2050:
+13:17:31 -   Cumulative: 1146 MtCO2 (+36, +3.2%)
+13:17:31 -   NPV: $427.57B
+13:17:31 -   2050 Top technologies:
+13:17:31 -     BF-BOF+CCUS: 51.0%
+13:17:31 -     Scrap-EAF: 35.7%
+13:17:31 -     BF-BOF: 13.3%
+13:17:31 - 
+Below 2°C:
+13:17:31 -   Cumulative: 1981 MtCO2 (+871, +78.4%)
+13:17:31 -   NPV: $395.25B
+13:17:31 -   2050 Top technologies:
+13:17:31 -     BF-BOF: 94.9%
+13:17:31 -     Scrap-EAF: 5.1%
+13:17:31 - 
+NDCs:
+13:17:31 -   Cumulative: 1978 MtCO2 (+868, +78.2%)
+13:17:31 -   NPV: $405.01B
+13:17:31 -   2050 Top technologies:
+13:17:31 -     BF-BOF: 94.9%
+13:17:31 -     Scrap-EAF: 5.1%
+13:17:31 - 
+================================================================================
+13:17:31 - ✓ ALL SCENARIOS COMPLETE!
+13:17:31 - ================================================================================

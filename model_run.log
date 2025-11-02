@@ -1,0 +1,69 @@
+13:10:03 - INFO - 
+================================================================================
+13:10:03 - INFO - POSCO STEEL DECARBONIZATION OPTIMIZATION
+13:10:03 - INFO - NGFS Phase V Carbon Price Scenarios (US$2024)
+13:10:03 - INFO - ================================================================================
+
+13:10:03 - INFO - ✓ Using data file: data/posco_parameters_consolidated_v2_0.xlsx
+
+13:10:03 - INFO - 
+================================================================================
+13:10:03 - INFO - SCENARIO: Net Zero 2050 ($383 in 2030, $638 in 2050)
+13:10:03 - INFO - ================================================================================
+
+13:10:03 - INFO - ================================================================================
+13:10:03 - INFO - Running scenario: NGFS_NetZero2050
+13:10:03 - INFO - ================================================================================
+13:10:03 - INFO - Loading parameters from data/posco_parameters_consolidated_v2_0.xlsx...
+13:10:03 - ERROR - ✗ Error running NGFS_NetZero2050: module 'io' has no attribute 'load_parameters'
+Traceback (most recent call last):
+  File "/Users/jinsupark/jinsu-coding/opt_posco/opt_posco/run_ngfs_model.py", line 44, in run_scenario
+    params = posco_io.load_parameters(
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'io' has no attribute 'load_parameters'
+13:10:03 - ERROR - ✗ NGFS_NetZero2050 failed!
+13:10:03 - INFO - 
+================================================================================
+13:10:03 - INFO - SCENARIO: Below 2°C ($71 in 2030, $166 in 2050)
+13:10:03 - INFO - ================================================================================
+
+13:10:03 - INFO - ================================================================================
+13:10:03 - INFO - Running scenario: NGFS_Below2C
+13:10:03 - INFO - ================================================================================
+13:10:03 - INFO - Loading parameters from data/posco_parameters_consolidated_v2_0.xlsx...
+13:10:03 - ERROR - ✗ Error running NGFS_Below2C: module 'io' has no attribute 'load_parameters'
+Traceback (most recent call last):
+  File "/Users/jinsupark/jinsu-coding/opt_posco/opt_posco/run_ngfs_model.py", line 44, in run_scenario
+    params = posco_io.load_parameters(
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'io' has no attribute 'load_parameters'
+13:10:03 - ERROR - ✗ NGFS_Below2C failed!
+13:10:03 - INFO - 
+================================================================================
+13:10:03 - INFO - SCENARIO: NDCs ($118 in 2030, $130 in 2050)
+13:10:03 - INFO - ================================================================================
+
+13:10:03 - INFO - ================================================================================
+13:10:03 - INFO - Running scenario: NGFS_NDCs
+13:10:03 - INFO - ================================================================================
+13:10:03 - INFO - Loading parameters from data/posco_parameters_consolidated_v2_0.xlsx...
+13:10:03 - ERROR - ✗ Error running NGFS_NDCs: module 'io' has no attribute 'load_parameters'
+Traceback (most recent call last):
+  File "/Users/jinsupark/jinsu-coding/opt_posco/opt_posco/run_ngfs_model.py", line 44, in run_scenario
+    params = posco_io.load_parameters(
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'io' has no attribute 'load_parameters'
+13:10:03 - ERROR - ✗ NGFS_NDCs failed!
+13:10:03 - INFO - 
+================================================================================
+13:10:03 - INFO - SUMMARY
+13:10:03 - INFO - ================================================================================
+13:10:03 - INFO -   NGFS_NetZero2050: ✗ FAILED
+13:10:03 - INFO -   NGFS_Below2C: ✗ FAILED
+13:10:03 - INFO -   NGFS_NDCs: ✗ FAILED
+13:10:03 - INFO - ================================================================================
+
+13:10:03 - INFO - ✓ All outputs saved to: outputs/
+13:10:03 - INFO - ✓ Check series_*.csv files for time series results
+13:10:03 - ERROR - 
+✗ Some scenarios failed. Check logs above.
