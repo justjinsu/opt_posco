@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.5.5)  2 NOV 2025 23:34
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.5.5)  2 NOV 2025 23:31
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**main.tex
-(./main.tex
+**main_revised_7500.tex
+(./main_revised_7500.tex
 LaTeX2e <2022-11-01> patch level 1
 L3 programming layer <2023-02-22>
 (/usr/local/texlive/2023/texmf-dist/tex/latex/elsarticle/elsarticle.cls
@@ -86,7 +86,8 @@ File: pdftex.def 2022/09/22 v1.2b Graphics/color driver for pdftex
 \@sep=\skip50
 \@@sep=\skip51
 
-(./main.spl) (/usr/local/texlive/2023/texmf-dist/tex/latex/natbib/natbib.sty
+(./main_revised_7500.spl)
+(/usr/local/texlive/2023/texmf-dist/tex/latex/natbib/natbib.sty
 Package: natbib 2010/09/13 8.31b (PWD, AO)
 \bibhang=\skip52
 \bibsep=\skip53
@@ -94,7 +95,7 @@ LaTeX Info: Redefining \cite on input line 694.
 \c@NAT@ctr=\count267
 )
 \splwrite=\write3
-\openout3 = `main.spl'.
+\openout3 = `main_revised_7500.spl'.
 
 \appnamewidth=\dimen147
 )
@@ -354,8 +355,8 @@ Package: enumitem 2019/06/20 v3.9 Customized lists
 \enit@count@id=\count303
 \enitdp@description=\count304
 )
-(./main.aux)
-\openout1 = `main.aux'.
+(./main_revised_7500.aux)
+\openout1 = `main_revised_7500.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 8.
 LaTeX Font Info:    ... okay on input line 8.
@@ -400,9 +401,9 @@ e
 ))
 Package hyperref Info: Link coloring OFF on input line 8.
 
-(./main.out) (./main.out)
+(./main_revised_7500.out) (./main_revised_7500.out)
 \@outlinefile=\write4
-\openout4 = `main.out'.
+\openout4 = `main_revised_7500.out'.
 
 
 Overfull \hbox (8.15326pt too wide) in paragraph at lines 19--20
@@ -432,7 +433,25 @@ Overfull \hbox (2.61108pt too wide) has occurred while \output is active
 
 [2
 
-] [3] [4] [5] [6] [7] [8] [9] [10] [11]
+] [3] [4]
+
+Package natbib Warning: Citation `IEA2020steel' on page 5 undefined on input li
+ne 58.
+
+
+Package natbib Warning: Citation `Vogl2018' on page 5 undefined on input line 5
+8.
+
+
+Package natbib Warning: Citation `Otto2017' on page 5 undefined on input line 5
+8.
+
+[5] [6] [7] [8] [9] [10]
+
+Package natbib Warning: Citation `raupach2014sharing' on page 11 undefined on i
+nput line 138.
+
+[11]
 Overfull \hbox (28.75145pt too wide) in paragraph at lines 148--149
 []\OT1/cmr/m/n/12 We eval-u-ate three NGFS Phase V car-bon price sce-nar-ios fr
 om the MESSAGEix-
@@ -484,7 +503,12 @@ Overfull \hbox (0.59273pt too wide) in paragraph at lines 240--241
  POSCO's HyREX
  []
 
-[22] [23] [24] [25]
+[22]
+
+Package natbib Warning: Citation `POSCO2023SR' on page 23 undefined on input li
+ne 242.
+
+[23] [24] [25]
 Overfull \hbox (4.92046pt too wide) in paragraph at lines 264--265
 []\OT1/cmr/m/n/12 Government co-investment breaks the grid-lock. Fol-low-ing No
 r-way's North-
@@ -502,21 +526,25 @@ Overfull \hbox (46.02133pt too wide) in paragraph at lines 337--338
 com / planit-[]institute / posco-[]optimization$[]\OT1/cmr/m/n/12 .
  []
 
-(./main.bbl [35]) [36] (./main.aux)
+No file main_revised_7500.bbl.
+
+Package natbib Warning: There were undefined citations.
+
+[35] (./main_revised_7500.aux)
 
 LaTeX Warning: There were undefined references.
 
-Package rerunfilecheck Info: File `main.out' has not changed.
+Package rerunfilecheck Info: File `main_revised_7500.out' has not changed.
 (rerunfilecheck)             Checksum: 97B398E0B8FA309981EAD8FE9E31FD22;4539.
  ) 
 Here is how much of TeX's memory you used:
- 10703 strings out of 476025
- 167268 string characters out of 5790018
+ 10664 strings out of 476025
+ 166980 string characters out of 5790018
  1860388 words of memory out of 5000000
- 30951 multiletter control sequences out of 15000+600000
+ 30921 multiletter control sequences out of 15000+600000
  518646 words of font info for 54 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,6n,76p,1611b,616s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,6n,76p,1624b,616s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
 ></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb>
 </usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><
@@ -532,10 +560,10 @@ live/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti7.pfb></usr/local/texli
 ve/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texliv
 e/2023/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/
 2023/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on main.pdf (36 pages, 249289 bytes).
+Output written on main_revised_7500.pdf (35 pages, 245834 bytes).
 PDF statistics:
- 366 PDF objects out of 1000 (max. 8388607)
- 295 compressed objects within 3 object streams
- 75 named destinations out of 1000 (max. 500000)
+ 346 PDF objects out of 1000 (max. 8388607)
+ 276 compressed objects within 3 object streams
+ 68 named destinations out of 1000 (max. 500000)
  169 words of extra memory for PDF output out of 10000 (max. 10000000)
 
