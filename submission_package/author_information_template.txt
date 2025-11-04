@@ -1,0 +1,77 @@
+AUTHOR INFORMATION TEMPLATE
+===========================
+
+Please fill in the following information for submission to Editorial Manager:
+
+CORRESPONDING AUTHOR
+--------------------
+Full Name: Jinsu Park
+Email: [YOUR EMAIL]
+ORCID iD: [Get free at https://orcid.org if you don't have one]
+Institution: PLANiT Institute
+Full Address: [Complete institutional address with postal code]
+Country: [Country]
+Phone: [Optional]
+
+
+AUTHOR CONTRIBUTION STATEMENT (CRediT Taxonomy)
+----------------------------------------------
+For single-author papers, select all applicable roles:
+
+☐ Conceptualization - Ideas; formulation or evolution of overarching research goals and aims
+☐ Data curation - Management activities to annotate, scrub data and maintain research data
+☐ Formal analysis - Application of statistical, mathematical, computational techniques
+☐ Funding acquisition - Acquisition of the financial support for the project
+☐ Investigation - Conducting a research and investigation process
+☐ Methodology - Development or design of methodology; creation of models
+☐ Project administration - Management and coordination responsibility
+☐ Resources - Provision of study materials, computing resources, etc.
+☐ Software - Programming, software development; implementation of code
+☐ Supervision - Oversight and leadership responsibility
+☐ Validation - Verification of the overall replication/reproducibility of results
+☐ Visualization - Preparation, creation and/or presentation of the published work
+☐ Writing – original draft - Preparation, creation of the published work
+☐ Writing – review & editing - Critical review, commentary or revision
+
+
+SUGGESTED REVIEWER 1 (Optional but helpful)
+--------------------------------------------
+Name: [Expert in carbon pricing or industrial decarbonization]
+Email:
+Institution:
+Reason for suggestion: [e.g., "Expert in carbon pricing mechanisms for heavy industry"]
+
+
+SUGGESTED REVIEWER 2 (Optional but helpful)
+--------------------------------------------
+Name: [Expert in steel decarbonization or energy system modeling]
+Email:
+Institution:
+Reason for suggestion: [e.g., "Leading researcher on steel sector decarbonization pathways"]
+
+
+SUGGESTED REVIEWER 3 (Optional but helpful)
+--------------------------------------------
+Name: [Expert in Korean climate policy or ETS]
+Email:
+Institution:
+Reason for suggestion: [e.g., "Specialist in Korean emissions trading system"]
+
+
+KEYWORDS (5-6 keywords for indexing)
+-------------------------------------
+Suggested keywords:
+1. Carbon pricing
+2. Steel decarbonization
+3. Hydrogen steelmaking
+4. Emissions trading system
+5. Industrial policy
+6. Carbon budget
+
+
+NOTES
+-----
+- ORCID iD is strongly recommended (free registration at https://orcid.org)
+- Suggested reviewers should not have conflicts of interest
+- Do not suggest reviewers from your own institution
+- Reviewers should be experts in the field but not collaborators

@@ -1,0 +1,27 @@
+Dear Editors of Energy Policy,
+
+We submit our manuscript "Carbon Pricing and Industrial Decarbonization: Can Korea's ETS Drive Low-Carbon Investment in Steel?" for consideration as a Full Length Article in Energy Policy.
+
+This study addresses a critical gap in climate policy research by providing the first quantitative test of whether carbon pricing trajectories can align steel industry investment incentives with sectoral carbon budgets. Using mixed-integer optimization that explicitly captures the lumpy, irreversible nature of steel capital decisions, we evaluate POSCO's technology portfolio choices under three globally consistent NGFS Phase V carbon price scenarios against Korea's sectoral budget of 1,110 MtCO₂ (2025-2050).
+
+Our findings deliver both promise and caution for industrial decarbonization policy. Under the most ambitious Net Zero 2050 trajectory—with carbon prices reaching $638/tCO₂ by 2050—hydrogen-based direct reduction captures 41% of 2050 output, achieving cumulative emissions of 1,169 MtCO₂, just 5.3% above the sectoral budget. This near-alignment validates POSCO's strategic commitment to hydrogen steelmaking and demonstrates that ambitious carbon pricing can work. However, moderate pricing trajectories (Below 2°C, NDCs) fail catastrophically with +78% budget overshoots, revealing that half-measures prove systematically inadequate.
+
+Three novel contributions distinguish this work. First, we integrate technology optimization with carbon budget evaluation using actual policy scenarios (NGFS Phase V, November 2024) rather than arbitrary price assumptions, directly linking firm-level investment behavior to national climate commitments. Second, our mixed-integer formulation explicitly models discrete blast furnace investment cycles and path dependencies that continuous-variable models overlook—critical features for capital-intensive sectors with 25-40 year asset lifetimes. Third, we demonstrate that institutional design matters as much as price levels: free allocation shields 94% of emissions from carbon costs even under Net Zero pricing, effectively nullifying the marginal abatement incentive.
+
+The research carries immediate policy relevance. Korea is currently strengthening its K-ETS ahead of 2030 NDC targets, while POSCO accelerates hydrogen infrastructure investments following its 2021 HyREX demonstration plant launch. Our analysis shows that announced carbon price trajectories remain inadequate without complementary reforms—accelerated free allocation phase-out, legislated price floors, infrastructure co-investment, and Carbon Contracts for Difference. These findings directly inform Korea's industrial decarbonization strategy and offer generalizable insights for steel sectors globally facing similar transformation pressures.
+
+This manuscript fits Energy Policy's scope as empirical research on climate policy instruments, industrial decarbonization, and energy transitions. The analysis combines engineering-economic optimization with climate policy evaluation, speaking to the journal's interdisciplinary audience spanning economics, engineering, and policy analysis. Our carbon budget framework addresses Energy Policy's priority themes of Paris Agreement implementation and sectoral decarbonization pathways.
+
+We believe this work will interest Energy Policy readers working on carbon pricing effectiveness, industrial policy design, steel sector transitions, and climate target compliance assessment. The NGFS scenario framework ensures relevance beyond Korea to other jurisdictions evaluating emissions trading system design for heavy industry.
+
+This manuscript represents original research not under consideration by any other journal. All data sources are publicly available and properly cited. Model code and processed outputs will be archived on Zenodo upon acceptance, ensuring full reproducibility.
+
+We have no conflicts of interest to declare. This research received no external funding.
+
+We would be pleased to suggest potential reviewers if helpful to the editorial process. Thank you for considering our manuscript for publication in Energy Policy.
+
+Sincerely,
+
+Jinsu Park
+PLANiT Institute
+[Please add your institutional affiliation and contact details]

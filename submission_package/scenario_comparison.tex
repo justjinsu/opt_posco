@@ -1,0 +1,43 @@
+\begin{table}[ht]
+  \centering
+  \caption{Scenario comparison: Carbon price trajectories, emissions and cost outcomes}
+  \label{tab:scenario-comparison}
+  \begin{threeparttable}
+  \begin{tabular}{@{}lcccc@{}}
+    \toprule
+    Metric & Net Zero 2050 & Net Zero 2050 (No CCUS) & Below 2$^\circ$C & NDCs \\
+    \midrule
+    \multicolumn{4}{l}{\textbf{Carbon price path}} \\
+    Carbon price 2030 (USD/tCO$_2$) & 150 & 150 & 80 & 40 \\
+    Carbon price 2050 (USD/tCO$_2$) & 450 & 450 & 240 & 100 \\
+    \midrule
+    \multicolumn{4}{l}{\textbf{Emissions and carbon budget}} \\
+    Cumulative Scope~1 emissions (MtCO$_2$) & 1{,}190 & 1{,}324 & 1{,}713 & 1{,}981 \\
+    Budget overshoot (MtCO$_2$) & +79.6 & +213.9 & +603.1 & +870.5 \\
+    Budget overshoot (\%) & +7.2 & +19.3 & +54.3 & +78.4 \\
+    Budget compliant? & \textbf{No} & \textbf{No} & \textbf{No} & \textbf{No} \\
+    \midrule
+    \multicolumn{4}{l}{\textbf{Production mix (2050)}} \\
+    Blast furnace share (\%) & 64.3 & 29.0 & 64.3 & 94.9 \\
+    Scrap-EAF share (\%) & 35.7 & 35.3 & 35.7 & 5.1 \\
+    CCUS-enabled share (\%) & 51.0 & 0.0 & 0.0 & 0.0 \\
+    Hydrogen routes share (\%) & 0.0 & 35.7 & 0.0 & 0.0 \\
+    First year scrap $\ge$50\% share & --- & --- & --- & --- \\
+    \midrule
+    \multicolumn{4}{l}{\textbf{Economic outcomes}} \\
+    Total system cost (2025--2050, billion USD) & 791.4 & 796.2 & 870.8 & 841.7 \\
+    Cost vs. NDC (billion USD) & $-$50.4 & $-$45.6 & +29.0 & 0.0 \\
+    Average cost per tonne steel (USD/t) & 810 & 815 & 891 & 861 \\
+    Cost per tonne CO$_2$ avoided (USD/tCO$_2$) & $-$63.7 & $-$69.4 & +108.4 & --- \\
+    \midrule
+    \multicolumn{4}{l}{\textbf{ETS exposure}} \\
+    Net ETS-liable emissions (MtCO$_2$) & 72.1 & 206.4 & 595.6 & 863.0 \\
+    Cumulative ETS cost (billion USD) & 9.3 & 43.1 & 88.7 & 59.7 \\
+    \bottomrule
+  \end{tabular}
+  \begin{tablenotes}
+    \footnotesize
+    \item Notes: Costs expressed in real 2024 USD. Carbon budget equals 1{,}110~MtCO$_2$ (POSCO allocation for 2025--2050). Net Zero (No CCUS) scenario sets capture efficiency to zero, forcing hydrogen-based DRI uptake. CAPEX/OPEX entries follow the heuristic estimates used in the cost analysis module (500/300~USD per ton of crude steel). Negative cost values indicate savings relative to the NDC trajectory because higher carbon prices shift expenditure from ETS payments to low-carbon investments. Source: optimisation outputs in \texttt{outputs/analysis}.
+  \end{tablenotes}
+  \end{threeparttable}
+\end{table}

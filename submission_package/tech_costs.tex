@@ -1,0 +1,24 @@
+\begin{table}[ht]
+  \centering
+  \caption{Technology cost and capacity assumptions}
+  \label{tab:tech-costs}
+  \begin{threeparttable}
+  \begin{tabular}{@{}lccc@{}}
+    \toprule
+    Route & Unit capacity (Mt/y) & CAPEX (USD/tpy) & Fixed OPEX (USD/tpy) \\
+    \midrule
+    BF--BOF & 5.0 & 1{,}000 & 100 \\
+    BF--BOF+CCUS & 5.0 & 1{,}400 & 150 \\
+    FINEX--BOF & 3.0 & 1{,}200 & 120 \\
+    Scrap--EAF & 2.0 & 800 & 80 \\
+    NG--DRI--EAF & 2.5 & 1{,}800 & 180 \\
+    H$_2$--DRI--EAF & 2.0 & 2{,}500 & 200 \\
+    HyREX & 1.5 & 3{,}000 & 250 \\
+    \bottomrule
+  \end{tabular}
+  \begin{tablenotes}
+    \footnotesize
+    \item Notes: Parameters sourced from the engineering data pack (\texttt{data/posco\_parameters\_consolidated.xlsx}; see \citet{MaterialEconomics2019,prammer2021steel,kuramochi2018beyond} for benchmark values). Unit capacities correspond to discrete module sizes in the optimisation. CAPEX/OPEX in real 2024 USD. Scope~1 emission factors and feedstock intensities are reported in Table~\ref{tab:tech-intensity}.
+  \end{tablenotes}
+  \end{threeparttable}
+\end{table}
