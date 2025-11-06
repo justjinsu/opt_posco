@@ -209,6 +209,7 @@ def figure_technology_shares(scenario_data: Dict[str, pd.DataFrame]) -> None:
     axes[-1].set_xlabel("Year")
     handles, labels = axes[0].get_legend_handles_labels()
     fig.legend(handles, labels, loc="upper center", ncol=4, frameon=False, bbox_to_anchor=(0.5, 1.02))
+    plt.tight_layout(rect=[0, 0, 1, 0.97])  # Add space for legend
     save_figure(fig, "Figure_2_Technology_Shares")
 
 

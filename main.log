@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.5.5)  4 NOV 2025 09:07
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.5.5)  5 NOV 2025 01:58
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**main.tex
-(./main.tex
+**/Users/jinsupark/jinsu-coding/opt_posco/opt_posco/main.tex
+(/Users/jinsupark/jinsu-coding/opt_posco/opt_posco/main.tex
 LaTeX2e <2022-11-01> patch level 1
 L3 programming layer <2023-02-22>
 (/usr/local/texlive/2023/texmf-dist/tex/latex/elsarticle/elsarticle.cls
@@ -1195,11 +1195,11 @@ Package pdftex.def Info: scope1_by_scenario.pdf  used on input line 359.
 LaTeX Warning: Reference `tab:annual-shares-ngfs_netzero2050' on page 10 undefi
 ned on input line 372.
 
-<technology_transition.pdf, id=323, 463.25633pt x 293.67654pt>
+<technology_transition.pdf, id=323, 464.6046pt x 294.76059pt>
 File: technology_transition.pdf Graphic file (type pdf)
 <use technology_transition.pdf>
 Package pdftex.def Info: technology_transition.pdf  used on input line 376.
-(pdftex.def)             Requested size: 362.37569pt x 229.72551pt.
+(pdftex.def)             Requested size: 362.37569pt x 229.90782pt.
 <production_mix_evolution.pdf, id=324, 462.9803pt x 293.67654pt>
 File: production_mix_evolution.pdf Graphic file (type pdf)
 <use production_mix_evolution.pdf>
@@ -1404,13 +1404,13 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 2986127C41969E45BAEA47A15EDC6AF9;7792.
  ) 
 Here is how much of TeX's memory you used:
- 39119 strings out of 476025
- 937818 string characters out of 5790018
+ 39120 strings out of 476025
+ 937966 string characters out of 5790018
  1886388 words of memory out of 5000000
  58796 multiletter control sequences out of 15000+600000
  568807 words of font info for 74 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 109i,15n,108p,1610b,1072s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 109i,15n,108p,1660b,1072s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></usr/lo
 cal/texlive/2023/texmf-dist/fonts/type1/public/lm/lmex10.pfb></usr/local/texliv
 e/2023/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></usr/local/texlive/2023/tex
@@ -1429,7 +1429,7 @@ live/2023/texmf-dist/fonts/type1/public/lm/lmsy7.pfb></usr/local/texlive/2023/t
 exmf-dist/fonts/type1/public/lm/lmtt10.pfb></usr/local/texlive/2023/texmf-dist/
 fonts/type1/public/lm/lmtt8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1
 /public/amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (22 pages, 610883 bytes).
+Output written on main.pdf (22 pages, 610918 bytes).
 PDF statistics:
  660 PDF objects out of 1000 (max. 8388607)
  550 compressed objects within 6 object streams

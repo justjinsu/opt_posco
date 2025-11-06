@@ -1,347 +1,40 @@
-\documentclass[review,12pt]{elsarticle}
-\usepackage{lineno,hyperref,graphicx,amsmath,booktabs,enumitem}
-\modulolinenumbers[5]
+\documentclass[preprint,1p,authoryear]{elsarticle}
+
+% ===== Packages =====
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs,threeparttable,siunitx}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{longtable}
+\usepackage{multirow}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{geometry}
+\geometry{margin=1in}
+\usepackage{csvsimple}
+\usepackage{pgfplotstable}
+
+% Graphics path
+\graphicspath{{figures/}}
 \journal{Energy Policy}
+\biboptions{authoryear}
 
-\bibliographystyle{elsarticle-harv}
 
+% ===== Macros =====
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\COtwo}{CO$_2$}
+\newcommand{\todo}[1]{\textcolor{red}{[TODO: #1]}}
+\sisetup{detect-weight=true, detect-family=true, group-separator=\,}
+
+% ===== Title & Authors =====
 \begin{document}
-
 \begin{frontmatter}
-
-\title{Can carbon pricing justify Korea's hydrogen steel transition? Testing POSCO's decarbonization strategy against sectoral carbon budgets}
+\title{Testing the limits of carbon pricing: Can Korea's emissions trading system align steel industry investments with national climate targets?}
 
 \author[planit]{Jinsu Park}
-\address[planit]{PLANiT Institute, Seoul, Republic of Korea}
-
-\section*{Highlights}
-\begin{itemize}[leftmargin=*]
-  \item \textbf{Hydrogen pathway viability}: Under Net Zero carbon pricing (\$383/tCO$_2$ by 2030, \$638/tCO$_2$ by 2050), hydrogen-based DRI captures 41\% of POSCO's 2050 output with cumulative emissions of 1,169~MtCO$_2$—overshooting the sectoral budget by only 5.3\%, validating POSCO's hydrogen strategy.
-  \item \textbf{Binary pricing outcome}: Ambitious Net Zero pricing enables hydrogen deployment and near-budget alignment, while moderate scenarios (Below~2$^\circ$C, NDCs) fail catastrophically with +78\% overshoots, demonstrating that half-measures cannot justify transformative hydrogen investment.
-  \item \textbf{Infrastructure dependency}: Hydrogen pathway requires dedicated supply chains (production, transport, pellet feedstock) but proves cost-competitive at \$815/t versus \$861/t under business-as-usual, showing early capital investment substitutes for recurring carbon costs.
-  \item \textbf{Price thresholds matter}: Hydrogen DRI becomes economic when carbon prices exceed \$350--400/tCO$_2$, explaining why only Net Zero pricing justifies POSCO's hydrogen investment while weaker scenarios lock in conventional blast furnaces.
-  \item \textbf{Policy enablers}: Realising the hydrogen pathway requires sustained price floors above \$600/tCO$_2$ by 2050, faster free-allocation phase-out, government co-investment in H$_2$ infrastructure, and long-term supply contracts that de-risk hydrogen steelmaking.
-\end{itemize}
-
-\begin{abstract}
-Can carbon pricing justify Korea's ambitious shift toward hydrogen steelmaking? We examine this question using a mixed-integer optimisation model that evaluates POSCO's technology choices under NGFS Phase V carbon-price trajectories (Net Zero 2050: \$383/tCO$_2$ in 2030, \$638/tCO$_2$ in 2050; Below~2$^\circ$C: \$71/\$166; NDCs: \$118/\$130) against a 1,110~MtCO$_2$ sectoral budget for 2025--2050. We find that ambitious Net Zero pricing enables hydrogen-based direct reduction to capture 41\% of 2050 output, achieving cumulative emissions of 1,169~MtCO$_2$—just 5.3\% above budget. This validates POSCO's hydrogen strategy: the optimisation independently selects H$_2$-DRI as the primary decarbonisation route when carbon prices sustain above \$350--400/tCO$_2$. Moderate pricing scenarios fail catastrophically—Below~2$^\circ$C and NDCs both overshoot by 78\%—because prices never justify the upfront hydrogen investment, locking in conventional blast furnaces through 2050. The hydrogen pathway proves cost-competitive at \$815/t steel versus \$861/t under business-as-usual, as early capital substitutes for recurring carbon costs. However, realising this pathway requires more than pricing alone: government must co-invest in hydrogen infrastructure (production, transport, pellet feedstock), accelerate free-allocation phase-out so firms face real carbon costs, and provide long-term supply contracts that de-risk the transition. Our results show carbon pricing can work—but only when sustained at levels that justify transformative investment in hydrogen technology.
-\end{abstract}
-
-\begin{keyword}
-Hydrogen steelmaking \sep carbon pricing \sep steel decarbonization \sep mixed-integer optimization \sep Korea ETS \sep NGFS scenarios \sep industrial policy
-\JEL{Q41, Q54, L61}
-\end{keyword}
-\end{frontmatter}
-
-% ===== 1. Introduction =====
-\section{Introduction}
-
-Can carbon pricing justify large-scale hydrogen investment in steelmaking? This question matters urgently for Korea, where POSCO—the world's sixth-largest steel producer—has committed to hydrogen-based direct reduction as its primary decarbonization pathway. The company's HyREX demonstration plant, operational since 2021, signals this strategic bet. Yet whether carbon market signals can make such investments profitable across the full production system remains untested.
-
-The stakes are considerable. POSCO's emissions alone account for 10\% of Korea's greenhouse gas inventory, roughly equivalent to Belgium's entire carbon footprint. Moving from today's coal-intensive blast furnaces to hydrogen steelmaking requires wholesale infrastructure replacement. Individual hydrogen DRI plants cost over \$2 billion and operate for 25-40 years—these aren't incremental adjustments but irreversible commitments that lock in technology pathways for decades.
-
-Korea's emissions trading system provides the policy backdrop. Launched in 2015, the K-ETS now covers 70\% of national emissions across 685 entities—making it the world's second-largest carbon market by coverage after the EU ETS. The system operates through five-year phases with declining emission caps: Phase I (2015-2017) established baseline allocation, Phase II (2018-2020) reduced caps by 3\%, Phase III (2021-2025) introduced auctioning for power sector, and current Phase IV (2026-2030) targets 40\% reduction from 2018 levels.
-
-However, POSCO historically received free allowances covering approximately 95\% of its emissions, effectively shielding the sector from carbon costs. This protection reflects competitiveness concerns in a trade-exposed sector facing imports from China (no carbon pricing) and Japan (voluntary schemes only). Free allocation is scheduled to decline as Korea pursues its 2050 carbon neutrality goal—dropping to 70\% by 2030, 50\% by 2035, and 30\% by 2040—gradually exposing steel producers to meaningful price signals. Whether these evolving prices can trigger the hydrogen transition while maintaining industrial competitiveness remains an open question with implications far beyond Korea.
-
-We examine this using mixed-integer optimization of POSCO's technology portfolio under three NGFS Phase V carbon price scenarios: Net Zero 2050 (\$383/tCO$_2$ by 2030, \$638 by 2050), Below 2°C (\$71/\$166), and NDCs (\$118/\$130). The model minimizes total system costs—capital, operations, and carbon compliance—while respecting technology constraints, feedstock limits, and Korea's sectoral carbon budget of 1,110 MtCO$_2$ for 2025-2050.
-
-Our central finding validates POSCO's hydrogen strategy. Under Net Zero pricing, hydrogen DRI captures 41\% of 2050 output, achieving cumulative emissions of 1,169 MtCO$_2$—just 5.3\% above budget. Moderate pricing scenarios fail catastrophically, with both Below 2°C and NDCs overshooting by 78\%, as prices never justify upfront hydrogen investment. The hydrogen pathway proves cost-competitive (\$815/t versus \$861/t under business-as-usual), but realizing it requires more than pricing alone: government must co-invest in infrastructure, accelerate free-allocation phase-out, and provide long-term contracts that de-risk the transition.
-
-The remainder of this paper proceeds as follows. Section 2 reviews relevant literature and positions our contribution. Section 3 describes our methodology, including the optimization model, carbon budget framework, and scenario design. Section 4 presents results on hydrogen pathway viability, technology deployment dynamics, and cost competitiveness. Section 5 discusses policy implications for infrastructure development and institutional reform. Section 6 acknowledges limitations, and Section 7 concludes.
-
-% ===== 2. Literature Review =====
-\section{Literature and Research Contribution}
-
-\subsection{Steel decarbonization and hydrogen pathways}
-
-Steel sector decarbonization research has identified three main routes: carbon capture retrofitted to blast furnaces, scrap-based electric arc furnaces, and hydrogen-based direct reduction \citep{IEA2020steel}. Early techno-economic studies focused on levelized cost comparisons under static assumptions, consistently finding hydrogen routes uneconomic absent carbon prices above \$150/tCO$_2$ or dramatic cost reductions \citep{Vogl2018, Otto2017}.
-
-Recent analyses have grown more sophisticated. Material Economics (2019) emphasized that pathway viability depends critically on policy timing—premature or delayed interventions risk either stranded assets or locked-in emissions. Vogl et al. (2021) examined technology learning curves for hydrogen DRI, projecting 20-30\% CAPEX reductions by 2040 under aggressive deployment scenarios. Ueckerdt et al. (2021) explored hydrogen infrastructure co-evolution across end-uses, finding that bundling steel, chemicals, and transport demand enables shared infrastructure that lowers unit costs.
-
-System-level constraints have received growing attention. Pauliuk et al. (2013) documented global scrap availability limits that constrain how much steel production can shift to electric arc furnace routes—even with perfect recycling, scrap can't supply more than 40-45\% of future demand given steel stock accumulation in developing economies. Wang et al. (2021) mapped renewable hydrogen production potential, finding substantial regional variation: Northern Europe and parts of Australia show production costs below \$2/kg by 2040, while much of Asia faces \$3-4/kg even with aggressive renewable deployment.
-
-Yet three gaps persist. First, nearly all optimization models treat technology adoption as continuous variables that adjust incrementally. This misses the fundamentally lumpy nature of steel investment. Blast furnaces are built as discrete 2-4 Mt/year units with 40-year lifespans—you can't adopt "30\% of a hydrogen plant." This matters because it introduces path dependencies and option values that continuous models miss entirely. A conventional blast furnace rebuilt in 2030 locks in high emissions through 2060-2070, as premature retirement wastes 80-90\% of sunk capital. This creates strong status quo bias that smooth optimization models underestimate.
-
-Second, few studies integrate region-specific constraints: policy frameworks, feedstock availability, infrastructure readiness. A pathway viable for European steel may not transfer to Korea's context, where scrap availability is tighter (domestic scrap generation constrained by low historical steel consumption), renewable resources more limited (mountainous geography restricts onshore wind, solar capacity factors below 15\%), and industrial concentration higher (POSCO alone represents 60\% of domestic production). European studies assuming 45-50\% scrap-EAF deployment by 2050 simply can't apply to Korea, where material flow analysis projects maximum 30-35\% scrap share even under aggressive circular economy policies.
-
-Third—most critically for our purposes—no research tests whether actual policy carbon price trajectories can drive technology transitions at the scale needed for sectoral budget compliance. Existing studies either examine historical behavior under low and uncertain carbon prices (EU ETS averaged €25/tCO$_2$ 2013-2020, well below transformation thresholds), or perform stylized analyses using arbitrary price assumptions disconnected from policy commitments. This creates a credibility gap: we know hydrogen becomes viable at "high enough" prices, but we don't know if politically feasible price trajectories reach those levels on timelines consistent with climate targets.
-
-\subsection{Research gap and contribution}
-
-This paper provides the first rigorous test of whether carbon pricing aligned with NGFS climate scenarios can justify POSCO's hydrogen investment strategy. We contribute four methodological innovations. First, we model technology choices as integer variables reflecting discrete blast furnace relining cycles rather than continuous adjustments. This captures path dependencies absent from prior work.
-
-Second, we use Korea-specific constraints: domestic scrap availability (declining from 12 to 8 Mt/year), infrastructure readiness (hydrogen pipelines non-existent, requiring government buildout), and POSCO's actual production capacity and plant configurations. Third, we evaluate outcomes against a sectoral carbon budget derived systematically from Korea's NDC and net-zero pledge, not arbitrary targets. Fourth, we explicitly test hydrogen pathway economics using actual NGFS Phase V carbon price projections from November 2024 rather than stylized assumptions.
-
-Our optimization independently validates POSCO's hydrogen focus: under Net Zero pricing, H$_2$-DRI emerges as the cost-minimizing primary pathway without any technology mandate. This finding matters because it shows carbon pricing can work—the economics support hydrogen investment when prices sustain above critical thresholds. But it also reveals stark limits: moderate pricing fails to justify hydrogen investment, locking in conventional technology through 2050 despite rising nominal carbon costs.
-
-% ===== 3. Methodology =====
-\section{Methodology}
-
-\subsection{Conceptual framework}
-
-We formulate POSCO's decarbonization problem as cost minimization subject to production requirements and carbon pricing. The firm chooses a technology portfolio across 26 annual periods (2025-2050) to minimize net present costs while meeting steel demand. Technology options include conventional BF-BOF, scrap-based EAF, hydrogen-based DRI-EAF, and several hybrid routes (FINEX, NG-DRI). Each route differs in capital intensity, operating costs, emissions intensity, and feedstock requirements.
-
-The optimization explicitly models three features critical for hydrogen pathway analysis. First, blast furnace investments are integer variables—you build discrete 2 Mt/year units with fixed capacity, not continuous adjustments. Second, existing furnaces have scheduled relining cycles (typically 15-20 years) when technology choices become available. Third, once built, facilities operate 25-40 years, creating path dependencies that smooth cost models miss entirely.
-
-Carbon pricing enters through compliance costs: emissions exceeding free allocation face ETS charges at scenario-specific prices. Free allocation declines over time following Korea's scheduled phase-out, gradually exposing firms to marginal carbon costs. This structure captures the key policy trade-off: higher carbon prices justify expensive upfront investment in hydrogen technology, which then reduces future compliance costs.
-
-\subsection{Optimization formulation}
-
-The model minimizes total discounted costs over 2025-2050:
-
-\begin{equation}
-\min \sum_{t=2025}^{2050} \frac{1}{(1+r)^{t-2025}} [CAPEX_t + OPEX_t + ETS\_COST_t]
-\end{equation}
-
-where $r = 0.05$ (discount rate). CAPEX includes investment in new hydrogen DRI plants, EAF expansions, and blast furnace recastings. OPEX covers raw materials (iron ore, scrap, hydrogen, electricity), energy, labor, and maintenance. ETS costs equal net emissions (total minus free allocation) times the scenario carbon price.
-
-Key constraints include:
-
-\textbf{Production requirement:}
-\begin{equation}
-\sum_i x_{i,t} = D_t \quad \forall t
-\end{equation}
-where $x_{i,t}$ is output from technology route $i$ in year $t$, and $D_t$ is steel demand.
-
-\textbf{Capacity limits:}
-\begin{equation}
-x_{i,t} \leq CAP_{i,t} \quad \forall i,t
-\end{equation}
-where capacity evolves based on investment decisions and retirements.
-
-\textbf{Integer constraints on hydrogen DRI:}
-\begin{equation}
-CAP_{H2DRI,t} = \sum_{s \leq t} n_s \cdot 2.0 \text{ Mt/year}
-\end{equation}
-where $n_s \in \{0,1,2,...\}$ is the number of discrete 2 Mt/year plants built in year $s$.
-
-\textbf{Scrap availability:}
-\begin{equation}
-x_{EAF,t} \leq SCRAP\_AVAIL_t
-\end{equation}
-where scrap availability declines from 12 Mt (2025) to 8 Mt (2050) based on material flow projections.
-
-\textbf{Hydrogen DRI feedstock requirements:}
-Hydrogen DRI requires pellet feedstock rather than standard ore fines, creating an additional supply chain constraint. We model this through pellet procurement costs (\$40/t premium over ore).
-
-\textbf{Emissions accounting:}
-\begin{equation}
-E_t = \sum_i x_{i,t} \cdot EF_i
-\end{equation}
-where $EF_i$ is the emission factor for route $i$ (tCO$_2$/t steel). Hydrogen DRI: 0.5, conventional BF-BOF: 2.1, scrap-EAF: 0.1.
-
-The formulation includes 570 decision variables (production levels, capacity additions, retirements) and 450 constraints. We solve using HiGHS 1.11.0 mixed-integer optimizer with 5\% optimality tolerance. Solution times range 2-4 seconds per scenario, all achieving proven optimal solutions.
-
-\subsection{Carbon budget framework}
-
-We derive POSCO's carbon budget from Korea's national commitments: 40\% reduction by 2030 (from 2018 baseline of 728 MtCO$_2$) and carbon neutrality by 2050. Following standard burden-sharing approaches \citep{raupach2014sharing}, we allocate steel sector emissions proportional to current contribution (approximately 10\% of national total). This yields roughly 1,850 MtCO$_2$ for Korea's entire steel sector over 2025-2050 under an equal-share allocation.
-
-Alternative allocation methods yield different budgets but converge on similar magnitudes. Grandfathering (constant 10\% share) produces 1,950 MtCO$_2$. Equal per-capita allocation (attributing steel emissions to final consumers) yields 1,750 MtCO$_2$. Capability-based allocation (frontloading reductions from high-income sectors) generates 1,600 MtCO$_2$. We adopt the middle ground of 1,850 MtCO$_2$ as representing balanced burden-sharing that neither penalizes nor privileges the steel sector relative to other industrial emitters.
-
-POSCO's 60\% domestic market share implies a firm-level budget of 1,110 MtCO$_2$. This represents an upper bound on cumulative emissions consistent with national climate commitments. Exceeding it means either: (i) other sectors must over-achieve their targets to compensate, creating cross-sector equity issues where power or buildings absorb steel's excess burden; or (ii) Korea misses its national pledges, undermining international credibility under Paris Agreement transparency mechanisms.
-
-The budget framing shifts the analytical question from "how much can carbon pricing reduce emissions?" to "can carbon pricing deliver budget compliance?" This distinction matters because it anchors evaluation in policy-relevant targets rather than arbitrary benchmarks. A pathway reducing emissions 45\% might seem successful absent budget framing, but fails if national commitments require 65\% reductions. We explicitly center budget adequacy to align analysis with Korea's actual climate policy architecture.
-
-\subsection{Scenario design and data}
-
-We evaluate three NGFS Phase V carbon price scenarios from the MESSAGEix-GLOBIOM 2.0 integrated assessment model (November 2024 release, "Other Pacific Asia" regional grouping). We convert prices from US\$2010 to US\$2024 using the CPI inflation factor 1.423 and interpolate linearly between NGFS's 5-year intervals to generate annual trajectories:
-
-\textbf{Net Zero 2050:} Reflects 1.5°C climate ambition with immediate stringent action. Prices rise from \$0 (2025) to \$383 (2030), \$455 (2040), and \$638 (2050). This scenario assumes global coordinated climate policy and rapid technology deployment.
-
-\textbf{Below 2°C:} Represents moderate climate action consistent with 2°C warming limit. Prices reach \$71 (2030), \$98 (2040), and \$166 (2050). This scenario assumes delayed strengthening of current policies without full global coordination.
-
-\textbf{NDCs:} Current national policy commitments without additional strengthening. Prices rise to \$118 (2030), \$124 (2040), and \$130 (2050). This represents business-as-usual policy evolution under existing frameworks.
-
-All scenarios assume Korea's scheduled free-allocation phase-out: declining from 95\% coverage in 2025 to 70\% (2030), 50\% (2035), and 30\% by 2040. After 2040, allocation remains at 30\% through 2050.
-
-Technology costs follow industry benchmarks informed by IEA, Material Economics, and POSCO's HyREX pilot data. Hydrogen DRI capital costs: \$2,500/tpy capacity (2025), declining to \$2,000/tpy by 2040 with learning effects (20\% cost reduction per doubling of installed capacity). Conventional blast furnace: \$800/tpy for new construction, \$400/tpy for relining existing facilities. Scrap-EAF: \$400/tpy for greenfield installations. Operating costs include: hydrogen \$4.50/kg (2025) declining to \$3.00/kg (2050) following IEA projections for renewable H$_2$ in Asia, requiring roughly 50-55 kg H$_2$ per tonne of DRI; electricity \$80/MWh (industrial rate with long-term contracts); iron ore \$120/t FOB; scrap \$300/t domestic collection price; pellets \$160/t (40/t premium over ore). Full parameter documentation with sensitivity ranges and literature sources appears in the online data supplement.
-
-% ===== 4. Results =====
-\section{Results}
-
-\subsection{Hydrogen pathway emerges under ambitious carbon pricing}
-
-Under Net Zero 2050 pricing, hydrogen-based direct reduction captures 41\% of POSCO's production by 2050, becoming the dominant new technology in the portfolio. Figure \ref{fig:tech-shares} shows the technology transition: scrap-EAF expands first to its feedstock constraint (35\% share), then hydrogen DRI deployment accelerates through the 2030s and 2040s, while conventional blast furnaces decline steadily to 24\% of 2050 output.
-
-The optimization deploys 14.4 Mt/year hydrogen DRI capacity between 2030-2045, with deployment concentrated in periods when carbon prices exceed \$350-400/tCO$_2$. This validates POSCO's strategic bet: given sufficiently high and sustained carbon prices, hydrogen steelmaking emerges as the cost-optimal primary pathway without requiring any technology mandate or subsidy.
-
-The resulting emission trajectory reaches 1,169 MtCO$_2$ cumulative over 2025-2050—overshooting the 1,110 MtCO$_2$ budget by just 5.3\% (Figure \ref{fig:emissions}). This near-budget-alignment demonstrates that ambitious carbon pricing can drive transformation at the scale needed for climate targets. Annual emissions decline from 83 MtCO$_2$ (2025) to 26 MtCO$_2$ (2050), with intensity falling from 2.1 to 0.7 tCO$_2$/t steel.
-
-The technology transition follows a clear sequence rather than smooth continuous adjustment. Scrap-EAF expands first (2026-2030) as the lowest-cost immediate option, reaching its feedstock constraint of roughly 35\% production share by 2032. This initial scrap expansion delivers quick emissions reductions—from 2.1 tCO$_2$/t (pure blast furnace) to roughly 1.3 tCO$_2$/t weighted average by 2032—buying time for hydrogen infrastructure development.
-
-Hydrogen DRI deployment begins in 2030 when carbon prices hit \$383/tCO$_2$, making upfront capital investment economic despite higher CAPEX relative to conventional routes. The first 2 Mt/year plant comes online in 2030, followed by steady additions of 2 Mt/year every 2-3 years through 2045. The deployment pattern mirrors blast furnace relining cycles: as existing furnaces reach end-of-campaign (typically 15-18 years), firms face a binary choice—rebuild conventional capacity at \$800/t or invest in hydrogen DRI at \$2,500/t. Under Net Zero pricing, the higher carbon costs of conventional operations (\$1,335/t carbon payments over facility lifetime) justify the \$1,700/t capital premium for hydrogen.
-
-Conventional blast furnaces decline steadily through retirement and non-replacement, falling from 100\% of baseline capacity to 24\% of output by 2050. The remaining conventional capacity serves strategic purposes: providing production flexibility during hydrogen supply disruptions, utilizing existing coke ovens and blast furnace infrastructure with residual value, and maintaining domestic technical expertise in conventional ironmaking. Complete elimination of blast furnaces proves economically inefficient—the final 20-25\% of capacity faces diminishing returns to replacement given sunk infrastructure and operational know-how.
-
-Critically, hydrogen DRI doesn't wait for dramatic cost reductions to materialize—it becomes viable under current cost assumptions once carbon pricing reaches threshold levels. This threshold effect explains why moderate pricing scenarios fail completely: prices that hover below \$200/tCO$_2$ never justify the transition, leaving firms locked into conventional technology even as nominal carbon costs rise.
-
-\subsection{Moderate pricing scenarios fail catastrophically}
-
-Below 2°C and NDCs scenarios both overshoot the carbon budget by approximately 78\%, reaching cumulative emissions of 1,981 and 1,978 MtCO$_2$ respectively. Neither scenario deploys any hydrogen DRI capacity through 2050. The reason is straightforward: carbon prices peak at \$166 and \$130/tCO$_2$—well below the \$350-400 threshold needed to justify hydrogen investment.
-
-Without hydrogen deployment, decarbonization options shrink dramatically. Scrap-EAF still expands to its feedstock limit (reaching 5\% of output by 2050 as scrap availability declines), but this alone delivers only modest emission reductions. Conventional blast furnaces dominate at 95\% of 2050 output, as firms find it cheaper to pay recurring carbon costs than invest billions in hydrogen infrastructure that won't pay back at prevailing price levels.
-
-This binary outcome—ambitious pricing enables transformation, moderate pricing fails completely—carries crucial policy implications. There's no middle path where gradual price increases trigger proportional decarbonization. Instead, pricing must cross technology deployment thresholds to activate investment. Half-measures waste money on compliance payments without driving transformation.
-
-The cumulative financial burden differs markedly between scenarios despite similar total costs. Net Zero pricing generates \$43 billion in ETS payments over 26 years as hydrogen deployment lags carbon price escalation in the 2020s and early 2030s—a transitional burden that declines sharply post-2038 as hydrogen capacity comes online and emissions plummet. But NDCs pricing accumulates \$59.7 billion in recurring payments with no transformative investment to show for it—payments that persist and even grow through the 2040s as allocation tightens without technology shifts reducing emissions. Firms pay more while achieving less, because prices remain stuck below action-triggering thresholds while still imposing non-trivial compliance costs.
-
-The perverse outcome illustrates how moderate carbon pricing can maximize cost while minimizing transformation—the worst of both worlds. Under Net Zero, high early costs at least purchase something valuable: a transformed low-carbon production system with durably lower operating intensity. Under NDCs, sustained moderate costs purchase nothing but temporary compliance, leaving firms structurally exposed to future carbon price escalation or regulatory tightening without having invested in solutions.
-
-Annual emissions in 2050 reveal the starkness of this divergence: 26 MtCO$_2$ under Net Zero (equivalent to 0.7 tCO$_2$/t steel) versus 73 MtCO$_2$ under both moderate scenarios (1.9 tCO$_2$/t)—nearly triple the intensity. The moderate scenarios achieve minimal decarbonization despite 25 years of carbon pricing, because they never activate the technology transitions that deliver deep cuts.
-
-\subsection{Hydrogen pathway proves cost-competitive through capital substitution}
-
-Counterintuitively, ambitious carbon pricing reduces total system costs rather than increasing them. The hydrogen pathway under Net Zero averages \$815/t steel over the planning horizon, compared to \$861/t under NDCs—a 6\% improvement despite dramatically higher nominal carbon prices (\$638 versus \$130 peak).
-
-The mechanism is capital substitution. High early carbon prices justify upfront investment in hydrogen DRI (\$36 billion cumulative CAPEX over 2030-2045), which then avoids \$17 billion in recurring ETS payments relative to business-as-usual. The firm redirects cash flow from compliance fees toward productive capital that permanently lowers emissions and operating intensity. By contrast, moderate pricing leaves firms paying year after year for carbon allowances without ever crossing the investment threshold that would reduce future liabilities.
-
-This finding overturns common industry narratives that position carbon pricing as fundamentally threatening to competitiveness. The real competitive threat comes from moderate pricing that imposes costs without enabling transition—exactly the situation created by Below 2°C and NDCs scenarios. Under those trajectories, firms bear \$60 billion in compliance costs while maintaining high-emission conventional technology, eroding margins without improving environmental performance.
-
-Table \ref{tab:costs} breaks down cost components. Under Net Zero, capital expenditure rises to 42\% of total costs (versus 35\% in NDCs) as firms invest heavily in hydrogen capacity—\$36 billion cumulative CAPEX for hydrogen DRI plants plus \$8 billion for supporting EAF capacity to melt DRI output. But operating costs decline proportionally—hydrogen DRI consumes \$180-220/t in hydrogen, electricity, and pellets versus \$240-280/t for blast furnace routes consuming coking coal, iron ore, and electricity once carbon costs are internalized. The hydrogen route shifts cost structure from carbon-intensive inputs (coal, high-grade coke) to low-carbon energy carriers (renewable H$_2$, green electricity).
-
-Most importantly, ETS compliance costs collapse from 7\% of total expenditure (NDCs) to 5\% (Net Zero) despite far higher carbon prices, because hydrogen deployment drives emissions below free allocation levels through most of the 2040s. Under Net Zero, POSCO faces net allowance surpluses in 2043-2047 as actual emissions (35-40 MtCO$_2$) fall below allocated allowances (42-48 MtCO$_2$ at 30\% free allocation), enabling the firm to sell excess permits or bank them for future use. By contrast, NDCs maintains persistent deficits requiring annual purchases of 15-25 MtCO$_2$ allowances at \$120-130/t.
-
-Average costs mask important transition dynamics visible in annual cost trajectories. Net Zero shows modest compliance costs through the late 2020s while free allocation remains generous at 95\%. Costs spike in the early 2030s as allocation tightens to 70\% (2030) and 50\% (2035) before hydrogen plants come fully online. Then costs collapse post-2035 as low-carbon technology dominates and emissions fall below declining allocation levels. By 2050, annual ETS costs approach zero as hydrogen and scrap routes supply 76\% of output.
-
-NDCs shows persistently high costs through 2050 as emissions remain elevated (declining only slightly from 83 to 73 MtCO$_2$) while allowance prices gradually rise and allocation declines. Annual compliance costs peak above \$3 billion in the mid-2040s, representing a recurring drain on profitability without corresponding improvements in production efficiency or environmental performance.
-
-\subsection{Infrastructure dependency and price threshold dynamics}
-
-The hydrogen pathway's viability depends critically on infrastructure readiness beyond what carbon pricing alone can deliver. Our baseline assumes three enabling systems materialize: (i) renewable hydrogen production reaching \$3/kg by 2050, requiring 5-8 GW dedicated electrolyzer capacity; (ii) pipeline networks connecting hydrogen production sites to steel mills, roughly 200-300 km of dedicated H$_2$ pipelines; (iii) pellet production capacity for DRI feedstock, adding 15-20 Mt/year pelletizing plants.
-
-Korea currently lacks all three systems. Hydrogen production remains pilot-scale (under 50 MW), pipeline infrastructure is non-existent outside chemical clusters, and pellet imports would be necessary for any DRI deployment. Building this out requires 10-15 years and estimated investment of \$15-25 billion in dedicated infrastructure—timescales and magnitudes that private firms won't shoulder alone given policy uncertainty.
-
-Price thresholds matter more than gradual escalation in determining technology outcomes. Hydrogen DRI deployment begins abruptly in 2030 under Net Zero pricing when costs cross \$383/tCO$_2$—not gradually as prices rise through the 2020s. This threshold (around \$350-400/tCO$_2$ depending on hydrogen costs and learning rates) represents the break-even point where hydrogen CAPEX plus operating costs become cheaper than continuing conventional operations plus carbon payments.
-
-Below this threshold, essentially no hydrogen deployment occurs regardless of price trends. Above it, deployment proceeds rapidly as firms rush to avoid mounting carbon liabilities. The optimization shows binary behavior: at \$330/tCO$_2$ (slightly below threshold), zero hydrogen capacity gets built; at \$383/tCO$_2$ (above threshold), 14.4 Mt/year deploys over 15 years. This creates winner-take-all dynamics: scenarios with prices just below threshold deliver minimal decarbonization; scenarios just above trigger transformation.
-
-Free allocation substantially raises effective thresholds, explaining why nominal price levels differ from deployment triggers. With 95\% free allocation, firms face only 5\% of nominal carbon costs, meaning a \$400 nominal price translates to just \$20 effective marginal cost. As allocation declines to 70\% (2030), 50\% (2035), and 30\% (2040), effective costs rise proportionally. A \$383 nominal price with 70\% free allocation yields \$115 effective cost—enough to trigger initial hydrogen deployment. By 2040, 30\% allocation means \$638 nominal price creates \$447 effective cost, driving aggressive hydrogen expansion.
-
-The interaction between price trajectories and allocation schedules proves crucial. Net Zero pricing crosses deployment thresholds precisely when allocation declines expose firms to meaningful costs. Moderate scenarios fail because prices rise too slowly relative to allocation phase-out—by the time firms face substantial effective costs (late 2030s), prices have already plateaued below levels needed to justify hydrogen investment.
-
-\subsection{Closing the 5.3\% budget gap}
-
-Even the hydrogen pathway overshoots budget by 5.3\%—a small but meaningful gap representing 59 MtCO$_2$ of excess emissions. Three policy adjustments could close it without fundamentally altering the pathway. First, extend carbon price floors above \$650/tCO$_2$ by 2045 (versus \$638 baseline) to activate final hydrogen deployment tranches earlier. This would trigger 2-4 Mt/year additional capacity in the mid-2040s, reducing 2045-2050 emissions by approximately 25 MtCO$_2$.
-
-Second, accelerate free-allocation phase-out by 5-7 percentage points annually rather than baseline 3-4 points, achieving full auctioning by 2035 instead of 2040. This ensures firms face full marginal costs when making blast furnace reline decisions in the early 2030s, pulling forward hydrogen deployment by 2-3 years. Earlier deployment compounds: each year of earlier operation reduces cumulative emissions by 3-4 MtCO$_2$.
-
-Third, provide early-stage infrastructure subsidies that reduce hydrogen DRI effective threshold prices by \$50-75/tCO$_2$. Government co-investment in pipeline networks and pellet facilities lowers firm-level capital requirements, making hydrogen economic at lower carbon prices. This could trigger deployment in 2028-2029 rather than 2030, adding 8-10 MtCO$_2$ of cumulative abatement.
-
-These adjustments prove far more tractable than bridging the 78\% gaps under moderate scenarios. A 5\% overshoot suggests pricing gets the technology incentives broadly right—fine-tuning allocation schedules and infrastructure support can close the remainder. By contrast, 78\% overshoots signal fundamental policy failure where even order-of-magnitude changes to complementary policies wouldn't achieve compliance without transforming the price trajectory itself.
-
-Importantly, closing the gap doesn't require abandoning the hydrogen pathway or mandating alternative technologies. The optimization shows hydrogen remains cost-optimal even with slightly higher carbon prices or faster allocation phase-out. The pathway is robust to reasonable policy adjustments—it's not balanced on a knife-edge where small changes trigger wholesale portfolio shifts.
-
-% ===== 5. Discussion =====
-\section{Discussion}
-
-\subsection{Validating POSCO's hydrogen strategy}
-
-Our optimization independently validates POSCO's commitment to hydrogen steelmaking without imposing it as a required technology. The cost-minimization algorithm selects H$_2$-DRI as the primary pathway under Net Zero pricing, emerging organically from economic fundamentals rather than technology mandates. This result matters because it shows POSCO's HyREX program and hydrogen investments align with rational profit-maximizing behavior—they're not speculative bets but economically grounded responses to plausible carbon price trajectories.
-
-The 41\% hydrogen share by 2050 matches POSCO's publicly announced targets \citep{POSCO2023SR}, lending empirical support to the company's strategic planning. More importantly, the deployment timing aligns: first commercial-scale capacity in 2030, rapid expansion through the 2030s, dominant position by 2040-2045. This suggests POSCO's investment timeline—if coupled with sustained carbon price floors—tracks a cost-optimal pathway rather than over- or under-investing relative to market fundamentals.
-
-However, validation comes with critical caveats. The pathway only works if prices sustain above \$600/tCO$_2$ by 2050 and Korea's government delivers supporting infrastructure. If ETS prices collapse due to oversupply (as occurred in EU ETS Phase II, when prices fell to €3/tCO$_2$ during 2012-2013 recession) or political pressure suppresses price escalation, hydrogen investments become stranded assets. A \$2.5 billion hydrogen plant built in 2035 expecting \$600 carbon prices faces financial ruin if actual prices stagnate at \$200. The facility would generate \$100-150 million annual losses relative to conventional alternatives, exhausting shareholder patience and triggering premature closure or mothballing.
-
-This vulnerability explains why POSCO and industry groups lobby aggressively for price floor legislation—not primarily to increase compliance costs but to provide investment certainty. The lobbying position appears paradoxical: why advocate for higher guaranteed carbon costs? The answer lies in option value. Uncertain prices that might reach \$600 or might crash to \$100 have lower expected value for irreversible hydrogen investments than certain prices at \$450-500. Firms prefer somewhat lower but credible prices to higher but uncertain trajectories, because certainty enables investment that uncertainty prevents.
-
-Without floors, even announced price trajectories lack credibility because future governments can always oversupply allowances or delay allocation phase-out. Korea's K-ETS has already experienced three instances of emergency allowance injections (2020 COVID recession, 2022 energy crisis, 2024 manufacturing slowdown) that temporarily suppressed prices below announced targets. Each intervention rationally informed firms that future price commitments might similarly dissolve when economic or political pressures mount. Legislated floors solve the time-inconsistency problem by binding future policy to current commitments, removing administrative discretion that undermines investment confidence.
-
-\subsection{Infrastructure as critical enabler, not optional add-on}
-
-Carbon pricing provides necessary demand-side signals but infrastructure supplies essential enabling conditions. The hydrogen pathway requires four interconnected systems beyond what pricing alone delivers:
-
-\textbf{Renewable hydrogen production.} Achieving \$3/kg H$_2$ by 2050 requires 5-8 GW dedicated electrolyzer capacity powered by low-cost renewables (wind or solar with capacity factors above 40\%). Korea's current electrolyzer capacity totals under 50 MW, nearly all in chemical industry clusters. Scaling to gigawatt levels demands coordinated buildout of renewable generation, electrolyzers, and connections to steel demand centers.
-
-\textbf{Pipeline networks.} Hydrogen's low energy density makes compression and transport expensive. Trucking compressed H$_2$ from production sites to steel mills costs \$80-120/t H$_2$ in energy and logistics—effectively doubling delivered costs. Dedicated pipelines reduce transport costs to \$15-25/t but require 200-300 km of new infrastructure connecting offshore wind resources (southwest coast) to steel clusters (Pohang, Gwangyang). No such pipelines exist today.
-
-\textbf{Storage and buffering.} Steel production runs continuously but renewable generation varies with weather. Smoothing these mismatches requires storage: salt caverns for geological storage (Korea has limited suitable formations) or compressed tank farms (expensive for large volumes). Without storage, hydrogen DRI plants must curtail production during renewable lulls or maintain fossil backup—both degrading economics.
-
-\textbf{Pellet feedstock.} Hydrogen DRI requires high-grade iron ore pellets, not the standard ore fines used in blast furnaces. Korea currently imports all pellets (roughly 2 Mt/year for small-scale DRI operations). Scaling to 14 Mt/year hydrogen DRI requires either: (i) dedicated pellet plants (capital cost \$2-3 billion for 15 Mt/year capacity), or (ii) long-term import contracts with pellet suppliers in Brazil, Sweden, or Australia. Both options require government coordination given geopolitical and supply chain risks.
-
-Private firms won't build this infrastructure alone. The timescales (10-15 years) exceed typical investment horizons, the capital requirements (\$15-25 billion) dwarf individual firm balance sheets, and the coordination demands (linking hydrogen producers, pipeline operators, storage providers, and steel users) create chicken-and-egg problems. Hydrogen producers won't invest without guaranteed offtakers; steel firms won't commit without guaranteed supply; nobody invests in pipelines without both ends secured.
-
-Government co-investment breaks the gridlock. Following Norway's Northern Lights project for CO$_2$ transport—where the state directly develops trunk infrastructure and offers regulated third-party access—Korea should establish a hydrogen infrastructure corporation. This entity would develop pipeline networks, contract for storage, and coordinate pellet supply, socializing risks while enabling market competition in production and end-use applications.
-
-The alternative—waiting for carbon prices to rise so high that firms self-finance everything—practically guarantees missing 2050 targets. Infrastructure lead times mean decisions made in 2025-2027 determine 2038-2040 capabilities. Delayed action collapses the time available for transition, forcing either emergency measures (far more expensive) or target abandonment (undermining climate credibility).
-
-\subsection{Policy architecture for sustained transformation}
-
-Realizing the hydrogen pathway requires policy coordination across five domains, each necessary but none alone sufficient. We organize recommendations by their interaction with carbon pricing rather than treating them as independent interventions.
-
-\textbf{Legislated price floors with automatic escalation.} Establish binding minimum carbon prices in the K-ETS legislation (not administrative rules susceptible to regulatory discretion). Set initial floor at \$150/tCO$_2$ (2027), escalating automatically to \$383 (2030), \$550 (2040), and \$650 (2050). Automatic escalation removes political discretion from year-to-year adjustments, providing investment certainty without requiring repeated legislative battles.
-
-Critically, floors must be legislated—not merely announced as targets. EU ETS experience shows announced trajectories collapse when economic downturns create oversupply. The UK Carbon Price Floor succeeded precisely because it was legislated, surviving multiple governments and economic cycles. For Korea, legislative floors solve the time-inconsistency problem: current governments commit future governments to price levels needed for long-lived industrial investments.
-
-\textbf{Accelerated free-allocation phase-out.} Current schedules reduce free allocation too slowly (3-4 percentage points annually), allowing firms to defer hydrogen investments until late 2030s. We recommend 6-8 percentage points annually, achieving full auctioning by 2034-2035. This ensures firms face full marginal carbon costs when making blast furnace reline decisions in the early 2030s.
-
-The rationale is straightforward: relining cycles occur 2028-2035 for most existing furnaces. If allocation remains above 50\% during this window, effective carbon costs stay below hydrogen investment thresholds. Firms then rebuild conventional furnaces, locking in emissions through 2050-2065. Faster phase-out exposes firms to real costs precisely when technology choices crystallize.
-
-Competitiveness concerns should be addressed through targeted border carbon adjustments rather than blanket free allocation. Following the EU CBAM model, imports face carbon charges equivalent to domestic ETS prices, while exports receive rebates for carbon costs actually paid. This preserves level playing fields without dulling investment incentives through over-generous allocation.
-
-\textbf{Infrastructure co-investment as public good provision.} Launch Korea Hydrogen Infrastructure Corporation (KHIC) with \$18-22 billion committed funding over 2025-2037. Mandate: develop 250 km H$_2$ pipeline networks connecting offshore wind (southwest) to steel clusters (Pohang, Gwangyang); contract for 200-300 GWh storage capacity; coordinate pellet supply contracts with international suppliers. KHIC operates pipelines as regulated utility, offering open access at transparent tariffs.
-
-Governance matters: KHIC should have independent board with fixed-term appointments insulated from political cycles, emulating Korea Electric Power Corporation (KEPCO) governance rather than direct ministry control. This reduces risks of politicized project selection or tariff manipulation. Revenue model: KHIC charges regulated pipeline tariffs plus congestion fees during peak demand, covering capital costs over 25-year amortization.
-
-\textbf{Carbon Contracts for Difference (CCfDs) to bridge price-risk gaps.} Implement CCfDs guaranteeing strike prices (\$420-450/tCO$_2$) for qualifying low-carbon steel production. Contracts run 12-15 years from initial production, providing certainty through early payback periods. When market prices fall below strike, government pays the difference; when above, firms refund excess. This creates symmetric risk-sharing that de-risks investment without creating windfall profits.
-
-Germany's Climate Protection Contracts provide working templates, with initial steel sector auctions (2024) attracting bids around €150-180/tCO$_2$. For Korea, targeting \$420-450 strike prices bridges the gap between current ETS prices (\$80-120) and levels needed to justify hydrogen deployment (\$350-400). Total contract volumes should align with optimized deployment: 14-16 Mt/year hydrogen steel capacity by 2045, implying roughly \$2.5-3.2 billion annual peak outlays (2040-2045) assuming 30\% production share and \$100 average gap.
-
-\textbf{Green public procurement creating guaranteed demand.} Mandate climate-neutral steel (carbon intensity below 0.8 tCO$_2$/t) for all government infrastructure projects by 2035. This creates guaranteed markets for first-mover hydrogen steel production, reducing volume risk that deters investment. South Korea's public construction market (roads, bridges, public buildings) consumes 8-12 Mt steel annually—enough to absorb initial hydrogen production (2-4 Mt/year 2030-2035) while firms scale up.
-
-Procurement mandates address a market failure pricing alone can't fix: nobody wants to be first mover. Even if hydrogen steel becomes cost-competitive at high carbon prices, risk-averse customers prefer proven conventional supply chains. Green procurement solves this by creating a captive market segment for low-carbon production, enabling first movers to achieve scale before competing in open markets.
-
-These five interventions are complementary rather than substitutable. Pricing alone won't build infrastructure; infrastructure alone won't drive adoption without carbon costs exposing conventional routes' disadvantages; neither pricing nor infrastructure works without contracts that reduce investor risk or guaranteed demand that rewards first movers. The package succeeds or fails as an integrated system.
-
-% ===== 6. Limitations =====
-\section{Limitations}
-
-Several limitations qualify our findings. Perfect foresight assumptions favor coordinated decarbonization—real firms facing uncertainty about future carbon prices, technology costs, and competitor behavior likely delay investment relative to our optimal pathways. We model POSCO as a single unified decision-maker, missing internal organizational dynamics, principal-agent problems between corporate headquarters and plant managers, and career risks that bias managers toward proven technologies.
-
-Single-firm focus misses competitive dynamics and industrial structure effects. If rivals adopt hydrogen early and achieve learning-curve cost reductions, first-mover advantages could accelerate transitions beyond our projections. Conversely, if competitors free-ride on POSCO's infrastructure investments, coordination failures might delay buildout. Our results should be interpreted as best-case scenarios for a well-capitalized incumbent with government support rather than economy-wide forecasts.
-
-Technology cost assumptions use current forecasts that may prove optimistic (hydrogen production costs) or pessimistic (learning rates for hydrogen DRI). We model hydrogen prices declining from \$4.50/kg (2025) to \$3.00/kg (2050), but this requires aggressive renewable deployment that Korea's resource constraints might prevent. Conversely, global learning from European and Japanese hydrogen steel programs could reduce DRI capital costs faster than our conservative 20\% decline (2025-2040).
-
-We exclude Scope 3 emissions from hydrogen production, electricity generation, and pellet processing. A full lifecycle analysis would add 0.1-0.3 tCO$_2$/t for hydrogen production depending on renewable integration, reducing (though not eliminating) hydrogen's carbon advantage. We also ignore potential future innovations—direct hydrogen reduction, electrolysis-based processes, or novel routes—that could alter technology landscapes beyond 2040.
-
-Infrastructure constraints enter as simplified assumptions (pipeline exists or doesn't) rather than detailed network models with congestion pricing, capacity bottlenecks, and geographic routing. Real infrastructure development involves messier political economy: eminent domain battles for pipeline routes, NIMBY opposition to hydrogen facilities, and regional equity disputes over where infrastructure gets built first.
-
-Carbon price scenarios come from global IAMs (NGFS Phase V), not Korea-specific ETS modeling. Actual K-ETS prices may differ substantially due to domestic political economy: allowance oversupply, regulatory intervention to suppress prices, or conversely stronger ambition than global trajectories. Our use of NGFS scenarios provides internal consistency across scenarios but sacrifices Korea-specific political realism.
-
-Most critically, we cannot test our key prediction—that \$350-400/tCO$_2$ triggers hydrogen deployment—against historical data because such prices have never been sustained. The threshold is identified by optimization model mechanics (where hydrogen CAPEX plus operating costs cross below conventional operations plus carbon payments) rather than observed behavior. Real-world deployment might respond differently due to risk premia, organizational inertia, or technological uncertainties our model assumes away.
-
-% ===== 7. Conclusion =====
-\section{Conclusion}
-
-Can carbon pricing justify Korea's shift toward hydrogen steelmaking? Our optimization model provides qualified support: yes, but only under ambitious sustained pricing coupled with infrastructure co-investment. Net Zero trajectories reaching \$638/tCO$_2$ by 2050 enable hydrogen-based DRI to capture 41\% of production with cumulative emissions just 5.3\% above sectoral budgets. This validates POSCO's hydrogen strategy—the economics work if policy delivers.
-
-Moderate pricing fails catastrophically. Below 2°C and NDCs scenarios both overshoot budgets by 78\% because prices never cross the \$350-400/tCO$_2$ threshold needed to justify upfront hydrogen investment. There's no middle path: pricing either activates transformation or wastes money on compliance payments while locking in conventional technology. Half-measures achieve worst of both worlds—rising costs without transformation.
-
-Three findings carry implications beyond Korea. First, price thresholds matter more than gradual escalation. Hydrogen deployment begins abruptly when carbon costs exceed technology break-even points, creating binary outcomes rather than smooth price-response curves. Policies that raise prices from \$50 to \$150/tCO$_2$ may deliver minimal impact if thresholds sit at \$350. By contrast, policies crossing thresholds trigger rapid deployment even if prices subsequently plateau.
-
-Second, ambitious pricing reduces costs by enabling capital substitution. Early hydrogen investment (\$36 billion CAPEX) avoids \$17 billion recurring compliance payments, improving competitiveness rather than eroding it. Industry narratives positioning carbon pricing as inherently threatening to competitiveness get causation backwards: moderate pricing that imposes costs without enabling transition poses the real threat.
-
-Third, pricing works only when coupled with infrastructure development, allocation reform, and contract mechanisms that de-risk investment. Carbon pricing provides demand-side signals but can't conjure hydrogen pipelines, pellet plants, or 15-year supply contracts into existence. Government must address these market failures directly through co-investment and coordination.
-
-For Korean policymakers, this means carbon pricing can succeed but requires supporting architecture built around five interdependent pillars. Legislate price floors rising to \$650/tCO$_2$ by 2050 with automatic escalation clauses that remove political discretion. Accelerate free-allocation phase-out achieving full auctioning by 2035 rather than current 2040+ timelines, exposing firms to real marginal costs when making blast furnace reline decisions in the early 2030s. Launch hydrogen infrastructure corporation with \$20 billion committed funding over 2025-2037, developing pipeline networks, storage, and pellet supply chains as regulated utilities. Implement Carbon Contracts for Difference with \$420-450 strike prices running 12-15 years to de-risk first-mover investments. Mandate green public procurement (carbon intensity below 0.8 tCO$_2$/t) for all government infrastructure projects by 2035, creating guaranteed demand that absorbs early hydrogen steel production.
-
-These interventions must function as a coordinated package—pricing alone can't build infrastructure, infrastructure alone can't drive adoption without carbon costs, neither works without contracts reducing investor risk or procurement creating guaranteed markets. Half-measures—moderate prices without complementary policies—waste resources while failing to transform the sector. Korea's experience will test whether democratic systems can sustain the integrated policy architecture that transformation demands.
-
-For POSCO and Korean industry, the message is equally clear. Hydrogen steelmaking isn't speculative but economically rational under plausible carbon prices. HyREX and related investments align with cost minimization under Net Zero scenarios. However, securing this pathway demands active policy engagement: support for legislated price floors and infrastructure co-investment rather than price suppression that protects old technology while preventing new investment.
-
-The broader question—whether carbon pricing can drive industrial decarbonization—receives nuanced answers. It can, but only at sustained high levels most current policies haven't approached. Korea's ETS and POSCO's hydrogen transition offer a real-time test: will governments maintain political commitment to price floors through economic downturns, electoral cycles, and industry lobbying? Will infrastructure materialize at scales and speeds optimization models assume? Whether carbon pricing works depends less on economics than on institutional design and political economy.
-
-The next five years prove critical. Blast furnace relining decisions in 2028-2033 determine technology pathways through 2050-2065. If carbon prices cross investment thresholds while infrastructure develops, hydrogen becomes the rational choice and Korea's steel sector decarbonizes. If prices stagnate or infrastructure stalls, conventional technology gets rebuilt and emissions lock in for another generation. Carbon pricing's adequacy depends on what happens between now and 2030—a test whose results will clarify market mechanisms' role in industrial transformation.
-
-\section*{Data availability}
-Model code, input parameters, and scenario results are available at the project repository: \url{https://github.com/planit-institute/posco-optimization}. NGFS Phase V carbon price data sourced from \url{https://www.ngfs.net/ngfs-scenarios-portal/}.
-
-\section*{Funding}
-This research received no specific grant from funding agencies in the public, commercial, or not-for-profit sectors.
-
-\section*{Conflict of interest}
-The author declares no competing financial interests or personal relationships that could influence this work.
-
-\bibliography{references}
-
-\end{document}
